@@ -1,0 +1,365 @@
+--- a/dist/maps/coastal-intercept.tmj
++++ b/dist/maps/coastal-intercept.tmj
+@@ -20,7 +20,7 @@
+     {
+       "name": "geography_version",
+       "type": "int",
+-      "value": 8
++      "value": 9
+     },
+     {
+       "name": "encounter_owned_geometry",
+@@ -81,6 +81,16 @@
+       "name": "reference_origin_y",
+       "type": "float",
+       "value": -6525.0
++    },
++    {
++      "name": "runtime_width",
++      "type": "float",
++      "value": 1152.0
++    },
++    {
++      "name": "runtime_projection",
++      "type": "string",
++      "value": "portrait-composition-x-compression"
+     }
+   ],
+   "layers": [
+@@ -26099,4 +26109,4 @@
+     }
+   ],
+   "tilesets": []
+-}
+\ No newline at end of file
++}
+--- a/scripts/compile-geography.mjs
++++ b/scripts/compile-geography.mjs
+@@ -12,37 +12,48 @@
+ 
+ const layer=(name)=>{const l=map.layers?.find(x=>x.name===name);if(!l)throw Error(`Required Tiled layer missing: ${name}`);return l;};
+ const prop=(obj,name,fallback=null)=>obj.properties?.find(p=>p.name===name)?.value??fallback;
+-const points=(obj,key)=>{const ox=obj.x??0,oy=obj.y??0;return (obj[key]??[]).map(p=>({x:p.x+ox,y:p.y+oy}));};
++const sourceMinX=Number(map.properties?.find(p=>p.name==='min_x')?.value??0);
++const sourceMaxX=Number(map.properties?.find(p=>p.name==='max_x')?.value??0);
++const sourceWidth=Math.max(1e-9,sourceMaxX-sourceMinX);
++const runtimeWidth=Number(map.properties?.find(p=>p.name==='runtime_width')?.value??sourceWidth);
++const runtimeMinX=0;
++const runtimeXScale=runtimeWidth/sourceWidth;
++const tx=(x)=>runtimeMinX+(Number(x)-sourceMinX)*runtimeXScale;
++const tw=(w)=>Number(w)*runtimeXScale;
++const points=(obj,key)=>{const ox=obj.x??0,oy=obj.y??0;return (obj[key]??[]).map(p=>({x:tx(p.x+ox),y:p.y+oy}));};
+ const polygon=(obj)=>({id:obj.name,points:points(obj,'polygon'),material:prop(obj,'material',obj.class),...(prop(obj,'elevation')!=null?{elevation:prop(obj,'elevation')}:{}),...(prop(obj,'kind')?{kind:prop(obj,'kind')}: {})});
+ const road=(obj)=>({
+  id:obj.name,points:points(obj,'polyline'),width:Number(prop(obj,'width',50)),material:prop(obj,'material','road'),class:prop(obj,'road_class','service'),
+  fromNode:prop(obj,'from_node'),toNode:prop(obj,'to_node'),junctionNodes:String(prop(obj,'junction_nodes','')).split(',').filter(Boolean),
+ });
+-const roadNode=(obj)=>({id:obj.name,x:obj.x??0,y:obj.y??0});
++const roadNode=(obj)=>({id:obj.name,x:tx(obj.x??0),y:obj.y??0});
+ const shoreline=(obj)=>({id:obj.name,points:points(obj,'polyline'),districtId:prop(obj,'district_id'),contactKind:prop(obj,'contact_kind','rock'),waterSide:prop(obj,'water_side','right'),height:Number(prop(obj,'height',0))});
+-const rect=(obj)=>({id:obj.name,x:obj.x??0,y:obj.y??0,width:obj.width??0,height:obj.height??0,rotation:(obj.rotation??0)*Math.PI/180,...(prop(obj,'kind')?{kind:prop(obj,'kind')}:{}),...(prop(obj,'asset')?{asset:prop(obj,'asset')}:{}),...(prop(obj,'elevation')!=null?{elevation:prop(obj,'elevation')}:{}),...(prop(obj,'alpha')!=null?{alpha:prop(obj,'alpha')}: {}),...(prop(obj,'landmark_type')?{landmarkType:prop(obj,'landmark_type')}: {})});
++const rect=(obj)=>({id:obj.name,x:tx(obj.x??0),y:obj.y??0,width:tw(obj.width??0),height:obj.height??0,rotation:(obj.rotation??0)*Math.PI/180,...(prop(obj,'kind')?{kind:prop(obj,'kind')}:{}),...(prop(obj,'asset')?{asset:prop(obj,'asset')}:{}),...(prop(obj,'elevation')!=null?{elevation:prop(obj,'elevation')}:{}),...(prop(obj,'alpha')!=null?{alpha:prop(obj,'alpha')}: {}),...(prop(obj,'landmark_type')?{landmarkType:prop(obj,'landmark_type')}: {})});
+ const bridge=(obj)=>({
+- id:obj.name,kind:'bridge',x:obj.x??0,y:obj.y??0,width:obj.width??0,height:obj.height??0,rotation:(obj.rotation??0)*Math.PI/180,elevation:Number(prop(obj,'elevation',0)),
+- a:{x:Number(prop(obj,'a_x')),y:Number(prop(obj,'a_y'))},b:{x:Number(prop(obj,'b_x')),y:Number(prop(obj,'b_y'))},connects:String(prop(obj,'connects','')).split(',').filter(Boolean),
++ id:obj.name,kind:'bridge',x:tx(obj.x??0),y:obj.y??0,width:tw(obj.width??0),height:obj.height??0,rotation:(obj.rotation??0)*Math.PI/180,elevation:Number(prop(obj,'elevation',0)),
++ a:{x:tx(Number(prop(obj,'a_x'))),y:Number(prop(obj,'a_y'))},b:{x:tx(Number(prop(obj,'b_x'))),y:Number(prop(obj,'b_y'))},connects:String(prop(obj,'connects','')).split(',').filter(Boolean),
+  fromNode:prop(obj,'from_node'),toNode:prop(obj,'to_node'),
+ });
+-const socket=(obj)=>({id:obj.name,anchorId:prop(obj,'anchor_id',obj.name),district:prop(obj,'district'),role:prop(obj,'role'),x:obj.x??0,y:obj.y??0});
++const socket=(obj)=>({id:obj.name,anchorId:prop(obj,'anchor_id',obj.name),district:prop(obj,'district'),role:prop(obj,'role'),x:tx(obj.x??0),y:obj.y??0});
+ const district=(obj)=>({id:obj.name,name:prop(obj,'display_name',obj.name),maxY:Number(prop(obj,'max_y',obj.y+(obj.height??0))),minY:Number(prop(obj,'min_y',obj.y)),biome:prop(obj,'biome','temperate-coast'),elevationBand:Number(prop(obj,'elevation_band',0))});
+-const atmosphere=(obj)=>({id:obj.name,x:obj.x??0,y:obj.y??0,width:obj.width??0,height:obj.height??0,kind:prop(obj,'kind','coastal-clouds'),cloudDensity:Number(prop(obj,'cloud_density',0.3)),shadowOpacity:Number(prop(obj,'shadow_opacity',0.1)),fogAlpha:Number(prop(obj,'fog_alpha',0.04)),speed:Number(prop(obj,'speed',8))});
++const atmosphere=(obj)=>({id:obj.name,x:tx(obj.x??0),y:obj.y??0,width:tw(obj.width??0),height:obj.height??0,kind:prop(obj,'kind','coastal-clouds'),cloudDensity:Number(prop(obj,'cloud_density',0.3)),shadowOpacity:Number(prop(obj,'shadow_opacity',0.1)),fogAlpha:Number(prop(obj,'fog_alpha',0.04)),speed:Number(prop(obj,'speed',8))});
+ const waterRegion=(obj)=>({id:obj.name,districtId:prop(obj,'district_id','multi-district'),bodyId:prop(obj,'body_id'),points:points(obj,'polygon'),depthClass:prop(obj,'depth_class','deep'),flowX:Number(prop(obj,'flow_x',0)),flowY:Number(prop(obj,'flow_y',0)),iceCoverage:Number(prop(obj,'ice_coverage',0))});
+ const reliefZone=(obj)=>({id:obj.name,districtId:prop(obj,'district_id'),points:points(obj,'polygon'),kind:prop(obj,'relief_kind','rock-terrace'),height:Number(prop(obj,'height',80)),roughness:Number(prop(obj,'roughness',0.6)),shelfCount:Number(prop(obj,'shelf_count',3)),seed:Number(prop(obj,'seed',1))});
+ const materialZone=(obj)=>({id:obj.name,districtId:prop(obj,'district_id'),points:points(obj,'polygon'),kind:prop(obj,'material_kind','weathering'),opacity:Number(prop(obj,'opacity',0.2)),scale:Number(prop(obj,'scale',1)),seed:Number(prop(obj,'seed',1))});
+ const vegetationZone=(obj)=>({id:obj.name,districtId:prop(obj,'district_id'),points:points(obj,'polygon'),kind:prop(obj,'vegetation_kind','scrub'),density:Number(prop(obj,'density',0.3)),minSize:Number(prop(obj,'min_size',8)),maxSize:Number(prop(obj,'max_size',24)),seed:Number(prop(obj,'seed',1))});
+-const shadowCaster=(obj)=>({id:obj.name,districtId:prop(obj,'district_id'),points:points(obj,'polygon'),kind:prop(obj,'shadow_kind','terrain'),offsetX:Number(prop(obj,'offset_x',36)),offsetY:Number(prop(obj,'offset_y',54)),opacity:Number(prop(obj,'opacity',0.2)),blur:Number(prop(obj,'blur',18))});
++const shadowCaster=(obj)=>({id:obj.name,districtId:prop(obj,'district_id'),points:points(obj,'polygon'),kind:prop(obj,'shadow_kind','terrain'),offsetX:tw(Number(prop(obj,'offset_x',36))),offsetY:Number(prop(obj,'offset_y',54)),opacity:Number(prop(obj,'opacity',0.2)),blur:Number(prop(obj,'blur',18))});
+ const artInstance=(obj)=>{
+- const x=Number(obj.x??0),y=Number(obj.y??0),visualWidth=Number(prop(obj,'visual_width',0)),visualHeight=Number(prop(obj,'visual_height',0)),groundWidth=Number(prop(obj,'ground_width',0)),groundHeight=Number(prop(obj,'ground_height',0));
++ const x=tx(Number(obj.x??0)),y=Number(obj.y??0),visualWidth=Number(prop(obj,'visual_width',0)),visualHeight=Number(prop(obj,'visual_height',0)),groundWidth=Number(prop(obj,'ground_width',0)),groundHeight=Number(prop(obj,'ground_height',0));
+  return {id:obj.name,districtId:prop(obj,'district_id'),assetId:prop(obj,'asset_id'),x,y,rotation:(obj.rotation??0)*Math.PI/180,elevation:Number(prop(obj,'elevation',0)),renderLayer:prop(obj,'render_layer','ground'),groundFootprint:{minX:x-groundWidth/2,maxX:x+groundWidth/2,minY:y-groundHeight,maxY:y},visualBounds:{minX:x-visualWidth/2,maxX:x+visualWidth/2,minY:y-visualHeight,maxY:y},stateKey:prop(obj,'state_key','')||null};
+ };
+ const referenceLine=(obj)=>({id:obj.name,points:points(obj,'polyline'),source:prop(obj,'source','approved-master-reference')});
+ const mprop=(name,fallback=null)=>map.properties?.find(p=>p.name===name)?.value??fallback;
++const sourceScale=Number(mprop('reference_scale'));
+ const referenceRegistration={
+- width:Number(mprop('reference_width')),height:Number(mprop('reference_height')),scale:Number(mprop('reference_scale')),
+- originX:Number(mprop('reference_origin_x')),originY:Number(mprop('reference_origin_y')),
++ width:Number(mprop('reference_width')),height:Number(mprop('reference_height')),
++ scaleX:runtimeWidth/Number(mprop('reference_width')),scaleY:sourceScale,
++ originX:runtimeMinX,originY:Number(mprop('reference_origin_y')),
++ sourceScale,projection:mprop('runtime_projection','portrait-composition-x-compression'),
+ };
+ 
+ const roads=layer('Roads').objects.map(road);
+@@ -62,7 +73,7 @@
+  pipeline:mprop('geography_pipeline','Tiled TMJ -> validator/compiler -> runtime'),
+  encounterOwnedGeometry:Boolean(mprop('encounter_owned_geometry',false)),
+  referenceRegistration,
+- bounds:{minX:Number(mprop('min_x',0)),maxX:Number(mprop('max_x',0)),minY:Number(mprop('min_y',0)),maxY:Number(mprop('max_y',0))},
++ bounds:{minX:runtimeMinX,maxX:runtimeMinX+runtimeWidth,minY:Number(mprop('min_y',0)),maxY:Number(mprop('max_y',0))},
+  districts:layer('Districts').objects.map(district),
+  shorelines:layer('Shorelines').objects.map(shoreline),
+  landPolygons:layer('Land').objects.map(polygon),
+@@ -103,9 +114,9 @@
+ if(data.artInstances.some(i=>!i.assetId||!i.districtId||!['terrain','ground','elevated'].includes(i.renderLayer)||!Number.isFinite(i.elevation)||i.visualBounds.maxX<=i.visualBounds.minX||i.visualBounds.maxY<=i.visualBounds.minY||i.groundFootprint.maxX<=i.groundFootprint.minX||i.groundFootprint.maxY<=i.groundFootprint.minY))throw Error('Every art instance needs district/asset/layer/elevation plus positive visual and ground bounds');
+ if(data.shorelines.some(s=>!s.districtId||!['beach','rock','quay','ice'].includes(s.contactKind)||!['left','right'].includes(s.waterSide)||!Number.isFinite(s.height)))throw Error('Every shoreline needs districtId/contactKind/waterSide/height metadata');
+ if(!Number.isFinite(referenceRegistration.width)||!Number.isFinite(referenceRegistration.height)||referenceRegistration.width<=0||referenceRegistration.height<=0)throw Error('Reference registration requires positive source width/height');
+-if(!Number.isFinite(referenceRegistration.scale)||referenceRegistration.scale<=0||!Number.isFinite(referenceRegistration.originX)||!Number.isFinite(referenceRegistration.originY))throw Error('Reference registration contains invalid numeric values');
+-const expectedMaxX=referenceRegistration.originX+referenceRegistration.width*referenceRegistration.scale;
+-const expectedMaxY=referenceRegistration.originY+referenceRegistration.height*referenceRegistration.scale;
++if(!Number.isFinite(referenceRegistration.scaleX)||referenceRegistration.scaleX<=0||!Number.isFinite(referenceRegistration.scaleY)||referenceRegistration.scaleY<=0||!Number.isFinite(referenceRegistration.originX)||!Number.isFinite(referenceRegistration.originY))throw Error('Reference registration contains invalid numeric values');
++const expectedMaxX=referenceRegistration.originX+referenceRegistration.width*referenceRegistration.scaleX;
++const expectedMaxY=referenceRegistration.originY+referenceRegistration.height*referenceRegistration.scaleY;
+ if(Math.abs(data.bounds.minX-referenceRegistration.originX)>1e-7||Math.abs(data.bounds.minY-referenceRegistration.originY)>1e-7||Math.abs(data.bounds.maxX-expectedMaxX)>1e-7||Math.abs(data.bounds.maxY-expectedMaxY)>1e-7)throw Error('Reference registration does not agree with authored world bounds');
+ 
+ await writeFile(out,`// GENERATED from dist/maps/coastal-intercept.tmj by scripts/compile-geography.mjs.\n// Edit the TMJ in Tiled; do not hand-edit this file.\nexport const COASTAL_GEOGRAPHY_DATA=${JSON.stringify(data,null,2)};\n`);
+--- a/dist/src/game/content/level1Space.js
++++ b/dist/src/game/content/level1Space.js
+@@ -4,11 +4,11 @@
+ 
+ export function blueprintToWorld(u,v){
+  const r=LEVEL1_SPACE;
+- return {x:r.originX+u*r.scale,y:r.originY+v*r.scale};
++ return {x:r.originX+u*r.scaleX,y:r.originY+v*r.scaleY};
+ }
+ export function worldToBlueprint(x,y){
+  const r=LEVEL1_SPACE;
+- return {u:(x-r.originX)/r.scale,v:(y-r.originY)/r.scale};
++ return {u:(x-r.originX)/r.scaleX,v:(y-r.originY)/r.scaleY};
+ }
+ export function scrollForBlueprintRow(v,screenY,viewTop=0){
+  return screenY+viewTop-blueprintToWorld(0,v).y;
+--- a/dist/src/game/render/ReliefRenderer.js
++++ b/dist/src/game/render/ReliefRenderer.js
+@@ -1,4 +1,7 @@
++import {PLAYFIELD_WIDTH} from '../constants.js';
++
+ export const RELIEF_BASE_ALPHA=0.16;
++const WORLD_CENTER_X=PLAYFIELD_WIDTH/2;
+ function hash(n){return ((Math.sin(n*12.9898+78.233)*43758.5453123)%1+1)%1;}
+ function bounds(points){let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;for(const p of points??[]){minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y);}return{minX,minY,maxX,maxY,width:maxX-minX,height:maxY-minY};}
+ function trace(ctx,points,scroll=0){if(!points?.length)return;ctx.beginPath();ctx.moveTo(points[0].x,points[0].y+scroll);for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y+scroll);ctx.closePath();}
+@@ -34,7 +37,7 @@
+  const limestone=(zone.kind??'').includes('limestone'),snow=(zone.kind??'').includes('snow'),harbour=(zone.kind??'').includes('harbour');
+  const count=limestone?Math.max(12,Math.floor(b.width/62)):harbour?Math.max(6,Math.floor(b.width/130)):Math.max(12,Math.floor(b.width/72));
+  for(let i=0;i<count;i++){
+-  const west=(b.minX+b.maxX)/2<1303,edgeBias=hash(seed+1460+i*43),uniform=hash(seed+1500+i*37);
++  const west=(b.minX+b.maxX)/2<WORLD_CENTER_X,edgeBias=hash(seed+1460+i*43),uniform=hash(seed+1500+i*37);
+   const edgeT=edgeBias<.72?(west?.58+.42*uniform:.42*uniform):uniform;
+   const cx=b.minX+edgeT*b.width,cy=b.minY+b.height*(.08+hash(seed+1600+i*41)*.84);
+   const rw=(limestone?11:15)+hash(seed+1700+i*31)*(limestone?21:32),rh=(limestone?14:19)+hash(seed+1800+i*29)*(limestone?26:42);
+@@ -58,7 +61,7 @@
+ 
+ function drawWaterFacingEscarpment(ctx,zone,b,p,scroll,seed){
+  const kind=zone.kind??'';if(kind.includes('harbour'))return;
+- const west=(b.minX+b.maxX)/2<1303,waterFacingEdge=west?b.maxX:b.minX;
++ const west=(b.minX+b.maxX)/2<WORLD_CENTER_X,waterFacingEdge=west?b.maxX:b.minX;
+  const segs=Math.max(7,Math.round(b.height/72)),rim=[],toe=[];
+  for(let i=0;i<=segs;i++){
+   const y=b.minY+b.height*i/segs;
+@@ -81,7 +84,7 @@
+ function drawMassifBands(ctx,zone,b,p,scroll,seed,rough){
+  const limestone=(zone.kind??'').includes('limestone'),snow=(zone.kind??'').includes('snow'),harbour=(zone.kind??'').includes('harbour');
+  if(harbour)return;
+- const west=(b.minX+b.maxX)/2<1303;
++ const west=(b.minX+b.maxX)/2<WORLD_CENTER_X;
+  const belts=limestone?5:4;
+  for(let j=0;j<belts;j++){
+   const edgeT=.12+j*(.68/(belts-1||1));
+@@ -101,7 +104,7 @@
+  const kind=zone.kind??'',harbour=kind.includes('harbour');if(harbour)return;
+  const snow=kind.includes('snow'),limestone=kind.includes('limestone');
+  const area=b.width*b.height,count=Math.min(150,Math.max(limestone?32:24,Math.round(area/(limestone?7600:10500))));
+- const west=(b.minX+b.maxX)/2<1303;
++ const west=(b.minX+b.maxX)/2<WORLD_CENTER_X;
+  for(let i=0;i<count;i++){
+   const u=hash(seed+2200+i*19),v=hash(seed+2300+i*31);
+   // Bias vegetation toward upper shelves and the water-facing cliff rim while keeping interior forest pockets.
+--- a/dist/src/game/render/CoastalScene.js
++++ b/dist/src/game/render/CoastalScene.js
+@@ -474,16 +474,16 @@
+  }
+  drawCitadelBasinDetails(ctx,scroll,time){
+   const gate=(this.map.artInstances??[]).find(i=>i.id==='citadel-gate-main');if(!gate)return;const gy=gate.y+scroll;if(gy<-900||gy>1750)return;
+-  const cx=gate.x,w=1500;
++  const cx=gate.x,sx=this.worldWidth/2605.7861328125,w=1500*sx;
+   ctx.save();
+-  // Rear ramparts are set into the mountain wall so the hero gate is not a floating sprite.
++  // Rear ramparts are registered to the runtime portrait projection so they stay attached to the mountain walls.
+   const rearY=gy-305;ctx.fillStyle='rgba(58,67,68,.92)';ctx.strokeStyle='rgba(30,41,43,.92)';ctx.lineWidth=8;
+-  for(const side of [-1,1]){const x0=cx+side*360,x1=cx+side*760;ctx.beginPath();ctx.moveTo(x0,rearY+70);ctx.lineTo(x1,rearY+132);ctx.lineTo(x1,rearY+280);ctx.lineTo(x0,rearY+215);ctx.closePath();ctx.fill();ctx.stroke();
++  for(const side of [-1,1]){const x0=cx+side*360*sx,x1=cx+side*760*sx;ctx.beginPath();ctx.moveTo(x0,rearY+70);ctx.lineTo(x1,rearY+132);ctx.lineTo(x1,rearY+280);ctx.lineTo(x0,rearY+215);ctx.closePath();ctx.fill();ctx.stroke();
+    ctx.strokeStyle='rgba(229,235,231,.62)';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(x0,rearY+64);ctx.lineTo(x1,rearY+126);ctx.stroke();ctx.strokeStyle='rgba(30,41,43,.92)';ctx.lineWidth=8;
+-   const span=Math.abs(x1-x0),steps=Math.max(4,Math.floor(span/72));for(let i=0;i<=steps;i++){const t=i/steps,x=x0+(x1-x0)*t,y=rearY+70+(132-70)*t;ctx.fillStyle='#737d7a';ctx.fillRect(x-8,y-18,16,24);}
++   const span=Math.abs(x1-x0),steps=Math.max(4,Math.floor(span/72));for(let i=0;i<=steps;i++){const t=i/steps,x=x0+(x1-x0)*t,y=rearY+70+(132-70)*t;ctx.fillStyle='#737d7a';ctx.fillRect(x-8*sx,y-18,16*sx,24);}
+   }
+   // Side defence terraces, lamps and dark embrasures add the dense layered silhouette of the blueprint.
+-  for(const side of [-1,1])for(let row=0;row<3;row++){const baseX=cx+side*(500+row*145),baseY=gy-70-row*115;ctx.fillStyle='rgba(105,113,111,.94)';ctx.beginPath();ctx.roundRect(baseX-(side<0?240:0),baseY-70,240,92,14);ctx.fill();ctx.strokeStyle='rgba(42,54,56,.90)';ctx.lineWidth=6;ctx.stroke();for(let k=0;k<3;k++){const wx=baseX+side*(-42-k*62);ctx.fillStyle='#273b40';ctx.fillRect(wx-22,baseY-39,44,27);}const lx=baseX+side*-18,ly=baseY-58;const g=ctx.createRadialGradient(lx,ly,0,lx,ly,24);g.addColorStop(0,'rgba(255,190,99,.76)');g.addColorStop(1,'rgba(255,130,45,0)');ctx.fillStyle=g;ctx.fillRect(lx-24,ly-24,48,48);}
++  for(const side of [-1,1])for(let row=0;row<3;row++){const baseX=cx+side*(500+row*145)*sx,baseY=gy-70-row*115,terraceW=240*sx;ctx.fillStyle='rgba(105,113,111,.94)';ctx.beginPath();ctx.roundRect(baseX-(side<0?terraceW:0),baseY-70,terraceW,92,14);ctx.fill();ctx.strokeStyle='rgba(42,54,56,.90)';ctx.lineWidth=6;ctx.stroke();for(let k=0;k<3;k++){const wx=baseX+side*(-42-k*62)*sx;ctx.fillStyle='#273b40';ctx.fillRect(wx-22*sx,baseY-39,44*sx,27);}const lx=baseX+side*-18*sx,ly=baseY-58;const g=ctx.createRadialGradient(lx,ly,0,lx,ly,24);g.addColorStop(0,'rgba(255,190,99,.76)');g.addColorStop(1,'rgba(255,130,45,0)');ctx.fillStyle=g;ctx.fillRect(lx-24,ly-24,48,48);}
+   // Ice floes are deterministic fractured polygons; avoid stamp-like repeated ellipses.
+   ctx.fillStyle='rgba(224,239,241,.62)';ctx.strokeStyle='rgba(247,253,252,.72)';ctx.lineWidth=3;
+   for(let i=0;i<9;i++){
+@@ -498,9 +498,10 @@
+  }
+ 
+  drawCanyonWaterfalls(ctx,scroll,time){
++  const xScale=this.worldWidth/2605.7861328125;
+   const falls=[
+-   {x:780,y:-4560,h:155,w:24},{x:1880,y:-4665,h:178,w:28},
+-   {x:690,y:-4845,h:132,w:21},{x:1970,y:-4470,h:118,w:20},
++   {x:780*xScale,y:-4560,h:155,w:24},{x:1880*xScale,y:-4665,h:178,w:28},
++   {x:690*xScale,y:-4845,h:132,w:21},{x:1970*xScale,y:-4470,h:118,w:20},
+   ];
+   ctx.save();ctx.lineCap='round';ctx.globalCompositeOperation='screen';
+   for(let i=0;i<falls.length;i++){
+--- a/tests/geography-pipeline.test.mjs
++++ b/tests/geography-pipeline.test.mjs
+@@ -11,7 +11,7 @@
+  assert.match(build,/compile-geography\.mjs/);
+  assert.ok(tmj.layers.some(l=>l.name==='Water Cutouts'));
+  assert.ok(tmj.layers.some(l=>l.name==='Maritime Structures'));
+- assert.equal(tmj.properties.find(p=>p.name==='geography_version')?.value,8);
++ assert.equal(tmj.properties.find(p=>p.name==='geography_version')?.value,9);
+  assert.ok(tmj.layers.some(l=>l.name==='Reference Trace'));
+  assert.ok(tmj.layers.some(l=>l.name==='Atmosphere Zones'));
+  assert.ok(tmj.layers.some(l=>l.name==='Water Regions'));
+--- a/tests/level1-master-map.test.mjs
++++ b/tests/level1-master-map.test.mjs
+@@ -14,7 +14,7 @@
+ 
+ test('level 1 follows the approved fifteen-district reference journey',()=>{
+  assert.deepEqual(layer('Districts').objects.map(o=>o.name),expected);
+- assert.equal(map.properties.find(p=>p.name==='geography_version')?.value,8);
++ assert.equal(map.properties.find(p=>p.name==='geography_version')?.value,9);
+  const biomes=layer('Districts').objects.map(o=>prop(o,'biome'));
+  assert.deepEqual(biomes.slice(0,4),['tropical-ocean','tropical-islands','tropical-islands','temperate-coast']);
+  assert.ok(biomes.includes('alpine'));
+--- a/tests/level1-registration.test.mjs
++++ b/tests/level1-registration.test.mjs
+@@ -5,28 +5,29 @@
+ let space=null;
+ try{space=await import('../dist/src/game/content/level1Space.js');}catch{}
+ 
+-test('level 1 exposes one uniform blueprint-to-world registration',()=>{
++test('level 1 exposes an explicit portrait-composition blueprint registration',()=>{
+  assert.ok(space,'level1Space.js must exist');
+- assert.deepEqual(Object.keys(map.referenceRegistration??{}).sort(),['height','originX','originY','scale','width']);
++ assert.deepEqual(Object.keys(map.referenceRegistration??{}).sort(),['height','originX','originY','projection','scaleX','scaleY','sourceScale','width']);
+  const {LEVEL1_SPACE,blueprintToWorld,worldToBlueprint}=space;
+  assert.equal(LEVEL1_SPACE.width,682);
+  assert.equal(LEVEL1_SPACE.height,2048);
++ assert.equal(LEVEL1_SPACE.projection,'portrait-composition-x-compression');
+  const p=blueprintToWorld(100,100);
+  const px=blueprintToWorld(200,100);
+  const py=blueprintToWorld(100,200);
+- assert.ok(Math.abs((px.x-p.x)-(py.y-p.y))<1e-8,'X/Y reference scale must be identical');
++ assert.ok(px.x>p.x&&py.y>p.y,'registration must preserve source direction');
++ assert.ok(LEVEL1_SPACE.scaleX<LEVEL1_SPACE.scaleY,'runtime projection intentionally compresses X so portrait landmarks fit the camera');
+  const corner=worldToBlueprint(map.bounds.maxX,map.bounds.maxY);
+  assert.ok(Math.abs(corner.u-LEVEL1_SPACE.width)<1e-8);
+  assert.ok(Math.abs(corner.v-LEVEL1_SPACE.height)<1e-8);
+ });
+ 
+-test('world bounds preserve source aspect ratio and allow a wider-than-viewport battlefield',()=>{
++test('runtime map uses the 1152-unit gameplay composition while retaining lateral camera travel',()=>{
+  assert.ok(map.referenceRegistration);
+- const r=map.referenceRegistration;
+  const worldW=map.bounds.maxX-map.bounds.minX;
+- const worldH=map.bounds.maxY-map.bounds.minY;
+- assert.ok(Math.abs(worldW/worldH-r.width/r.height)<1e-8);
+- assert.ok(worldW>720*3,'world must be meaningfully wider than the portrait viewport');
++ assert.equal(worldW,1152);
++ assert.ok(worldW>720,'world must remain wider than the portrait viewport');
++ assert.ok(worldW<720*2,'camera should see both banks/landmarks instead of a tiny crop of a 2600-unit map');
+ });
+ 
+ test('scroll limits keep both map ends reachable without exposing outside geography',()=>{
+--- a/tests/level1-visual-richness.test.mjs
++++ b/tests/level1-visual-richness.test.mjs
+@@ -145,8 +145,8 @@
+  assert.ok(bridgeArts.filter(x=>x.assetId==='gateway-keep').length>=2,'gateway needs a keep on each bank');
+  assert.ok(bridgeArts.filter(x=>x.assetId==='gateway-terrace').length<=2,'gateway must not be dominated by long arcade terrace stamps');
+  assert.ok(bridgeArts.filter(x=>x.assetId==='gateway-arch-support').length>=2,'gateway needs visible support architecture');
+- const xs=bridgeArts.filter(x=>x.assetId==='gateway-keep').map(x=>x.x);
+- assert.ok(Math.min(...xs)<900&&Math.max(...xs)>1700,'gateway keeps must frame both sides of the channel');
++ const xs=bridgeArts.filter(x=>x.assetId==='gateway-keep').map(x=>x.x),mid=(COASTAL_GEOGRAPHY.bounds.minX+COASTAL_GEOGRAPHY.bounds.maxX)/2;
++ assert.ok(Math.min(...xs)<mid*.72&&Math.max(...xs)>mid*1.28,'gateway keeps must frame both sides of the channel');
+ });
+ 
+ test('harbour districts use connected quay, ramp, marina and service-yard modules rather than sparse pads',()=>{
+@@ -156,8 +156,9 @@
+  const heavy=arts.filter(x=>['industrial-harbour','naval-yard'].includes(x.districtId)&&['quay-edge','harbour-ramp','service-yard'].includes(x.assetId));
+  assert.ok(civil.length>=8,`civil harbour needs >=8 connected edge/pier modules, found ${civil.length}`);
+  assert.ok(heavy.length>=14,`industrial/naval harbour needs >=14 service/edge modules, found ${heavy.length}`);
+- const west=heavy.filter(x=>x.x<1300).map(x=>Math.round(x.y)).sort((a,b)=>a-b);
+- const east=heavy.filter(x=>x.x>=1300).map(x=>Math.round(x.y)).sort((a,b)=>a-b);
++ const mid=(COASTAL_GEOGRAPHY.bounds.minX+COASTAL_GEOGRAPHY.bounds.maxX)/2;
++ const west=heavy.filter(x=>x.x<mid).map(x=>Math.round(x.y)).sort((a,b)=>a-b);
++ const east=heavy.filter(x=>x.x>=mid).map(x=>Math.round(x.y)).sort((a,b)=>a-b);
+  assert.notDeepEqual(west,east,'port compositions should be intentionally asymmetric rather than mirrored');
+ });
+ 
+@@ -187,9 +188,10 @@
+  const apron=map.concretePolygons.find(x=>x.id==='outer-harbour-apron');
+  assert.ok(apron,'missing west civil harbour apron');
+  const minX=Math.min(...apron.points.map(p=>p.x));
+- assert.ok(minX>=700,`west civil apron begins at x=${minX}; it should stay near the harbour edge rather than cover the bridge-left cliff`);
+- const westCivil=map.artInstances.filter(x=>x.districtId==='civil-harbour'&&x.assetId==='civil-house'&&x.x<1300);
+- assert.ok(westCivil.every(x=>x.x>=720),'west civil houses should cluster near the harbour, outside the bridge-left cliff review window');
++ const width=map.bounds.maxX-map.bounds.minX,mid=(map.bounds.minX+map.bounds.maxX)/2;
++ assert.ok(minX>=width*.265,`west civil apron begins at x=${minX}; it should stay near the harbour edge rather than cover the bridge-left cliff`);
++ const westCivil=map.artInstances.filter(x=>x.districtId==='civil-harbour'&&x.assetId==='civil-house'&&x.x<mid);
++ assert.ok(westCivil.every(x=>x.x>=width*.275),'west civil houses should cluster near the harbour, outside the bridge-left cliff review window');
+ });
+ 
+ 
+@@ -233,10 +235,11 @@
+  assert.ok(bridgeW&&bridgeE&&citW&&citE,'missing hero relief zones');
+  const maxX=z=>Math.max(...z.points.map(p=>p.x));
+  const minX=z=>Math.min(...z.points.map(p=>p.x));
+- assert.ok(maxX(bridgeW)<=820,`bridge west relief spills to x=${maxX(bridgeW)}`);
+- assert.ok(minX(bridgeE)>=1780,`bridge east relief spills to x=${minX(bridgeE)}`);
+- assert.ok(maxX(citW)<=900,`citadel west relief spills to x=${maxX(citW)}`);
+- assert.ok(minX(citE)>=1710,`citadel east relief spills to x=${minX(citE)}`);
++ const width=COASTAL_GEOGRAPHY.bounds.maxX-COASTAL_GEOGRAPHY.bounds.minX;
++ assert.ok(maxX(bridgeW)<=width*.32,`bridge west relief spills to x=${maxX(bridgeW)}`);
++ assert.ok(minX(bridgeE)>=width*.68,`bridge east relief spills to x=${minX(bridgeE)}`);
++ assert.ok(maxX(citW)<=width*.35,`citadel west relief spills to x=${maxX(citW)}`);
++ assert.ok(minX(citE)>=width*.65,`citadel east relief spills to x=${minX(citE)}`);
+ });
+ 
+ test('hero landmarks are framed by dedicated cliff and mountain shoulder modules',()=>{
+@@ -259,21 +262,23 @@
+  const zones=COASTAL_GEOGRAPHY.materialZones.filter(z=>harbourKinds.has(z.kind));
+  assert.ok(zones.length>=6,`expected split harbour bank zones, got ${zones.length}`);
+  const inside=(x,y,pts)=>{let yes=false;for(let i=0,j=pts.length-1;i<pts.length;j=i++){const a=pts[i],b=pts[j];if(((a.y>y)!==(b.y>y))&&(x<(b.x-a.x)*(y-a.y)/((b.y-a.y)||1e-9)+a.x))yes=!yes;}return yes;};
++ const mid=(COASTAL_GEOGRAPHY.bounds.minX+COASTAL_GEOGRAPHY.bounds.maxX)/2;
+  for(const [district,y] of [['civil-harbour',-2770],['industrial-harbour',-3250],['naval-yard',-3740]]){
+   const districtZones=zones.filter(z=>z.districtId===district);
+   assert.ok(districtZones.length>=2,`${district} needs separate west/east wear zones`);
+-  assert.equal(districtZones.some(z=>inside(1303,y,z.points)),false,`${district} wear enters the central water channel`);
++  assert.equal(districtZones.some(z=>inside(mid,y,z.points)),false,`${district} wear enters the central water channel`);
+  }
+ });
+ 
+ test('dam and citadel mountain shoulders frame the portrait channel instead of sitting outside the gameplay crop',()=>{
+  const byId=new Map(COASTAL_GEOGRAPHY.artInstances.map(i=>[i.id,i]));
+- for(const [westId,eastId,minWestMax,maxEastMin] of [
+-  ['dam-canyon-shoulder-west','dam-canyon-shoulder-east',1120,1485],
+-  ['citadel-mountain-shoulder-west','citadel-mountain-shoulder-east',1160,1445],
++ const width=COASTAL_GEOGRAPHY.bounds.maxX-COASTAL_GEOGRAPHY.bounds.minX,mid=(COASTAL_GEOGRAPHY.bounds.minX+COASTAL_GEOGRAPHY.bounds.maxX)/2;
++ for(const [westId,eastId] of [
++  ['dam-canyon-shoulder-west','dam-canyon-shoulder-east'],
++  ['citadel-mountain-shoulder-west','citadel-mountain-shoulder-east'],
+  ]){
+   const w=byId.get(westId),e=byId.get(eastId);assert.ok(w&&e,`missing ${westId}/${eastId}`);
+-  assert.ok(w.visualBounds.maxX>=minWestMax,`${westId} ends at ${w.visualBounds.maxX}, leaving the portrait canyon unframed`);
+-  assert.ok(e.visualBounds.minX<=maxEastMin,`${eastId} starts at ${e.visualBounds.minX}, leaving the portrait canyon unframed`);
++  assert.ok(w.visualBounds.maxX>=mid-width*.08,`${westId} ends at ${w.visualBounds.maxX}, leaving the portrait canyon unframed`);
++  assert.ok(e.visualBounds.minX<=mid+width*.08,`${eastId} starts at ${e.visualBounds.minX}, leaving the portrait canyon unframed`);
+  }
+ });
