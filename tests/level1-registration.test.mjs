@@ -22,10 +22,10 @@ test('level 1 exposes an explicit portrait-composition blueprint registration',(
  assert.ok(Math.abs(corner.v-LEVEL1_SPACE.height)<1e-8);
 });
 
-test('runtime map uses the 1152-unit gameplay composition while retaining lateral camera travel',()=>{
+test('runtime map uses the 900-unit portrait composition while retaining lateral camera travel',()=>{
  assert.ok(map.referenceRegistration);
  const worldW=map.bounds.maxX-map.bounds.minX;
- assert.equal(worldW,1152);
+ assert.equal(worldW,900);
  assert.ok(worldW>720,'world must remain wider than the portrait viewport');
  assert.ok(worldW<720*2,'camera should see both banks/landmarks instead of a tiny crop of a 2600-unit map');
 });
