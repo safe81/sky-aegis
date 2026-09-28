@@ -238,7 +238,7 @@ export class CoastalScene{
     const gatewayCliffDepth=Math.max(180,170+Math.min(120,Math.max(0,Number(shoreline.height??45))*1.65));
     const depth=gatewayCliffDepth;
     const ax=a.x+nx*landSign*depth,ay=a.y+ny*landSign*depth,bx=b.x+nx*landSign*depth,by=b.y+ny*landSign*depth;
-    const g=ctx.createLinearGradient(a.x,a.y,ax,ay);g.addColorStop(0,'rgba(181,169,139,.98)');g.addColorStop(.42,'rgba(132,122,98,.97)');g.addColorStop(1,'rgba(74,77,65,.92)');ctx.fillStyle=g;
+    const g=ctx.createLinearGradient(a.x,a.y,ax,ay);g.addColorStop(0,'rgba(203,190,151,.99)');g.addColorStop(.42,'rgba(126,116,91,.985)');g.addColorStop(1,'rgba(52,60,55,.96)');ctx.fillStyle=g;
     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineTo(bx,by);ctx.lineTo(ax,ay);ctx.closePath();ctx.fill();
     // Fractured limestone ledges and vertical seams reproduce the gateway's tall rock shelves.
     ctx.strokeStyle='rgba(225,214,181,.35)';ctx.lineWidth=2.2;for(const t of [.22,.48,.72]){ctx.beginPath();ctx.moveTo(a.x+(ax-a.x)*t,a.y+(ay-a.y)*t);ctx.lineTo(b.x+(bx-b.x)*t,b.y+(by-b.y)*t);ctx.stroke();}
@@ -253,7 +253,7 @@ export class CoastalScene{
      ctx.fillStyle=k%3===0?'rgba(211,198,158,.18)':k%3===1?'rgba(56,65,59,.16)':'rgba(151,140,110,.16)';
      ctx.beginPath();ctx.moveTo(sx0,sy0);ctx.lineTo(sx1,sy1);ctx.lineTo(lx1,ly1);ctx.lineTo(lx0,ly0);ctx.closePath();ctx.fill();
     }
-    ctx.strokeStyle='rgba(24,35,34,.46)';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+    ctx.strokeStyle='rgba(20,31,31,.58)';ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     // Broken upper rim with shrubs/pines keeps rock and foliage interlocked rather than forming a clean stripe.
     const rimX=(ax+bx)/2,rimY=(ay+by)/2;if(len>55){for(let k=0;k<Math.min(4,Math.floor(len/75));k++){const t=(k+1)/(Math.min(4,Math.floor(len/75))+1),x=ax+(bx-ax)*t,y=ay+(by-ay)*t,size=9+this.detailHash(my+k*23)*12;this.drawPine(ctx,x,y,size,false);}}
    }
@@ -322,7 +322,7 @@ export class CoastalScene{
    const centerY=(b.minY+b.maxY)/2,district=this.environment.districtAtWorldY(centerY),biome=district?.biome??'temperate-coast';
    const snow=biome==='snow',alpine=biome==='alpine'||snow,tropical=!alpine;
    const seed=[...String(land.id??'land')].reduce((v,c)=>v+c.charCodeAt(0),17);
-   const attempts=Math.min(84,Math.max(10,Math.round((w*h)/21000)));
+   const attempts=Math.min(118,Math.max(14,Math.round((w*h)/15500)));
    ctx.save();this.tracePolygon(ctx,pts);ctx.clip();
    for(let i=0;i<attempts;i++){
     const x=b.minX+this.detailHash(seed+i*17)*w,y=b.minY+this.detailHash(seed+i*29+7)*h;
