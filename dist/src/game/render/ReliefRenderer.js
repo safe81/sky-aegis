@@ -1,6 +1,6 @@
 import {PLAYFIELD_WIDTH} from '../constants.js';
 
-export const RELIEF_BASE_ALPHA=0.16;
+export const RELIEF_BASE_ALPHA=0.24;
 const WORLD_CENTER_X=PLAYFIELD_WIDTH/2;
 function hash(n){return ((Math.sin(n*12.9898+78.233)*43758.5453123)%1+1)%1;}
 function bounds(points){let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;for(const p of points??[]){minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y);}return{minX,minY,maxX,maxY,width:maxX-minX,height:maxY-minY};}
@@ -35,7 +35,7 @@ function buildRockPolygon(rw,rh,seed){
 function traceLocalPolygon(ctx,pts,ox=0,oy=0){ctx.beginPath();ctx.moveTo(pts[0].x+ox,pts[0].y+oy);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i].x+ox,pts[i].y+oy);ctx.closePath();}
 function drawRockMasses(ctx,zone,b,p,scroll,seed,rough){
  const limestone=(zone.kind??'').includes('limestone'),snow=(zone.kind??'').includes('snow'),harbour=(zone.kind??'').includes('harbour');
- const count=limestone?Math.max(12,Math.floor(b.width/62)):harbour?Math.max(6,Math.floor(b.width/130)):Math.max(12,Math.floor(b.width/72));
+ const count=limestone?Math.max(16,Math.floor(b.width/50)):harbour?Math.max(8,Math.floor(b.width/105)):Math.max(16,Math.floor(b.width/58));
  for(let i=0;i<count;i++){
   const west=(b.minX+b.maxX)/2<WORLD_CENTER_X,edgeBias=hash(seed+1460+i*43),uniform=hash(seed+1500+i*37);
   const edgeT=edgeBias<.72?(west?.58+.42*uniform:.42*uniform):uniform;
@@ -74,7 +74,7 @@ function drawWaterFacingEscarpment(ctx,zone,b,p,scroll,seed){
  const escarpmentFace=[...rim,...toe.reverse()];
  ctx.beginPath();ctx.moveTo(escarpmentFace[0].x,escarpmentFace[0].y+scroll);for(let i=1;i<escarpmentFace.length;i++)ctx.lineTo(escarpmentFace[i].x,escarpmentFace[i].y+scroll);ctx.closePath();
  const fg=ctx.createLinearGradient(west?waterFacingEdge-220:waterFacingEdge+220,b.minY+scroll,waterFacingEdge,b.minY+scroll);
- fg.addColorStop(0,'rgba(205,195,157,.28)');fg.addColorStop(.38,'rgba(126,117,93,.62)');fg.addColorStop(1,'rgba(42,51,48,.82)');ctx.fillStyle=fg;ctx.fill();
+ fg.addColorStop(0,'rgba(222,211,171,.34)');fg.addColorStop(.38,'rgba(126,117,93,.70)');fg.addColorStop(1,'rgba(33,43,42,.90)');ctx.fillStyle=fg;ctx.fill();
  // escarpmentRim: a broken lit edge that distinguishes the upper plateau from the vertical face.
  ctx.strokeStyle=p.line;ctx.lineWidth=4.2;ctx.globalAlpha=.72;ctx.beginPath();ctx.moveTo(rim[0].x,rim[0].y+scroll);for(let i=1;i<rim.length;i++)ctx.lineTo(rim[i].x,rim[i].y+scroll);ctx.stroke();ctx.globalAlpha=1;
  // Deep vertical joints visually tie the rim to the toe and make the face read as height, not a flat colour band.
@@ -103,7 +103,7 @@ function drawMassifBands(ctx,zone,b,p,scroll,seed,rough){
 function drawReliefForest(ctx,zone,b,scroll,seed){
  const kind=zone.kind??'',harbour=kind.includes('harbour');if(harbour)return;
  const snow=kind.includes('snow'),limestone=kind.includes('limestone');
- const area=b.width*b.height,count=Math.min(150,Math.max(limestone?32:24,Math.round(area/(limestone?7600:10500))));
+ const area=b.width*b.height,count=Math.min(190,Math.max(limestone?42:32,Math.round(area/(limestone?5900:8200))));
  const west=(b.minX+b.maxX)/2<WORLD_CENTER_X;
  for(let i=0;i<count;i++){
   const u=hash(seed+2200+i*19),v=hash(seed+2300+i*31);
