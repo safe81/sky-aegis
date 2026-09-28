@@ -14,7 +14,7 @@ const expected=[
 
 test('level 1 follows the approved fifteen-district reference journey',()=>{
  assert.deepEqual(layer('Districts').objects.map(o=>o.name),expected);
- assert.equal(map.properties.find(p=>p.name==='geography_version')?.value,9);
+ assert.equal(map.properties.find(p=>p.name==='geography_version')?.value,10);
  const biomes=layer('Districts').objects.map(o=>prop(o,'biome'));
  assert.deepEqual(biomes.slice(0,4),['tropical-ocean','tropical-islands','tropical-islands','temperate-coast']);
  assert.ok(biomes.includes('alpine'));
