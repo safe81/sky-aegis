@@ -163,6 +163,31 @@ export class CoastalScene{
   if(land){ctx.globalAlpha=alpha;ctx.fillStyle=LAND_BASE[material]??LAND_BASE.land;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=alpha*LAND_PATTERN_ALPHA;ctx.fillStyle=pattern;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=1;this.drawLandMacroVariation(ctx,feature,b,material);}else if(concreteLike){ctx.globalAlpha=alpha;ctx.fillStyle=material==='dock'?'#616b69':CONCRETE_BASE;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=alpha*CONCRETE_PATTERN_ALPHA;ctx.fillStyle=pattern;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=1;}else{ctx.globalAlpha=alpha;ctx.fillStyle=pattern;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);}
   ctx.restore();
  }
+ drawScenicLandShoulder(ctx,feature){
+  const pts=feature?.points??[];if(pts.length<3)return;
+  const b=this.bounds(pts),id=String(feature.id??''),material=feature.material??'land';
+  // Visual-only terrain mass: widen authored coastlines so portrait framing reads as a continuous
+  // coast/harbour rather than isolated quays floating in an oversized water channel. Collision and
+  // gameplay surfaces remain authored by the TMJ; this is deliberately a render-only shoulder.
+  const mapMin=this.map.bounds.minX,mapMax=this.map.bounds.maxX;
+  const touchesEdge=pts.some(p=>p.x<=mapMin+3)||pts.some(p=>p.x>=mapMax-3);
+  const coastalBand=b.maxY>-4300&&b.minY<-1200;
+  const mountainBand=b.maxY>-6600&&b.minY<-4000;
+  let width=0;
+  if(touchesEdge&&coastalBand)width=120;
+  else if(touchesEdge&&mountainBand)width=72;
+  else if(coastalBand&&/islet|island/i.test(id))width=48;
+  if(width<=0)return;
+  const base=LAND_BASE[material]??LAND_BASE.land;
+  ctx.save();this.tracePolygon(ctx,pts);ctx.lineJoin='round';ctx.lineCap='round';
+  // Keep the broad shoulder cheap: solid material underpaint only. The authored polygon itself
+  // supplies texture/detail on top, so this does not create a second expensive pattern pass.
+  ctx.strokeStyle=base;ctx.globalAlpha=.96;ctx.lineWidth=width;ctx.stroke();
+  // Cliff/wet-rock lip gives the new shoulder a readable edge against water without changing geometry.
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(87,103,105,.52)':'rgba(26,42,38,.52)';ctx.globalAlpha=1;ctx.lineWidth=Math.min(24,Math.max(10,width*.13));ctx.stroke();
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(244,250,249,.28)':'rgba(214,225,194,.16)';ctx.lineWidth=3.5;ctx.stroke();
+  ctx.restore();
+ }
  drawLandMacroVariation(ctx,feature,b,material){
   const seed=[...String(feature.id??material)].reduce((n,c)=>n+c.charCodeAt(0),37),snow=material==='land-snow',alpine=material==='land-alpine'||snow;
   const broad=ctx.createLinearGradient(b.minX,b.minY,b.maxX,b.maxY);broad.addColorStop(0,snow?'rgba(247,250,248,.16)':alpine?'rgba(202,197,176,.10)':'rgba(194,177,118,.10)');broad.addColorStop(.48,'rgba(0,0,0,0)');broad.addColorStop(1,snow?'rgba(55,68,70,.18)':'rgba(14,35,23,.18)');ctx.fillStyle=broad;ctx.fillRect(b.minX-16,b.minY-16,b.maxX-b.minX+32,b.maxY-b.minY+32);
@@ -189,6 +214,9 @@ export class CoastalScene{
   const decorations=this.environment.visibleDecorations(0,minY-160,maxY+160);
 
   // A single continuous master map is drawn into cache strips. Chunks are only a render cache.
+  // First lay down visual-only shoulders. They restore the dense edge composition of the master
+  // reference while keeping the authored collision/navigation geometry unchanged.
+  for(const land of lands)this.drawScenicLandShoulder(ctx,land);
   for(const land of lands){ctx.save();ctx.translate(15,21);ctx.globalAlpha=.34;this.tracePolygon(ctx,land.points);ctx.fillStyle='#071313';ctx.fill();ctx.restore();this.drawPolygon(ctx,land,land.material??'land',1);}
   const terrainShadows=this.environment.visibleShadowCasters(0,minY-260,maxY+260);
   drawTerrainShadows(ctx,terrainShadows,0);
