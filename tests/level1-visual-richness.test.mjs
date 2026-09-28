@@ -282,3 +282,10 @@ test('dam and citadel mountain shoulders frame the portrait channel instead of s
   assert.ok(e.visualBounds.minX<=mid+width*.08,`${eastId} starts at ${e.visualBounds.minX}, leaving the portrait canyon unframed`);
  }
 });
+
+test('portrait map uses render-only scenic shoulders to keep coastal banks visually continuous',()=>{
+ assert.match(coastal,/drawScenicLandShoulder\(/,'missing visual shoulder pass');
+ assert.match(coastal,/touchesEdge&&coastalBand\)width=120/,'coastal shoulder width must stay tuned for a readable 720px flight lane');
+ assert.match(coastal,/touchesEdge&&mountainBand\)width=72/,'mountain shoulders should be lighter than harbour shoulders');
+ assert.match(coastal,/Collision and\s*\/\/ gameplay surfaces remain authored by the TMJ/,'visual shoulders must remain explicitly render-only');
+});
