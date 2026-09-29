@@ -290,6 +290,7 @@ test('portrait map uses render-only scenic shoulders to keep coastal banks visua
  assert.match(coastal,/Collision and\s*\/\/ gameplay surfaces remain authored by the TMJ/,'visual shoulders must remain explicitly render-only');
 });
 
+
 test('v12 scenic shoulders carry material texture and deterministic dressing',async()=>{
   const src=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
   assert.match(src,/drawScenicShoulderDressing/);

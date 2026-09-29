@@ -11,8 +11,8 @@ Turn the v11 portrait-composition repair into a materially coherent coastline in
 - Widened shallow-water shelves and added a third near-shore tint layer for stronger turquoise coast transitions.
 - No TMJ collision, navigation, sockets, encounter timing, or mission logic changed.
 
-## Verification
-- 133/133 automated tests pass locally.
+## Acceptance checks
+- Full automated suite passes.
 - Geography compile remains 15 districts / 25 road nodes / 68 sockets.
-- Release build passes; cache still contains 355 entries and 305 art/map files.
-- Runtime browser QA remains required before merge because the current execution environment cannot complete Chromium canvas capture reliably.
+- Release build passes.
+- Runtime browser QA remains required before merge because this environment cannot currently complete Chromium canvas capture reliably.

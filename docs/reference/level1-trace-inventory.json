@@ -1,0 +1,4486 @@
+{
+  "source": "LEVEL1_BLUEPRINT.png",
+  "sourceDimensions": {
+    "width": 682,
+    "height": 2048
+  },
+  "registration": {
+    "scale": 3.82080078125,
+    "originX": 0.0,
+    "originY": -6525.0
+  },
+  "features": [
+    {
+      "id": "open-sea-lighthouse",
+      "districtId": "open-sea",
+      "tmjObjectName": "open-sea-lighthouse",
+      "sourcePoints": [
+        {
+          "u": 467.691,
+          "v": 1979.297
+        },
+        {
+          "u": 509.132,
+          "v": 1985.186
+        }
+      ],
+      "featureKind": "navigation",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "archipelago-gateway",
+      "districtId": "outer-archipelago",
+      "tmjObjectName": "archipelago-gateway",
+      "sourcePoints": [
+        {
+          "u": 296.007,
+          "v": 1825.534
+        },
+        {
+          "u": 367.049,
+          "v": 1833.385
+        }
+      ],
+      "featureKind": "islands",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "dense-island-fort",
+      "districtId": "outer-archipelago",
+      "tmjObjectName": "dense-island-fort",
+      "sourcePoints": [
+        {
+          "u": 307.847,
+          "v": 1694.671
+        },
+        {
+          "u": 372.969,
+          "v": 1703.177
+        }
+      ],
+      "featureKind": "fort",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "narrows-cliffs",
+      "districtId": "dense-archipelago",
+      "tmjObjectName": "narrows-cliffs",
+      "sourcePoints": [
+        {
+          "u": 266.406,
+          "v": 1570.351
+        },
+        {
+          "u": 414.41,
+          "v": 1582.129
+        }
+      ],
+      "featureKind": "cliffs",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "main-bridge-landmark",
+      "districtId": "dense-archipelago",
+      "tmjObjectName": "main-bridge-landmark",
+      "sourcePoints": [
+        {
+          "u": 195.365,
+          "v": 1410.045
+        },
+        {
+          "u": 485.451,
+          "v": 1421.168
+        }
+      ],
+      "featureKind": "bridge",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "civil-harbour-core",
+      "districtId": "coastal-narrows",
+      "tmjObjectName": "civil-harbour-core",
+      "sourcePoints": [
+        {
+          "u": 201.285,
+          "v": 1302.083
+        },
+        {
+          "u": 479.531,
+          "v": 1321.712
+        }
+      ],
+      "featureKind": "harbour",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "industrial-terminal-core",
+      "districtId": "coastal-narrows",
+      "tmjObjectName": "industrial-terminal-core",
+      "sourcePoints": [
+        {
+          "u": 183.524,
+          "v": 1164.677
+        },
+        {
+          "u": 497.292,
+          "v": 1189.541
+        }
+      ],
+      "featureKind": "industrial",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "naval-yard-core",
+      "districtId": "bridge-gateway",
+      "tmjObjectName": "naval-yard-core",
+      "sourcePoints": [
+        {
+          "u": 177.604,
+          "v": 1027.272
+        },
+        {
+          "u": 503.212,
+          "v": 1054.753
+        }
+      ],
+      "featureKind": "naval",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "mountain-gate",
+      "districtId": "civil-harbour",
+      "tmjObjectName": "mountain-gate",
+      "sourcePoints": [
+        {
+          "u": 254.566,
+          "v": 889.866
+        },
+        {
+          "u": 426.25,
+          "v": 904.261
+        }
+      ],
+      "featureKind": "mountain",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "canyon-crossing",
+      "districtId": "naval-yard",
+      "tmjObjectName": "canyon-crossing",
+      "sourcePoints": [
+        {
+          "u": 254.566,
+          "v": 727.596
+        },
+        {
+          "u": 426.25,
+          "v": 739.374
+        }
+      ],
+      "featureKind": "bridge",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "dam-landmark",
+      "districtId": "mountain-transition",
+      "tmjObjectName": "dam-landmark",
+      "sourcePoints": [
+        {
+          "u": 207.205,
+          "v": 601.968
+        },
+        {
+          "u": 473.611,
+          "v": 618.98
+        }
+      ],
+      "featureKind": "dam",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "reservoir-radar",
+      "districtId": "river-canyon",
+      "tmjObjectName": "reservoir-radar",
+      "sourcePoints": [
+        {
+          "u": 298.967,
+          "v": 503.821
+        },
+        {
+          "u": 387.769,
+          "v": 515.599
+        }
+      ],
+      "featureKind": "radar",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "frozen-falls",
+      "districtId": "lower-dam",
+      "tmjObjectName": "frozen-falls",
+      "sourcePoints": [
+        {
+          "u": 266.406,
+          "v": 366.415
+        },
+        {
+          "u": 414.41,
+          "v": 382.119
+        }
+      ],
+      "featureKind": "waterfall",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "fortress-gate",
+      "districtId": "alpine-reservoir",
+      "tmjObjectName": "fortress-gate",
+      "sourcePoints": [
+        {
+          "u": 207.205,
+          "v": 215.923
+        },
+        {
+          "u": 473.611,
+          "v": 235.553
+        }
+      ],
+      "featureKind": "fortress",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "citadel-core",
+      "districtId": "citadel-basin",
+      "tmjObjectName": "citadel-core",
+      "sourcePoints": [
+        {
+          "u": 198.325,
+          "v": 45.802
+        },
+        {
+          "u": 482.491,
+          "v": 73.283
+        }
+      ],
+      "featureKind": "citadel",
+      "materialFamily": "semantic-reference",
+      "occlusionNote": "Reference landmark envelope; detailed visible silhouette is reconstructed by associated geometry/art instances."
+    },
+    {
+      "id": "narrows-bridge",
+      "districtId": "bridge-gateway",
+      "tmjObjectName": "narrows-bridge",
+      "sourcePoints": [
+        {
+          "u": 129.059,
+          "v": 1419.859
+        },
+        {
+          "u": 554.717,
+          "v": 1419.859
+        }
+      ],
+      "featureKind": "bridge",
+      "materialFamily": "concrete-steel",
+      "occlusionNote": "Deck endpoints are authoritative; supports and visible tower silhouette are authored separately."
+    },
+    {
+      "id": "canyon-bridge",
+      "districtId": "naval-yard",
+      "tmjObjectName": "canyon-bridge",
+      "sourcePoints": [
+        {
+          "u": 206.021,
+          "v": 732.831
+        },
+        {
+          "u": 475.979,
+          "v": 732.831
+        }
+      ],
+      "featureKind": "bridge",
+      "materialFamily": "concrete-steel",
+      "occlusionNote": "Deck endpoints are authoritative; supports and visible tower silhouette are authored separately."
+    },
+    {
+      "id": "civil-house-west-a",
+      "districtId": "civil-harbour",
+      "tmjObjectName": "civil-house-west-a",
+      "sourcePoints": [
+        {
+          "u": 112.542,
+          "v": 1306.009
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "civil-house",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "civil-house-west-b",
+      "districtId": "civil-harbour",
+      "tmjObjectName": "civil-house-west-b",
+      "sourcePoints": [
+        {
+          "u": 162.27,
+          "v": 1278.528
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "civil-house",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "civil-house-east-a",
+      "districtId": "civil-harbour",
+      "tmjObjectName": "civil-house-east-a",
+      "sourcePoints": [
+        {
+          "u": 518.216,
+          "v": 1304.7
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "civil-house",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "civil-house-east-b",
+      "districtId": "civil-harbour",
+      "tmjObjectName": "civil-house-east-b",
+      "sourcePoints": [
+        {
+          "u": 569.252,
+          "v": 1273.293
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "civil-house",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "civil-service-west",
+      "districtId": "civil-harbour",
+      "tmjObjectName": "civil-service-west",
+      "sourcePoints": [
+        {
+          "u": 198.911,
+          "v": 1257.59
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "industrial-hall",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "civil-service-east",
+      "districtId": "civil-harbour",
+      "tmjObjectName": "civil-service-east",
+      "sourcePoints": [
+        {
+          "u": 481.574,
+          "v": 1254.973
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "industrial-hall",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "industrial-hall-west-a",
+      "districtId": "industrial-harbour",
+      "tmjObjectName": "industrial-hall-west-a",
+      "sourcePoints": [
+        {
+          "u": 123.011,
+          "v": 1173.838
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "industrial-hall",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "industrial-hall-west-b",
+      "districtId": "industrial-harbour",
+      "tmjObjectName": "industrial-hall-west-b",
+      "sourcePoints": [
+        {
+          "u": 188.442,
+          "v": 1129.344
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "industrial-hall",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "industrial-hall-east-a",
+      "districtId": "industrial-harbour",
+      "tmjObjectName": "industrial-hall-east-a",
+      "sourcePoints": [
+        {
+          "u": 544.388,
+          "v": 1173.838
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "industrial-hall",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "industrial-hall-east-b",
+      "districtId": "industrial-harbour",
+      "tmjObjectName": "industrial-hall-east-b",
+      "sourcePoints": [
+        {
+          "u": 492.043,
+          "v": 1126.727
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "industrial-hall",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "industrial-crane-west",
+      "districtId": "industrial-harbour",
+      "tmjObjectName": "industrial-crane-west",
+      "sourcePoints": [
+        {
+          "u": 235.553,
+          "v": 1125.419
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "crane",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "industrial-crane-east",
+      "districtId": "industrial-harbour",
+      "tmjObjectName": "industrial-crane-east",
+      "sourcePoints": [
+        {
+          "u": 442.316,
+          "v": 1127.251
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "crane",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "naval-crane-west",
+      "districtId": "naval-yard",
+      "tmjObjectName": "naval-crane-west",
+      "sourcePoints": [
+        {
+          "u": 180.59,
+          "v": 1031.197
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "crane",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "naval-crane-east",
+      "districtId": "naval-yard",
+      "tmjObjectName": "naval-crane-east",
+      "sourcePoints": [
+        {
+          "u": 503.821,
+          "v": 1035.123
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "crane",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "naval-warship-west",
+      "districtId": "naval-yard",
+      "tmjObjectName": "naval-warship-west",
+      "sourcePoints": [
+        {
+          "u": 242.096,
+          "v": 985.396
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "warship-static",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "naval-warship-east",
+      "districtId": "naval-yard",
+      "tmjObjectName": "naval-warship-east",
+      "sourcePoints": [
+        {
+          "u": 452.785,
+          "v": 989.321
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "warship-static",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "naval-radar-west",
+      "districtId": "naval-yard",
+      "tmjObjectName": "naval-radar-west",
+      "sourcePoints": [
+        {
+          "u": 136.097,
+          "v": 959.223
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "radar",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "naval-radar-east",
+      "districtId": "naval-yard",
+      "tmjObjectName": "naval-radar-east",
+      "sourcePoints": [
+        {
+          "u": 545.697,
+          "v": 960.532
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "radar",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "mountain-tunnel-west",
+      "districtId": "mountain-transition",
+      "tmjObjectName": "mountain-tunnel-west",
+      "sourcePoints": [
+        {
+          "u": 159.652,
+          "v": 865.002
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "tunnel-mouth",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "mountain-tunnel-east",
+      "districtId": "mountain-transition",
+      "tmjObjectName": "mountain-tunnel-east",
+      "sourcePoints": [
+        {
+          "u": 522.142,
+          "v": 861.076
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "tunnel-mouth",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "canyon-tunnel-west",
+      "districtId": "river-canyon",
+      "tmjObjectName": "canyon-tunnel-west",
+      "sourcePoints": [
+        {
+          "u": 185.825,
+          "v": 736.757
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "tunnel-mouth",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "canyon-tunnel-east",
+      "districtId": "river-canyon",
+      "tmjObjectName": "canyon-tunnel-east",
+      "sourcePoints": [
+        {
+          "u": 497.278,
+          "v": 715.819
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "tunnel-mouth",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "dam-face-main",
+      "districtId": "lower-dam",
+      "tmjObjectName": "dam-face-main",
+      "sourcePoints": [
+        {
+          "u": 341.0,
+          "v": 603.8
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "dam-face",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "reservoir-radar-main",
+      "districtId": "alpine-reservoir",
+      "tmjObjectName": "reservoir-radar-main",
+      "sourcePoints": [
+        {
+          "u": 143.949,
+          "v": 494.661
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "radar",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "fortress-terrace-west",
+      "districtId": "fortress-approach",
+      "tmjObjectName": "fortress-terrace-west",
+      "sourcePoints": [
+        {
+          "u": 159.652,
+          "v": 215.923
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "fortress-terrace",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "fortress-terrace-east",
+      "districtId": "fortress-approach",
+      "tmjObjectName": "fortress-terrace-east",
+      "sourcePoints": [
+        {
+          "u": 522.142,
+          "v": 215.923
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "fortress-terrace",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "citadel-wing-west",
+      "districtId": "citadel-basin",
+      "tmjObjectName": "citadel-wing-west",
+      "sourcePoints": [
+        {
+          "u": 222.466,
+          "v": 56.271
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "citadel-wing",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "citadel-wing-east",
+      "districtId": "citadel-basin",
+      "tmjObjectName": "citadel-wing-east",
+      "sourcePoints": [
+        {
+          "u": 459.328,
+          "v": 56.271
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "citadel-wing",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "citadel-gate-main",
+      "districtId": "citadel-basin",
+      "tmjObjectName": "citadel-gate-main",
+      "sourcePoints": [
+        {
+          "u": 341.0,
+          "v": 37.95
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "citadel-gate",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "citadel-tower-west",
+      "districtId": "citadel-basin",
+      "tmjObjectName": "citadel-tower-west",
+      "sourcePoints": [
+        {
+          "u": 270.886,
+          "v": 27.481
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "citadel-tower",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "citadel-tower-east",
+      "districtId": "citadel-basin",
+      "tmjObjectName": "citadel-tower-east",
+      "sourcePoints": [
+        {
+          "u": 410.909,
+          "v": 27.481
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "citadel-tower",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "citadel-radar-main",
+      "districtId": "citadel-basin",
+      "tmjObjectName": "citadel-radar-main",
+      "sourcePoints": [
+        {
+          "u": 341.0,
+          "v": -1.309
+        }
+      ],
+      "featureKind": "authored-art-instance",
+      "materialFamily": "radar",
+      "occlusionNote": "Pivot registered to traced world placement; visual/ground bounds are compiled separately."
+    },
+    {
+      "id": "west-coastal-bank",
+      "districtId": "multi-district",
+      "tmjObjectName": "west-coastal-bank",
+      "sourcePoints": [
+        {
+          "u": 0.0,
+          "v": 1681.585
+        },
+        {
+          "u": 160.957,
+          "v": 1681.585
+        },
+        {
+          "u": 164.657,
+          "v": 1670.679
+        },
+        {
+          "u": 181.535,
+          "v": 1659.774
+        },
+        {
+          "u": 177.604,
+          "v": 1648.869
+        },
+        {
+          "u": 180.819,
+          "v": 1635.783
+        },
+        {
+          "u": 201.723,
+          "v": 1622.696
+        },
+        {
+          "u": 199.071,
+          "v": 1609.61
+        },
+        {
+          "u": 195.365,
+          "v": 1596.524
+        },
+        {
+          "u": 203.315,
+          "v": 1583.438
+        },
+        {
+          "u": 203.54,
+          "v": 1570.351
+        },
+        {
+          "u": 186.461,
+          "v": 1557.265
+        },
+        {
+          "u": 186.484,
+          "v": 1544.179
+        },
+        {
+          "u": 193.902,
+          "v": 1531.093
+        },
+        {
+          "u": 179.268,
+          "v": 1518.006
+        },
+        {
+          "u": 184.028,
+          "v": 1504.92
+        },
+        {
+          "u": 177.604,
+          "v": 1491.834
+        },
+        {
+          "u": 177.734,
+          "v": 1477.439
+        },
+        {
+          "u": 176.041,
+          "v": 1463.044
+        },
+        {
+          "u": 189.338,
+          "v": 1448.649
+        },
+        {
+          "u": 187.503,
+          "v": 1434.254
+        },
+        {
+          "u": 177.604,
+          "v": 1419.859
+        },
+        {
+          "u": 172.708,
+          "v": 1408.409
+        },
+        {
+          "u": 180.541,
+          "v": 1396.958
+        },
+        {
+          "u": 158.861,
+          "v": 1385.508
+        },
+        {
+          "u": 148.003,
+          "v": 1374.058
+        },
+        {
+          "u": 153.965,
+          "v": 1360.971
+        },
+        {
+          "u": 153.746,
+          "v": 1347.885
+        },
+        {
+          "u": 136.613,
+          "v": 1334.799
+        },
+        {
+          "u": 133.333,
+          "v": 1321.712
+        },
+        {
+          "u": 130.243,
+          "v": 1308.626
+        },
+        {
+          "u": 137.756,
+          "v": 1295.54
+        },
+        {
+          "u": 129.929,
+          "v": 1282.454
+        },
+        {
+          "u": 134.287,
+          "v": 1269.367
+        },
+        {
+          "u": 143.102,
+          "v": 1256.281
+        },
+        {
+          "u": 134.979,
+          "v": 1243.195
+        },
+        {
+          "u": 130.93,
+          "v": 1230.109
+        },
+        {
+          "u": 134.221,
+          "v": 1217.022
+        },
+        {
+          "u": 144.593,
+          "v": 1203.936
+        },
+        {
+          "u": 133.712,
+          "v": 1190.85
+        },
+        {
+          "u": 124.323,
+          "v": 1177.764
+        },
+        {
+          "u": 129.657,
+          "v": 1164.677
+        },
+        {
+          "u": 144.676,
+          "v": 1151.591
+        },
+        {
+          "u": 150.75,
+          "v": 1138.505
+        },
+        {
+          "u": 142.178,
+          "v": 1125.419
+        },
+        {
+          "u": 139.846,
+          "v": 1112.332
+        },
+        {
+          "u": 145.043,
+          "v": 1099.246
+        },
+        {
+          "u": 157.801,
+          "v": 1086.16
+        },
+        {
+          "u": 163.514,
+          "v": 1073.073
+        },
+        {
+          "u": 156.878,
+          "v": 1059.987
+        },
+        {
+          "u": 158.447,
+          "v": 1046.901
+        },
+        {
+          "u": 168.594,
+          "v": 1033.815
+        },
+        {
+          "u": 168.724,
+          "v": 1020.728
+        },
+        {
+          "u": 176.704,
+          "v": 1007.642
+        },
+        {
+          "u": 176.118,
+          "v": 994.556
+        },
+        {
+          "u": 192.043,
+          "v": 981.47
+        },
+        {
+          "u": 200.474,
+          "v": 968.383
+        },
+        {
+          "u": 195.365,
+          "v": 955.297
+        },
+        {
+          "u": 0.0,
+          "v": 955.297
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "east-coastal-bank",
+      "districtId": "multi-district",
+      "tmjObjectName": "east-coastal-bank",
+      "sourcePoints": [
+        {
+          "u": 682.0,
+          "v": 1681.585
+        },
+        {
+          "u": 519.859,
+          "v": 1681.585
+        },
+        {
+          "u": 516.159,
+          "v": 1670.679
+        },
+        {
+          "u": 499.281,
+          "v": 1659.774
+        },
+        {
+          "u": 503.212,
+          "v": 1648.869
+        },
+        {
+          "u": 499.997,
+          "v": 1635.783
+        },
+        {
+          "u": 479.093,
+          "v": 1622.696
+        },
+        {
+          "u": 481.745,
+          "v": 1609.61
+        },
+        {
+          "u": 485.451,
+          "v": 1596.524
+        },
+        {
+          "u": 477.501,
+          "v": 1583.438
+        },
+        {
+          "u": 477.276,
+          "v": 1570.351
+        },
+        {
+          "u": 494.355,
+          "v": 1557.265
+        },
+        {
+          "u": 494.332,
+          "v": 1544.179
+        },
+        {
+          "u": 486.914,
+          "v": 1531.093
+        },
+        {
+          "u": 501.548,
+          "v": 1518.006
+        },
+        {
+          "u": 496.788,
+          "v": 1504.92
+        },
+        {
+          "u": 503.212,
+          "v": 1491.834
+        },
+        {
+          "u": 503.674,
+          "v": 1477.439
+        },
+        {
+          "u": 505.959,
+          "v": 1463.044
+        },
+        {
+          "u": 493.254,
+          "v": 1448.649
+        },
+        {
+          "u": 495.681,
+          "v": 1434.254
+        },
+        {
+          "u": 506.172,
+          "v": 1419.859
+        },
+        {
+          "u": 510.328,
+          "v": 1408.409
+        },
+        {
+          "u": 501.755,
+          "v": 1396.958
+        },
+        {
+          "u": 522.695,
+          "v": 1385.508
+        },
+        {
+          "u": 532.812,
+          "v": 1374.058
+        },
+        {
+          "u": 527.088,
+          "v": 1360.971
+        },
+        {
+          "u": 527.544,
+          "v": 1347.885
+        },
+        {
+          "u": 544.913,
+          "v": 1334.799
+        },
+        {
+          "u": 548.43,
+          "v": 1321.712
+        },
+        {
+          "u": 551.757,
+          "v": 1308.626
+        },
+        {
+          "u": 544.244,
+          "v": 1295.54
+        },
+        {
+          "u": 552.071,
+          "v": 1282.454
+        },
+        {
+          "u": 547.713,
+          "v": 1269.367
+        },
+        {
+          "u": 538.898,
+          "v": 1256.281
+        },
+        {
+          "u": 547.021,
+          "v": 1243.195
+        },
+        {
+          "u": 551.307,
+          "v": 1230.109
+        },
+        {
+          "u": 548.252,
+          "v": 1217.022
+        },
+        {
+          "u": 538.117,
+          "v": 1203.936
+        },
+        {
+          "u": 549.235,
+          "v": 1190.85
+        },
+        {
+          "u": 558.861,
+          "v": 1177.764
+        },
+        {
+          "u": 553.13,
+          "v": 1164.677
+        },
+        {
+          "u": 537.72,
+          "v": 1151.591
+        },
+        {
+          "u": 531.25,
+          "v": 1138.505
+        },
+        {
+          "u": 539.425,
+          "v": 1125.419
+        },
+        {
+          "u": 541.367,
+          "v": 1112.332
+        },
+        {
+          "u": 535.773,
+          "v": 1099.246
+        },
+        {
+          "u": 523.015,
+          "v": 1086.16
+        },
+        {
+          "u": 517.302,
+          "v": 1073.073
+        },
+        {
+          "u": 523.938,
+          "v": 1059.987
+        },
+        {
+          "u": 522.369,
+          "v": 1046.901
+        },
+        {
+          "u": 512.222,
+          "v": 1033.815
+        },
+        {
+          "u": 512.092,
+          "v": 1020.728
+        },
+        {
+          "u": 504.112,
+          "v": 1007.642
+        },
+        {
+          "u": 504.698,
+          "v": 994.556
+        },
+        {
+          "u": 488.773,
+          "v": 981.47
+        },
+        {
+          "u": 480.342,
+          "v": 968.383
+        },
+        {
+          "u": 485.451,
+          "v": 955.297
+        },
+        {
+          "u": 682.0,
+          "v": 955.297
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "west-alpine-bank",
+      "districtId": "multi-district",
+      "tmjObjectName": "west-alpine-bank",
+      "sourcePoints": [
+        {
+          "u": 0.0,
+          "v": 955.297
+        },
+        {
+          "u": 195.365,
+          "v": 955.297
+        },
+        {
+          "u": 203.28,
+          "v": 940.902
+        },
+        {
+          "u": 200.278,
+          "v": 926.507
+        },
+        {
+          "u": 213.303,
+          "v": 912.112
+        },
+        {
+          "u": 222.23,
+          "v": 897.718
+        },
+        {
+          "u": 216.085,
+          "v": 883.323
+        },
+        {
+          "u": 218.299,
+          "v": 868.928
+        },
+        {
+          "u": 232.442,
+          "v": 854.533
+        },
+        {
+          "u": 245.402,
+          "v": 840.138
+        },
+        {
+          "u": 237.202,
+          "v": 825.743
+        },
+        {
+          "u": 236.806,
+          "v": 811.348
+        },
+        {
+          "u": 244.046,
+          "v": 798.262
+        },
+        {
+          "u": 257.917,
+          "v": 785.176
+        },
+        {
+          "u": 258.302,
+          "v": 772.089
+        },
+        {
+          "u": 248.948,
+          "v": 759.003
+        },
+        {
+          "u": 250.15,
+          "v": 745.917
+        },
+        {
+          "u": 254.566,
+          "v": 732.831
+        },
+        {
+          "u": 265.524,
+          "v": 719.744
+        },
+        {
+          "u": 259.77,
+          "v": 706.658
+        },
+        {
+          "u": 256.082,
+          "v": 693.572
+        },
+        {
+          "u": 266.033,
+          "v": 680.486
+        },
+        {
+          "u": 261.67,
+          "v": 667.399
+        },
+        {
+          "u": 257.562,
+          "v": 654.313
+        },
+        {
+          "u": 261.362,
+          "v": 641.227
+        },
+        {
+          "u": 266.673,
+          "v": 628.141
+        },
+        {
+          "u": 251.606,
+          "v": 615.054
+        },
+        {
+          "u": 231.91,
+          "v": 601.968
+        },
+        {
+          "u": 224.942,
+          "v": 588.882
+        },
+        {
+          "u": 188.462,
+          "v": 575.796
+        },
+        {
+          "u": 162.804,
+          "v": 562.709
+        },
+        {
+          "u": 169.357,
+          "v": 549.623
+        },
+        {
+          "u": 169.73,
+          "v": 536.537
+        },
+        {
+          "u": 153.19,
+          "v": 523.45
+        },
+        {
+          "u": 150.502,
+          "v": 510.364
+        },
+        {
+          "u": 148.003,
+          "v": 497.278
+        },
+        {
+          "u": 159.897,
+          "v": 484.192
+        },
+        {
+          "u": 156.452,
+          "v": 471.105
+        },
+        {
+          "u": 165.19,
+          "v": 458.019
+        },
+        {
+          "u": 178.386,
+          "v": 444.933
+        },
+        {
+          "u": 174.644,
+          "v": 431.847
+        },
+        {
+          "u": 0.0,
+          "v": 431.847
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-alpine",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "east-alpine-bank",
+      "districtId": "multi-district",
+      "tmjObjectName": "east-alpine-bank",
+      "sourcePoints": [
+        {
+          "u": 682.0,
+          "v": 955.297
+        },
+        {
+          "u": 485.451,
+          "v": 955.297
+        },
+        {
+          "u": 477.773,
+          "v": 940.902
+        },
+        {
+          "u": 481.011,
+          "v": 926.507
+        },
+        {
+          "u": 468.224,
+          "v": 912.112
+        },
+        {
+          "u": 459.533,
+          "v": 897.718
+        },
+        {
+          "u": 465.915,
+          "v": 883.323
+        },
+        {
+          "u": 463.701,
+          "v": 868.928
+        },
+        {
+          "u": 449.558,
+          "v": 854.533
+        },
+        {
+          "u": 436.598,
+          "v": 840.138
+        },
+        {
+          "u": 444.798,
+          "v": 825.743
+        },
+        {
+          "u": 445.194,
+          "v": 811.348
+        },
+        {
+          "u": 437.954,
+          "v": 798.262
+        },
+        {
+          "u": 424.083,
+          "v": 785.176
+        },
+        {
+          "u": 423.698,
+          "v": 772.089
+        },
+        {
+          "u": 433.052,
+          "v": 759.003
+        },
+        {
+          "u": 431.85,
+          "v": 745.917
+        },
+        {
+          "u": 427.434,
+          "v": 732.831
+        },
+        {
+          "u": 416.476,
+          "v": 719.744
+        },
+        {
+          "u": 422.23,
+          "v": 706.658
+        },
+        {
+          "u": 425.918,
+          "v": 693.572
+        },
+        {
+          "u": 415.967,
+          "v": 680.486
+        },
+        {
+          "u": 420.33,
+          "v": 667.399
+        },
+        {
+          "u": 424.586,
+          "v": 654.313
+        },
+        {
+          "u": 420.934,
+          "v": 641.227
+        },
+        {
+          "u": 415.771,
+          "v": 628.141
+        },
+        {
+          "u": 430.986,
+          "v": 615.054
+        },
+        {
+          "u": 450.682,
+          "v": 601.968
+        },
+        {
+          "u": 457.65,
+          "v": 588.882
+        },
+        {
+          "u": 494.13,
+          "v": 575.796
+        },
+        {
+          "u": 519.788,
+          "v": 562.709
+        },
+        {
+          "u": 513.116,
+          "v": 549.623
+        },
+        {
+          "u": 512.625,
+          "v": 536.537
+        },
+        {
+          "u": 529.047,
+          "v": 523.45
+        },
+        {
+          "u": 531.617,
+          "v": 510.364
+        },
+        {
+          "u": 533.997,
+          "v": 497.278
+        },
+        {
+          "u": 521.866,
+          "v": 484.192
+        },
+        {
+          "u": 525.075,
+          "v": 471.105
+        },
+        {
+          "u": 516.1,
+          "v": 458.019
+        },
+        {
+          "u": 502.667,
+          "v": 444.933
+        },
+        {
+          "u": 506.172,
+          "v": 431.847
+        },
+        {
+          "u": 682.0,
+          "v": 431.847
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-alpine",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "west-snow-bank",
+      "districtId": "multi-district",
+      "tmjObjectName": "west-snow-bank",
+      "sourcePoints": [
+        {
+          "u": 0.0,
+          "v": 431.847
+        },
+        {
+          "u": 174.644,
+          "v": 431.847
+        },
+        {
+          "u": 183.151,
+          "v": 418.76
+        },
+        {
+          "u": 180.742,
+          "v": 405.674
+        },
+        {
+          "u": 194.358,
+          "v": 392.588
+        },
+        {
+          "u": 203.878,
+          "v": 379.502
+        },
+        {
+          "u": 198.325,
+          "v": 366.415
+        },
+        {
+          "u": 199.355,
+          "v": 353.329
+        },
+        {
+          "u": 212.314,
+          "v": 340.243
+        },
+        {
+          "u": 224.089,
+          "v": 327.157
+        },
+        {
+          "u": 214.706,
+          "v": 314.07
+        },
+        {
+          "u": 213.125,
+          "v": 300.984
+        },
+        {
+          "u": 216.091,
+          "v": 286.589
+        },
+        {
+          "u": 222.491,
+          "v": 272.194
+        },
+        {
+          "u": 207.264,
+          "v": 257.799
+        },
+        {
+          "u": 196.862,
+          "v": 243.404
+        },
+        {
+          "u": 195.365,
+          "v": 229.01
+        },
+        {
+          "u": 196.377,
+          "v": 214.615
+        },
+        {
+          "u": 180.677,
+          "v": 200.22
+        },
+        {
+          "u": 167.043,
+          "v": 185.825
+        },
+        {
+          "u": 167.049,
+          "v": 171.43
+        },
+        {
+          "u": 152.74,
+          "v": 157.035
+        },
+        {
+          "u": 151.183,
+          "v": 143.949
+        },
+        {
+          "u": 144.197,
+          "v": 130.863
+        },
+        {
+          "u": 149.176,
+          "v": 117.776
+        },
+        {
+          "u": 155.635,
+          "v": 104.69
+        },
+        {
+          "u": 146.671,
+          "v": 91.604
+        },
+        {
+          "u": 136.163,
+          "v": 78.518
+        },
+        {
+          "u": 142.273,
+          "v": 65.431
+        },
+        {
+          "u": 158.63,
+          "v": 52.345
+        },
+        {
+          "u": 174.62,
+          "v": 39.259
+        },
+        {
+          "u": 173.59,
+          "v": 26.173
+        },
+        {
+          "u": 170.34,
+          "v": 13.086
+        },
+        {
+          "u": 177.604,
+          "v": 0.0
+        },
+        {
+          "u": 0.0,
+          "v": 0.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-snow",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "east-snow-bank",
+      "districtId": "multi-district",
+      "tmjObjectName": "east-snow-bank",
+      "sourcePoints": [
+        {
+          "u": 682.0,
+          "v": 431.847
+        },
+        {
+          "u": 506.172,
+          "v": 431.847
+        },
+        {
+          "u": 497.665,
+          "v": 418.76
+        },
+        {
+          "u": 500.074,
+          "v": 405.674
+        },
+        {
+          "u": 486.458,
+          "v": 392.588
+        },
+        {
+          "u": 476.938,
+          "v": 379.502
+        },
+        {
+          "u": 482.491,
+          "v": 366.415
+        },
+        {
+          "u": 481.461,
+          "v": 353.329
+        },
+        {
+          "u": 468.502,
+          "v": 340.243
+        },
+        {
+          "u": 456.727,
+          "v": 327.157
+        },
+        {
+          "u": 466.11,
+          "v": 314.07
+        },
+        {
+          "u": 467.691,
+          "v": 300.984
+        },
+        {
+          "u": 464.725,
+          "v": 286.589
+        },
+        {
+          "u": 458.325,
+          "v": 272.194
+        },
+        {
+          "u": 473.552,
+          "v": 257.799
+        },
+        {
+          "u": 483.954,
+          "v": 243.404
+        },
+        {
+          "u": 485.451,
+          "v": 229.01
+        },
+        {
+          "u": 484.439,
+          "v": 214.615
+        },
+        {
+          "u": 500.139,
+          "v": 200.22
+        },
+        {
+          "u": 513.773,
+          "v": 185.825
+        },
+        {
+          "u": 513.767,
+          "v": 171.43
+        },
+        {
+          "u": 528.076,
+          "v": 157.035
+        },
+        {
+          "u": 529.829,
+          "v": 143.949
+        },
+        {
+          "u": 537.01,
+          "v": 130.863
+        },
+        {
+          "u": 532.232,
+          "v": 117.776
+        },
+        {
+          "u": 525.969,
+          "v": 104.69
+        },
+        {
+          "u": 535.133,
+          "v": 91.604
+        },
+        {
+          "u": 545.837,
+          "v": 78.518
+        },
+        {
+          "u": 539.532,
+          "v": 65.431
+        },
+        {
+          "u": 522.973,
+          "v": 52.345
+        },
+        {
+          "u": 506.788,
+          "v": 39.259
+        },
+        {
+          "u": 507.622,
+          "v": 26.173
+        },
+        {
+          "u": 510.677,
+          "v": 13.086
+        },
+        {
+          "u": 503.212,
+          "v": 0.0
+        },
+        {
+          "u": 682.0,
+          "v": 0.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-snow",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "bridge-fort-islet",
+      "districtId": "multi-district",
+      "tmjObjectName": "bridge-fort-islet",
+      "sourcePoints": [
+        {
+          "u": 401.231,
+          "v": 1459.118
+        },
+        {
+          "u": 398.419,
+          "v": 1464.124
+        },
+        {
+          "u": 370.062,
+          "v": 1466.797
+        },
+        {
+          "u": 340.408,
+          "v": 1468.979
+        },
+        {
+          "u": 301.826,
+          "v": 1469.108
+        },
+        {
+          "u": 274.795,
+          "v": 1464.781
+        },
+        {
+          "u": 269.982,
+          "v": 1459.118
+        },
+        {
+          "u": 273.558,
+          "v": 1453.349
+        },
+        {
+          "u": 305.42,
+          "v": 1450.06
+        },
+        {
+          "u": 340.408,
+          "v": 1447.185
+        },
+        {
+          "u": 377.29,
+          "v": 1449.569
+        },
+        {
+          "u": 394.583,
+          "v": 1454.443
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "reservoir-radar-island",
+      "districtId": "multi-district",
+      "tmjObjectName": "reservoir-radar-island",
+      "sourcePoints": [
+        {
+          "u": 412.971,
+          "v": 510.364
+        },
+        {
+          "u": 401.924,
+          "v": 515.264
+        },
+        {
+          "u": 376.012,
+          "v": 518.212
+        },
+        {
+          "u": 346.328,
+          "v": 518.764
+        },
+        {
+          "u": 313.904,
+          "v": 518.936
+        },
+        {
+          "u": 284.966,
+          "v": 515.771
+        },
+        {
+          "u": 286.582,
+          "v": 510.364
+        },
+        {
+          "u": 287.068,
+          "v": 505.142
+        },
+        {
+          "u": 320.469,
+          "v": 503.529
+        },
+        {
+          "u": 346.328,
+          "v": 500.932
+        },
+        {
+          "u": 373.88,
+          "v": 503.08
+        },
+        {
+          "u": 399.254,
+          "v": 505.7
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-alpine",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "frozen-gun-island",
+      "districtId": "multi-district",
+      "tmjObjectName": "frozen-gun-island",
+      "sourcePoints": [
+        {
+          "u": 378.77,
+          "v": 248.639
+        },
+        {
+          "u": 380.76,
+          "v": 253.917
+        },
+        {
+          "u": 350.881,
+          "v": 256.559
+        },
+        {
+          "u": 320.155,
+          "v": 255.564
+        },
+        {
+          "u": 289.08,
+          "v": 253.818
+        },
+        {
+          "u": 281.544,
+          "v": 248.639
+        },
+        {
+          "u": 288.411,
+          "v": 243.384
+        },
+        {
+          "u": 318.036,
+          "v": 240.69
+        },
+        {
+          "u": 351.532,
+          "v": 240.404
+        },
+        {
+          "u": 379.83,
+          "v": 243.467
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-snow",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "citadel-island",
+      "districtId": "multi-district",
+      "tmjObjectName": "citadel-island",
+      "sourcePoints": [
+        {
+          "u": 473.303,
+          "v": 58.888
+        },
+        {
+          "u": 447.32,
+          "v": 66.594
+        },
+        {
+          "u": 428.843,
+          "v": 75.466
+        },
+        {
+          "u": 367.741,
+          "v": 76.521
+        },
+        {
+          "u": 310.689,
+          "v": 78.874
+        },
+        {
+          "u": 260.362,
+          "v": 74.106
+        },
+        {
+          "u": 209.413,
+          "v": 68.425
+        },
+        {
+          "u": 219.667,
+          "v": 58.888
+        },
+        {
+          "u": 198.206,
+          "v": 48.539
+        },
+        {
+          "u": 267.797,
+          "v": 45.074
+        },
+        {
+          "u": 314.922,
+          "v": 41.692
+        },
+        {
+          "u": 373.277,
+          "v": 37.607
+        },
+        {
+          "u": 440.298,
+          "v": 40.149
+        },
+        {
+          "u": 479.425,
+          "v": 48.856
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-snow",
+      "occlusionNote": "Visible projected land silhouette; hidden physical footprint is authored in the TMJ where relief occludes contact."
+    },
+    {
+      "id": "archipelago-island-01",
+      "districtId": "open-sea",
+      "tmjObjectName": "archipelago-island-01",
+      "sourcePoints": [
+        {
+          "u": 506.0,
+          "v": 1912.0
+        },
+        {
+          "u": 507.0,
+          "v": 1919.0
+        },
+        {
+          "u": 511.0,
+          "v": 1921.0
+        },
+        {
+          "u": 519.0,
+          "v": 1921.0
+        },
+        {
+          "u": 526.0,
+          "v": 1928.0
+        },
+        {
+          "u": 529.0,
+          "v": 1943.0
+        },
+        {
+          "u": 545.0,
+          "v": 1943.0
+        },
+        {
+          "u": 546.0,
+          "v": 1952.0
+        },
+        {
+          "u": 556.0,
+          "v": 1953.0
+        },
+        {
+          "u": 558.0,
+          "v": 1960.0
+        },
+        {
+          "u": 563.0,
+          "v": 1960.0
+        },
+        {
+          "u": 569.0,
+          "v": 1957.0
+        },
+        {
+          "u": 569.0,
+          "v": 1954.0
+        },
+        {
+          "u": 560.0,
+          "v": 1953.0
+        },
+        {
+          "u": 560.0,
+          "v": 1933.0
+        },
+        {
+          "u": 574.0,
+          "v": 1932.0
+        },
+        {
+          "u": 574.0,
+          "v": 1930.0
+        },
+        {
+          "u": 567.0,
+          "v": 1925.0
+        },
+        {
+          "u": 563.0,
+          "v": 1924.0
+        },
+        {
+          "u": 559.0,
+          "v": 1920.0
+        },
+        {
+          "u": 558.0,
+          "v": 1915.0
+        },
+        {
+          "u": 554.0,
+          "v": 1910.0
+        },
+        {
+          "u": 553.0,
+          "v": 1906.0
+        },
+        {
+          "u": 546.0,
+          "v": 1897.0
+        },
+        {
+          "u": 542.0,
+          "v": 1896.0
+        },
+        {
+          "u": 538.0,
+          "v": 1899.0
+        },
+        {
+          "u": 538.0,
+          "v": 1906.0
+        },
+        {
+          "u": 536.0,
+          "v": 1908.0
+        },
+        {
+          "u": 532.0,
+          "v": 1908.0
+        },
+        {
+          "u": 530.0,
+          "v": 1915.0
+        },
+        {
+          "u": 516.0,
+          "v": 1915.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-02",
+      "districtId": "outer-archipelago",
+      "tmjObjectName": "archipelago-island-02",
+      "sourcePoints": [
+        {
+          "u": 118.0,
+          "v": 1892.0
+        },
+        {
+          "u": 114.0,
+          "v": 1890.0
+        },
+        {
+          "u": 109.0,
+          "v": 1890.0
+        },
+        {
+          "u": 106.0,
+          "v": 1886.0
+        },
+        {
+          "u": 103.0,
+          "v": 1887.0
+        },
+        {
+          "u": 91.0,
+          "v": 1887.0
+        },
+        {
+          "u": 87.0,
+          "v": 1886.0
+        },
+        {
+          "u": 86.0,
+          "v": 1891.0
+        },
+        {
+          "u": 81.0,
+          "v": 1895.0
+        },
+        {
+          "u": 81.0,
+          "v": 1897.0
+        },
+        {
+          "u": 79.0,
+          "v": 1898.0
+        },
+        {
+          "u": 77.0,
+          "v": 1903.0
+        },
+        {
+          "u": 65.0,
+          "v": 1903.0
+        },
+        {
+          "u": 63.0,
+          "v": 1901.0
+        },
+        {
+          "u": 61.0,
+          "v": 1901.0
+        },
+        {
+          "u": 58.0,
+          "v": 1904.0
+        },
+        {
+          "u": 58.0,
+          "v": 1909.0
+        },
+        {
+          "u": 56.0,
+          "v": 1912.0
+        },
+        {
+          "u": 56.0,
+          "v": 1915.0
+        },
+        {
+          "u": 74.0,
+          "v": 1916.0
+        },
+        {
+          "u": 76.0,
+          "v": 1918.0
+        },
+        {
+          "u": 76.0,
+          "v": 1924.0
+        },
+        {
+          "u": 80.0,
+          "v": 1925.0
+        },
+        {
+          "u": 80.0,
+          "v": 1922.0
+        },
+        {
+          "u": 83.0,
+          "v": 1920.0
+        },
+        {
+          "u": 88.0,
+          "v": 1920.0
+        },
+        {
+          "u": 92.0,
+          "v": 1917.0
+        },
+        {
+          "u": 99.0,
+          "v": 1917.0
+        },
+        {
+          "u": 99.0,
+          "v": 1914.0
+        },
+        {
+          "u": 103.0,
+          "v": 1911.0
+        },
+        {
+          "u": 103.0,
+          "v": 1907.0
+        },
+        {
+          "u": 106.0,
+          "v": 1906.0
+        },
+        {
+          "u": 107.0,
+          "v": 1903.0
+        },
+        {
+          "u": 110.0,
+          "v": 1900.0
+        },
+        {
+          "u": 115.0,
+          "v": 1898.0
+        },
+        {
+          "u": 118.0,
+          "v": 1895.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-03",
+      "districtId": "outer-archipelago",
+      "tmjObjectName": "archipelago-island-03",
+      "sourcePoints": [
+        {
+          "u": 600.0,
+          "v": 1797.0
+        },
+        {
+          "u": 592.0,
+          "v": 1797.0
+        },
+        {
+          "u": 592.0,
+          "v": 1800.0
+        },
+        {
+          "u": 588.0,
+          "v": 1807.0
+        },
+        {
+          "u": 584.0,
+          "v": 1811.0
+        },
+        {
+          "u": 580.0,
+          "v": 1811.0
+        },
+        {
+          "u": 578.0,
+          "v": 1818.0
+        },
+        {
+          "u": 564.0,
+          "v": 1818.0
+        },
+        {
+          "u": 564.0,
+          "v": 1828.0
+        },
+        {
+          "u": 560.0,
+          "v": 1829.0
+        },
+        {
+          "u": 560.0,
+          "v": 1832.0
+        },
+        {
+          "u": 555.0,
+          "v": 1837.0
+        },
+        {
+          "u": 555.0,
+          "v": 1841.0
+        },
+        {
+          "u": 561.0,
+          "v": 1845.0
+        },
+        {
+          "u": 561.0,
+          "v": 1866.0
+        },
+        {
+          "u": 582.0,
+          "v": 1868.0
+        },
+        {
+          "u": 585.0,
+          "v": 1867.0
+        },
+        {
+          "u": 585.0,
+          "v": 1855.0
+        },
+        {
+          "u": 581.0,
+          "v": 1854.0
+        },
+        {
+          "u": 580.0,
+          "v": 1851.0
+        },
+        {
+          "u": 573.0,
+          "v": 1845.0
+        },
+        {
+          "u": 574.0,
+          "v": 1827.0
+        },
+        {
+          "u": 586.0,
+          "v": 1827.0
+        },
+        {
+          "u": 595.0,
+          "v": 1831.0
+        },
+        {
+          "u": 608.0,
+          "v": 1829.0
+        },
+        {
+          "u": 613.0,
+          "v": 1825.0
+        },
+        {
+          "u": 613.0,
+          "v": 1823.0
+        },
+        {
+          "u": 610.0,
+          "v": 1821.0
+        },
+        {
+          "u": 606.0,
+          "v": 1814.0
+        },
+        {
+          "u": 606.0,
+          "v": 1810.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-04",
+      "districtId": "outer-archipelago",
+      "tmjObjectName": "archipelago-island-04",
+      "sourcePoints": [
+        {
+          "u": 72.0,
+          "v": 1761.0
+        },
+        {
+          "u": 70.0,
+          "v": 1761.0
+        },
+        {
+          "u": 70.0,
+          "v": 1768.0
+        },
+        {
+          "u": 68.0,
+          "v": 1770.0
+        },
+        {
+          "u": 64.0,
+          "v": 1770.0
+        },
+        {
+          "u": 62.0,
+          "v": 1772.0
+        },
+        {
+          "u": 59.0,
+          "v": 1772.0
+        },
+        {
+          "u": 58.0,
+          "v": 1773.0
+        },
+        {
+          "u": 58.0,
+          "v": 1778.0
+        },
+        {
+          "u": 59.0,
+          "v": 1779.0
+        },
+        {
+          "u": 59.0,
+          "v": 1786.0
+        },
+        {
+          "u": 66.0,
+          "v": 1786.0
+        },
+        {
+          "u": 68.0,
+          "v": 1788.0
+        },
+        {
+          "u": 68.0,
+          "v": 1792.0
+        },
+        {
+          "u": 70.0,
+          "v": 1792.0
+        },
+        {
+          "u": 71.0,
+          "v": 1791.0
+        },
+        {
+          "u": 77.0,
+          "v": 1791.0
+        },
+        {
+          "u": 77.0,
+          "v": 1788.0
+        },
+        {
+          "u": 78.0,
+          "v": 1787.0
+        },
+        {
+          "u": 83.0,
+          "v": 1785.0
+        },
+        {
+          "u": 83.0,
+          "v": 1784.0
+        },
+        {
+          "u": 84.0,
+          "v": 1783.0
+        },
+        {
+          "u": 85.0,
+          "v": 1783.0
+        },
+        {
+          "u": 85.0,
+          "v": 1781.0
+        },
+        {
+          "u": 86.0,
+          "v": 1780.0
+        },
+        {
+          "u": 88.0,
+          "v": 1780.0
+        },
+        {
+          "u": 88.0,
+          "v": 1775.0
+        },
+        {
+          "u": 87.0,
+          "v": 1774.0
+        },
+        {
+          "u": 86.0,
+          "v": 1774.0
+        },
+        {
+          "u": 82.0,
+          "v": 1770.0
+        },
+        {
+          "u": 78.0,
+          "v": 1770.0
+        },
+        {
+          "u": 77.0,
+          "v": 1769.0
+        },
+        {
+          "u": 76.0,
+          "v": 1769.0
+        },
+        {
+          "u": 74.0,
+          "v": 1767.0
+        },
+        {
+          "u": 74.0,
+          "v": 1763.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-05",
+      "districtId": "outer-archipelago",
+      "tmjObjectName": "archipelago-island-05",
+      "sourcePoints": [
+        {
+          "u": 498.0,
+          "v": 1699.0
+        },
+        {
+          "u": 496.0,
+          "v": 1704.0
+        },
+        {
+          "u": 481.0,
+          "v": 1707.0
+        },
+        {
+          "u": 471.0,
+          "v": 1718.0
+        },
+        {
+          "u": 458.0,
+          "v": 1718.0
+        },
+        {
+          "u": 456.0,
+          "v": 1713.0
+        },
+        {
+          "u": 441.0,
+          "v": 1714.0
+        },
+        {
+          "u": 435.0,
+          "v": 1722.0
+        },
+        {
+          "u": 422.0,
+          "v": 1726.0
+        },
+        {
+          "u": 416.0,
+          "v": 1751.0
+        },
+        {
+          "u": 446.0,
+          "v": 1754.0
+        },
+        {
+          "u": 448.0,
+          "v": 1767.0
+        },
+        {
+          "u": 456.0,
+          "v": 1768.0
+        },
+        {
+          "u": 456.0,
+          "v": 1785.0
+        },
+        {
+          "u": 439.0,
+          "v": 1790.0
+        },
+        {
+          "u": 435.0,
+          "v": 1801.0
+        },
+        {
+          "u": 429.0,
+          "v": 1802.0
+        },
+        {
+          "u": 438.0,
+          "v": 1829.0
+        },
+        {
+          "u": 444.0,
+          "v": 1829.0
+        },
+        {
+          "u": 445.0,
+          "v": 1825.0
+        },
+        {
+          "u": 467.0,
+          "v": 1828.0
+        },
+        {
+          "u": 469.0,
+          "v": 1844.0
+        },
+        {
+          "u": 490.0,
+          "v": 1853.0
+        },
+        {
+          "u": 493.0,
+          "v": 1862.0
+        },
+        {
+          "u": 505.0,
+          "v": 1869.0
+        },
+        {
+          "u": 504.0,
+          "v": 1841.0
+        },
+        {
+          "u": 520.0,
+          "v": 1840.0
+        },
+        {
+          "u": 531.0,
+          "v": 1816.0
+        },
+        {
+          "u": 538.0,
+          "v": 1814.0
+        },
+        {
+          "u": 531.0,
+          "v": 1806.0
+        },
+        {
+          "u": 531.0,
+          "v": 1792.0
+        },
+        {
+          "u": 565.0,
+          "v": 1787.0
+        },
+        {
+          "u": 565.0,
+          "v": 1767.0
+        },
+        {
+          "u": 576.0,
+          "v": 1763.0
+        },
+        {
+          "u": 576.0,
+          "v": 1759.0
+        },
+        {
+          "u": 568.0,
+          "v": 1755.0
+        },
+        {
+          "u": 565.0,
+          "v": 1735.0
+        },
+        {
+          "u": 553.0,
+          "v": 1722.0
+        },
+        {
+          "u": 532.0,
+          "v": 1707.0
+        },
+        {
+          "u": 520.0,
+          "v": 1707.0
+        },
+        {
+          "u": 519.0,
+          "v": 1702.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-06",
+      "districtId": "dense-archipelago",
+      "tmjObjectName": "archipelago-island-06",
+      "sourcePoints": [
+        {
+          "u": 580.0,
+          "v": 1724.0
+        },
+        {
+          "u": 580.0,
+          "v": 1729.0
+        },
+        {
+          "u": 582.0,
+          "v": 1731.0
+        },
+        {
+          "u": 583.0,
+          "v": 1731.0
+        },
+        {
+          "u": 584.0,
+          "v": 1732.0
+        },
+        {
+          "u": 585.0,
+          "v": 1732.0
+        },
+        {
+          "u": 586.0,
+          "v": 1733.0
+        },
+        {
+          "u": 592.0,
+          "v": 1733.0
+        },
+        {
+          "u": 593.0,
+          "v": 1732.0
+        },
+        {
+          "u": 593.0,
+          "v": 1728.0
+        },
+        {
+          "u": 592.0,
+          "v": 1727.0
+        },
+        {
+          "u": 592.0,
+          "v": 1723.0
+        },
+        {
+          "u": 589.0,
+          "v": 1720.0
+        },
+        {
+          "u": 585.0,
+          "v": 1720.0
+        },
+        {
+          "u": 584.0,
+          "v": 1721.0
+        },
+        {
+          "u": 584.0,
+          "v": 1722.0
+        },
+        {
+          "u": 583.0,
+          "v": 1723.0
+        },
+        {
+          "u": 582.0,
+          "v": 1723.0
+        },
+        {
+          "u": 581.0,
+          "v": 1724.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-07",
+      "districtId": "dense-archipelago",
+      "tmjObjectName": "archipelago-island-07",
+      "sourcePoints": [
+        {
+          "u": 208.0,
+          "v": 1589.0
+        },
+        {
+          "u": 194.0,
+          "v": 1593.0
+        },
+        {
+          "u": 187.0,
+          "v": 1601.0
+        },
+        {
+          "u": 179.0,
+          "v": 1628.0
+        },
+        {
+          "u": 165.0,
+          "v": 1629.0
+        },
+        {
+          "u": 141.0,
+          "v": 1652.0
+        },
+        {
+          "u": 129.0,
+          "v": 1697.0
+        },
+        {
+          "u": 117.0,
+          "v": 1698.0
+        },
+        {
+          "u": 105.0,
+          "v": 1717.0
+        },
+        {
+          "u": 93.0,
+          "v": 1717.0
+        },
+        {
+          "u": 88.0,
+          "v": 1712.0
+        },
+        {
+          "u": 74.0,
+          "v": 1723.0
+        },
+        {
+          "u": 77.0,
+          "v": 1731.0
+        },
+        {
+          "u": 92.0,
+          "v": 1733.0
+        },
+        {
+          "u": 104.0,
+          "v": 1742.0
+        },
+        {
+          "u": 102.0,
+          "v": 1764.0
+        },
+        {
+          "u": 117.0,
+          "v": 1774.0
+        },
+        {
+          "u": 118.0,
+          "v": 1785.0
+        },
+        {
+          "u": 133.0,
+          "v": 1795.0
+        },
+        {
+          "u": 148.0,
+          "v": 1796.0
+        },
+        {
+          "u": 148.0,
+          "v": 1814.0
+        },
+        {
+          "u": 142.0,
+          "v": 1822.0
+        },
+        {
+          "u": 147.0,
+          "v": 1830.0
+        },
+        {
+          "u": 157.0,
+          "v": 1828.0
+        },
+        {
+          "u": 158.0,
+          "v": 1804.0
+        },
+        {
+          "u": 182.0,
+          "v": 1802.0
+        },
+        {
+          "u": 183.0,
+          "v": 1791.0
+        },
+        {
+          "u": 208.0,
+          "v": 1787.0
+        },
+        {
+          "u": 213.0,
+          "v": 1763.0
+        },
+        {
+          "u": 257.0,
+          "v": 1750.0
+        },
+        {
+          "u": 254.0,
+          "v": 1722.0
+        },
+        {
+          "u": 269.0,
+          "v": 1721.0
+        },
+        {
+          "u": 273.0,
+          "v": 1716.0
+        },
+        {
+          "u": 270.0,
+          "v": 1699.0
+        },
+        {
+          "u": 261.0,
+          "v": 1686.0
+        },
+        {
+          "u": 249.0,
+          "v": 1682.0
+        },
+        {
+          "u": 247.0,
+          "v": 1670.0
+        },
+        {
+          "u": 237.0,
+          "v": 1668.0
+        },
+        {
+          "u": 232.0,
+          "v": 1638.0
+        },
+        {
+          "u": 243.0,
+          "v": 1633.0
+        },
+        {
+          "u": 243.0,
+          "v": 1618.0
+        },
+        {
+          "u": 226.0,
+          "v": 1599.0
+        },
+        {
+          "u": 218.0,
+          "v": 1599.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-08",
+      "districtId": "dense-archipelago",
+      "tmjObjectName": "archipelago-island-08",
+      "sourcePoints": [
+        {
+          "u": 485.0,
+          "v": 1637.0
+        },
+        {
+          "u": 486.0,
+          "v": 1641.0
+        },
+        {
+          "u": 490.0,
+          "v": 1645.0
+        },
+        {
+          "u": 493.0,
+          "v": 1646.0
+        },
+        {
+          "u": 495.0,
+          "v": 1649.0
+        },
+        {
+          "u": 495.0,
+          "v": 1658.0
+        },
+        {
+          "u": 508.0,
+          "v": 1658.0
+        },
+        {
+          "u": 513.0,
+          "v": 1662.0
+        },
+        {
+          "u": 515.0,
+          "v": 1662.0
+        },
+        {
+          "u": 520.0,
+          "v": 1667.0
+        },
+        {
+          "u": 523.0,
+          "v": 1667.0
+        },
+        {
+          "u": 525.0,
+          "v": 1669.0
+        },
+        {
+          "u": 530.0,
+          "v": 1669.0
+        },
+        {
+          "u": 531.0,
+          "v": 1671.0
+        },
+        {
+          "u": 533.0,
+          "v": 1671.0
+        },
+        {
+          "u": 533.0,
+          "v": 1669.0
+        },
+        {
+          "u": 528.0,
+          "v": 1669.0
+        },
+        {
+          "u": 524.0,
+          "v": 1664.0
+        },
+        {
+          "u": 524.0,
+          "v": 1662.0
+        },
+        {
+          "u": 518.0,
+          "v": 1662.0
+        },
+        {
+          "u": 514.0,
+          "v": 1658.0
+        },
+        {
+          "u": 514.0,
+          "v": 1646.0
+        },
+        {
+          "u": 520.0,
+          "v": 1640.0
+        },
+        {
+          "u": 525.0,
+          "v": 1640.0
+        },
+        {
+          "u": 525.0,
+          "v": 1636.0
+        },
+        {
+          "u": 521.0,
+          "v": 1636.0
+        },
+        {
+          "u": 518.0,
+          "v": 1640.0
+        },
+        {
+          "u": 515.0,
+          "v": 1641.0
+        },
+        {
+          "u": 514.0,
+          "v": 1643.0
+        },
+        {
+          "u": 510.0,
+          "v": 1645.0
+        },
+        {
+          "u": 497.0,
+          "v": 1645.0
+        },
+        {
+          "u": 495.0,
+          "v": 1643.0
+        },
+        {
+          "u": 492.0,
+          "v": 1643.0
+        },
+        {
+          "u": 487.0,
+          "v": 1637.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-09",
+      "districtId": "dense-archipelago",
+      "tmjObjectName": "archipelago-island-09",
+      "sourcePoints": [
+        {
+          "u": 405.0,
+          "v": 1642.0
+        },
+        {
+          "u": 405.0,
+          "v": 1643.0
+        },
+        {
+          "u": 404.0,
+          "v": 1644.0
+        },
+        {
+          "u": 404.0,
+          "v": 1651.0
+        },
+        {
+          "u": 405.0,
+          "v": 1652.0
+        },
+        {
+          "u": 405.0,
+          "v": 1653.0
+        },
+        {
+          "u": 406.0,
+          "v": 1654.0
+        },
+        {
+          "u": 425.0,
+          "v": 1654.0
+        },
+        {
+          "u": 425.0,
+          "v": 1651.0
+        },
+        {
+          "u": 424.0,
+          "v": 1650.0
+        },
+        {
+          "u": 424.0,
+          "v": 1645.0
+        },
+        {
+          "u": 421.0,
+          "v": 1642.0
+        },
+        {
+          "u": 421.0,
+          "v": 1641.0
+        },
+        {
+          "u": 420.0,
+          "v": 1641.0
+        },
+        {
+          "u": 419.0,
+          "v": 1640.0
+        },
+        {
+          "u": 418.0,
+          "v": 1640.0
+        },
+        {
+          "u": 417.0,
+          "v": 1639.0
+        },
+        {
+          "u": 411.0,
+          "v": 1639.0
+        },
+        {
+          "u": 410.0,
+          "v": 1640.0
+        },
+        {
+          "u": 409.0,
+          "v": 1640.0
+        },
+        {
+          "u": 408.0,
+          "v": 1641.0
+        },
+        {
+          "u": 407.0,
+          "v": 1641.0
+        },
+        {
+          "u": 406.0,
+          "v": 1642.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-10",
+      "districtId": "dense-archipelago",
+      "tmjObjectName": "archipelago-island-10",
+      "sourcePoints": [
+        {
+          "u": 35.0,
+          "v": 1621.0
+        },
+        {
+          "u": 35.0,
+          "v": 1634.0
+        },
+        {
+          "u": 33.0,
+          "v": 1641.0
+        },
+        {
+          "u": 36.0,
+          "v": 1644.0
+        },
+        {
+          "u": 46.0,
+          "v": 1645.0
+        },
+        {
+          "u": 49.0,
+          "v": 1653.0
+        },
+        {
+          "u": 55.0,
+          "v": 1653.0
+        },
+        {
+          "u": 57.0,
+          "v": 1663.0
+        },
+        {
+          "u": 63.0,
+          "v": 1662.0
+        },
+        {
+          "u": 67.0,
+          "v": 1659.0
+        },
+        {
+          "u": 79.0,
+          "v": 1659.0
+        },
+        {
+          "u": 80.0,
+          "v": 1661.0
+        },
+        {
+          "u": 84.0,
+          "v": 1661.0
+        },
+        {
+          "u": 86.0,
+          "v": 1659.0
+        },
+        {
+          "u": 86.0,
+          "v": 1646.0
+        },
+        {
+          "u": 88.0,
+          "v": 1645.0
+        },
+        {
+          "u": 88.0,
+          "v": 1633.0
+        },
+        {
+          "u": 94.0,
+          "v": 1627.0
+        },
+        {
+          "u": 94.0,
+          "v": 1623.0
+        },
+        {
+          "u": 81.0,
+          "v": 1625.0
+        },
+        {
+          "u": 79.0,
+          "v": 1632.0
+        },
+        {
+          "u": 51.0,
+          "v": 1633.0
+        },
+        {
+          "u": 47.0,
+          "v": 1626.0
+        },
+        {
+          "u": 42.0,
+          "v": 1626.0
+        },
+        {
+          "u": 41.0,
+          "v": 1622.0
+        },
+        {
+          "u": 39.0,
+          "v": 1620.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-11",
+      "districtId": "coastal-narrows",
+      "tmjObjectName": "archipelago-island-11",
+      "sourcePoints": [
+        {
+          "u": 66.0,
+          "v": 1521.0
+        },
+        {
+          "u": 59.0,
+          "v": 1539.0
+        },
+        {
+          "u": 74.0,
+          "v": 1547.0
+        },
+        {
+          "u": 74.0,
+          "v": 1559.0
+        },
+        {
+          "u": 66.0,
+          "v": 1563.0
+        },
+        {
+          "u": 66.0,
+          "v": 1568.0
+        },
+        {
+          "u": 71.0,
+          "v": 1569.0
+        },
+        {
+          "u": 77.0,
+          "v": 1576.0
+        },
+        {
+          "u": 84.0,
+          "v": 1578.0
+        },
+        {
+          "u": 94.0,
+          "v": 1577.0
+        },
+        {
+          "u": 95.0,
+          "v": 1573.0
+        },
+        {
+          "u": 101.0,
+          "v": 1568.0
+        },
+        {
+          "u": 122.0,
+          "v": 1570.0
+        },
+        {
+          "u": 126.0,
+          "v": 1572.0
+        },
+        {
+          "u": 126.0,
+          "v": 1583.0
+        },
+        {
+          "u": 128.0,
+          "v": 1585.0
+        },
+        {
+          "u": 136.0,
+          "v": 1587.0
+        },
+        {
+          "u": 144.0,
+          "v": 1593.0
+        },
+        {
+          "u": 155.0,
+          "v": 1593.0
+        },
+        {
+          "u": 155.0,
+          "v": 1586.0
+        },
+        {
+          "u": 163.0,
+          "v": 1581.0
+        },
+        {
+          "u": 165.0,
+          "v": 1567.0
+        },
+        {
+          "u": 159.0,
+          "v": 1566.0
+        },
+        {
+          "u": 148.0,
+          "v": 1555.0
+        },
+        {
+          "u": 148.0,
+          "v": 1543.0
+        },
+        {
+          "u": 151.0,
+          "v": 1541.0
+        },
+        {
+          "u": 153.0,
+          "v": 1533.0
+        },
+        {
+          "u": 146.0,
+          "v": 1520.0
+        },
+        {
+          "u": 138.0,
+          "v": 1518.0
+        },
+        {
+          "u": 130.0,
+          "v": 1503.0
+        },
+        {
+          "u": 121.0,
+          "v": 1499.0
+        },
+        {
+          "u": 106.0,
+          "v": 1497.0
+        },
+        {
+          "u": 104.0,
+          "v": 1502.0
+        },
+        {
+          "u": 99.0,
+          "v": 1502.0
+        },
+        {
+          "u": 94.0,
+          "v": 1507.0
+        },
+        {
+          "u": 88.0,
+          "v": 1507.0
+        },
+        {
+          "u": 87.0,
+          "v": 1512.0
+        },
+        {
+          "u": 78.0,
+          "v": 1512.0
+        },
+        {
+          "u": 77.0,
+          "v": 1517.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-12",
+      "districtId": "coastal-narrows",
+      "tmjObjectName": "archipelago-island-12",
+      "sourcePoints": [
+        {
+          "u": 229.0,
+          "v": 1541.0
+        },
+        {
+          "u": 229.0,
+          "v": 1544.0
+        },
+        {
+          "u": 228.0,
+          "v": 1545.0
+        },
+        {
+          "u": 228.0,
+          "v": 1549.0
+        },
+        {
+          "u": 231.0,
+          "v": 1552.0
+        },
+        {
+          "u": 235.0,
+          "v": 1552.0
+        },
+        {
+          "u": 236.0,
+          "v": 1553.0
+        },
+        {
+          "u": 236.0,
+          "v": 1557.0
+        },
+        {
+          "u": 238.0,
+          "v": 1557.0
+        },
+        {
+          "u": 238.0,
+          "v": 1554.0
+        },
+        {
+          "u": 239.0,
+          "v": 1553.0
+        },
+        {
+          "u": 255.0,
+          "v": 1553.0
+        },
+        {
+          "u": 255.0,
+          "v": 1552.0
+        },
+        {
+          "u": 256.0,
+          "v": 1551.0
+        },
+        {
+          "u": 257.0,
+          "v": 1551.0
+        },
+        {
+          "u": 257.0,
+          "v": 1549.0
+        },
+        {
+          "u": 256.0,
+          "v": 1548.0
+        },
+        {
+          "u": 256.0,
+          "v": 1538.0
+        },
+        {
+          "u": 255.0,
+          "v": 1537.0
+        },
+        {
+          "u": 249.0,
+          "v": 1537.0
+        },
+        {
+          "u": 244.0,
+          "v": 1532.0
+        },
+        {
+          "u": 243.0,
+          "v": 1529.0
+        },
+        {
+          "u": 240.0,
+          "v": 1529.0
+        },
+        {
+          "u": 237.0,
+          "v": 1533.0
+        },
+        {
+          "u": 237.0,
+          "v": 1536.0
+        },
+        {
+          "u": 234.0,
+          "v": 1538.0
+        },
+        {
+          "u": 232.0,
+          "v": 1538.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-13",
+      "districtId": "coastal-narrows",
+      "tmjObjectName": "archipelago-island-13",
+      "sourcePoints": [
+        {
+          "u": 420.0,
+          "v": 1420.0
+        },
+        {
+          "u": 410.0,
+          "v": 1440.0
+        },
+        {
+          "u": 399.0,
+          "v": 1446.0
+        },
+        {
+          "u": 400.0,
+          "v": 1468.0
+        },
+        {
+          "u": 387.0,
+          "v": 1481.0
+        },
+        {
+          "u": 410.0,
+          "v": 1484.0
+        },
+        {
+          "u": 414.0,
+          "v": 1541.0
+        },
+        {
+          "u": 428.0,
+          "v": 1543.0
+        },
+        {
+          "u": 428.0,
+          "v": 1558.0
+        },
+        {
+          "u": 441.0,
+          "v": 1560.0
+        },
+        {
+          "u": 446.0,
+          "v": 1577.0
+        },
+        {
+          "u": 469.0,
+          "v": 1585.0
+        },
+        {
+          "u": 474.0,
+          "v": 1613.0
+        },
+        {
+          "u": 492.0,
+          "v": 1621.0
+        },
+        {
+          "u": 528.0,
+          "v": 1619.0
+        },
+        {
+          "u": 532.0,
+          "v": 1634.0
+        },
+        {
+          "u": 559.0,
+          "v": 1636.0
+        },
+        {
+          "u": 566.0,
+          "v": 1650.0
+        },
+        {
+          "u": 615.0,
+          "v": 1656.0
+        },
+        {
+          "u": 613.0,
+          "v": 1637.0
+        },
+        {
+          "u": 637.0,
+          "v": 1634.0
+        },
+        {
+          "u": 628.0,
+          "v": 1604.0
+        },
+        {
+          "u": 621.0,
+          "v": 1601.0
+        },
+        {
+          "u": 621.0,
+          "v": 1589.0
+        },
+        {
+          "u": 597.0,
+          "v": 1554.0
+        },
+        {
+          "u": 560.0,
+          "v": 1533.0
+        },
+        {
+          "u": 564.0,
+          "v": 1511.0
+        },
+        {
+          "u": 576.0,
+          "v": 1508.0
+        },
+        {
+          "u": 569.0,
+          "v": 1507.0
+        },
+        {
+          "u": 569.0,
+          "v": 1499.0
+        },
+        {
+          "u": 555.0,
+          "v": 1498.0
+        },
+        {
+          "u": 555.0,
+          "v": 1485.0
+        },
+        {
+          "u": 568.0,
+          "v": 1484.0
+        },
+        {
+          "u": 570.0,
+          "v": 1467.0
+        },
+        {
+          "u": 595.0,
+          "v": 1463.0
+        },
+        {
+          "u": 581.0,
+          "v": 1435.0
+        },
+        {
+          "u": 572.0,
+          "v": 1431.0
+        },
+        {
+          "u": 568.0,
+          "v": 1447.0
+        },
+        {
+          "u": 549.0,
+          "v": 1446.0
+        },
+        {
+          "u": 536.0,
+          "v": 1460.0
+        },
+        {
+          "u": 522.0,
+          "v": 1460.0
+        },
+        {
+          "u": 513.0,
+          "v": 1434.0
+        },
+        {
+          "u": 510.0,
+          "v": 1442.0
+        },
+        {
+          "u": 487.0,
+          "v": 1442.0
+        },
+        {
+          "u": 468.0,
+          "v": 1413.0
+        },
+        {
+          "u": 441.0,
+          "v": 1410.0
+        },
+        {
+          "u": 438.0,
+          "v": 1417.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-14",
+      "districtId": "coastal-narrows",
+      "tmjObjectName": "archipelago-island-14",
+      "sourcePoints": [
+        {
+          "u": 178.0,
+          "v": 1511.0
+        },
+        {
+          "u": 174.0,
+          "v": 1511.0
+        },
+        {
+          "u": 171.0,
+          "v": 1514.0
+        },
+        {
+          "u": 171.0,
+          "v": 1515.0
+        },
+        {
+          "u": 170.0,
+          "v": 1516.0
+        },
+        {
+          "u": 168.0,
+          "v": 1516.0
+        },
+        {
+          "u": 168.0,
+          "v": 1524.0
+        },
+        {
+          "u": 170.0,
+          "v": 1524.0
+        },
+        {
+          "u": 171.0,
+          "v": 1525.0
+        },
+        {
+          "u": 172.0,
+          "v": 1525.0
+        },
+        {
+          "u": 173.0,
+          "v": 1526.0
+        },
+        {
+          "u": 173.0,
+          "v": 1528.0
+        },
+        {
+          "u": 176.0,
+          "v": 1528.0
+        },
+        {
+          "u": 179.0,
+          "v": 1525.0
+        },
+        {
+          "u": 180.0,
+          "v": 1525.0
+        },
+        {
+          "u": 180.0,
+          "v": 1524.0
+        },
+        {
+          "u": 181.0,
+          "v": 1523.0
+        },
+        {
+          "u": 186.0,
+          "v": 1523.0
+        },
+        {
+          "u": 186.0,
+          "v": 1521.0
+        },
+        {
+          "u": 184.0,
+          "v": 1519.0
+        },
+        {
+          "u": 184.0,
+          "v": 1518.0
+        },
+        {
+          "u": 182.0,
+          "v": 1516.0
+        },
+        {
+          "u": 182.0,
+          "v": 1514.0
+        },
+        {
+          "u": 180.0,
+          "v": 1512.0
+        },
+        {
+          "u": 179.0,
+          "v": 1512.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-15",
+      "districtId": "coastal-narrows",
+      "tmjObjectName": "archipelago-island-15",
+      "sourcePoints": [
+        {
+          "u": 625.0,
+          "v": 1462.0
+        },
+        {
+          "u": 623.0,
+          "v": 1465.0
+        },
+        {
+          "u": 623.0,
+          "v": 1473.0
+        },
+        {
+          "u": 622.0,
+          "v": 1474.0
+        },
+        {
+          "u": 622.0,
+          "v": 1478.0
+        },
+        {
+          "u": 620.0,
+          "v": 1479.0
+        },
+        {
+          "u": 620.0,
+          "v": 1481.0
+        },
+        {
+          "u": 619.0,
+          "v": 1482.0
+        },
+        {
+          "u": 614.0,
+          "v": 1483.0
+        },
+        {
+          "u": 612.0,
+          "v": 1488.0
+        },
+        {
+          "u": 611.0,
+          "v": 1489.0
+        },
+        {
+          "u": 609.0,
+          "v": 1489.0
+        },
+        {
+          "u": 609.0,
+          "v": 1494.0
+        },
+        {
+          "u": 608.0,
+          "v": 1496.0
+        },
+        {
+          "u": 606.0,
+          "v": 1497.0
+        },
+        {
+          "u": 607.0,
+          "v": 1504.0
+        },
+        {
+          "u": 609.0,
+          "v": 1504.0
+        },
+        {
+          "u": 610.0,
+          "v": 1506.0
+        },
+        {
+          "u": 615.0,
+          "v": 1506.0
+        },
+        {
+          "u": 618.0,
+          "v": 1509.0
+        },
+        {
+          "u": 621.0,
+          "v": 1509.0
+        },
+        {
+          "u": 624.0,
+          "v": 1511.0
+        },
+        {
+          "u": 643.0,
+          "v": 1511.0
+        },
+        {
+          "u": 643.0,
+          "v": 1508.0
+        },
+        {
+          "u": 642.0,
+          "v": 1507.0
+        },
+        {
+          "u": 641.0,
+          "v": 1502.0
+        },
+        {
+          "u": 637.0,
+          "v": 1499.0
+        },
+        {
+          "u": 637.0,
+          "v": 1492.0
+        },
+        {
+          "u": 636.0,
+          "v": 1492.0
+        },
+        {
+          "u": 629.0,
+          "v": 1484.0
+        },
+        {
+          "u": 628.0,
+          "v": 1464.0
+        },
+        {
+          "u": 627.0,
+          "v": 1462.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-16",
+      "districtId": "bridge-gateway",
+      "tmjObjectName": "archipelago-island-16",
+      "sourcePoints": [
+        {
+          "u": 528.0,
+          "v": 1368.0
+        },
+        {
+          "u": 528.0,
+          "v": 1370.0
+        },
+        {
+          "u": 526.0,
+          "v": 1372.0
+        },
+        {
+          "u": 523.0,
+          "v": 1372.0
+        },
+        {
+          "u": 523.0,
+          "v": 1377.0
+        },
+        {
+          "u": 522.0,
+          "v": 1378.0
+        },
+        {
+          "u": 520.0,
+          "v": 1378.0
+        },
+        {
+          "u": 519.0,
+          "v": 1379.0
+        },
+        {
+          "u": 519.0,
+          "v": 1381.0
+        },
+        {
+          "u": 520.0,
+          "v": 1382.0
+        },
+        {
+          "u": 520.0,
+          "v": 1383.0
+        },
+        {
+          "u": 521.0,
+          "v": 1384.0
+        },
+        {
+          "u": 521.0,
+          "v": 1385.0
+        },
+        {
+          "u": 522.0,
+          "v": 1385.0
+        },
+        {
+          "u": 523.0,
+          "v": 1386.0
+        },
+        {
+          "u": 524.0,
+          "v": 1386.0
+        },
+        {
+          "u": 525.0,
+          "v": 1387.0
+        },
+        {
+          "u": 526.0,
+          "v": 1387.0
+        },
+        {
+          "u": 529.0,
+          "v": 1389.0
+        },
+        {
+          "u": 532.0,
+          "v": 1389.0
+        },
+        {
+          "u": 533.0,
+          "v": 1388.0
+        },
+        {
+          "u": 534.0,
+          "v": 1388.0
+        },
+        {
+          "u": 535.0,
+          "v": 1387.0
+        },
+        {
+          "u": 537.0,
+          "v": 1387.0
+        },
+        {
+          "u": 540.0,
+          "v": 1385.0
+        },
+        {
+          "u": 540.0,
+          "v": 1378.0
+        },
+        {
+          "u": 539.0,
+          "v": 1377.0
+        },
+        {
+          "u": 538.0,
+          "v": 1377.0
+        },
+        {
+          "u": 536.0,
+          "v": 1375.0
+        },
+        {
+          "u": 536.0,
+          "v": 1373.0
+        },
+        {
+          "u": 531.0,
+          "v": 1368.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    },
+    {
+      "id": "archipelago-island-17",
+      "districtId": "bridge-gateway",
+      "tmjObjectName": "archipelago-island-17",
+      "sourcePoints": [
+        {
+          "u": 279.0,
+          "v": 1373.0
+        },
+        {
+          "u": 279.0,
+          "v": 1375.0
+        },
+        {
+          "u": 280.0,
+          "v": 1375.0
+        },
+        {
+          "u": 281.0,
+          "v": 1376.0
+        },
+        {
+          "u": 281.0,
+          "v": 1378.0
+        },
+        {
+          "u": 287.0,
+          "v": 1378.0
+        },
+        {
+          "u": 293.0,
+          "v": 1382.0
+        },
+        {
+          "u": 297.0,
+          "v": 1382.0
+        },
+        {
+          "u": 298.0,
+          "v": 1383.0
+        },
+        {
+          "u": 299.0,
+          "v": 1383.0
+        },
+        {
+          "u": 302.0,
+          "v": 1385.0
+        },
+        {
+          "u": 305.0,
+          "v": 1385.0
+        },
+        {
+          "u": 305.0,
+          "v": 1372.0
+        },
+        {
+          "u": 306.0,
+          "v": 1371.0
+        },
+        {
+          "u": 306.0,
+          "v": 1366.0
+        },
+        {
+          "u": 294.0,
+          "v": 1366.0
+        },
+        {
+          "u": 293.0,
+          "v": 1367.0
+        },
+        {
+          "u": 286.0,
+          "v": 1367.0
+        },
+        {
+          "u": 286.0,
+          "v": 1370.0
+        },
+        {
+          "u": 285.0,
+          "v": 1371.0
+        },
+        {
+          "u": 283.0,
+          "v": 1371.0
+        },
+        {
+          "u": 282.0,
+          "v": 1372.0
+        },
+        {
+          "u": 280.0,
+          "v": 1372.0
+        }
+      ],
+      "featureKind": "land-silhouette",
+      "materialFamily": "land-tropical",
+      "occlusionNote": "Silhouette traced from the supplied blueprint lower-archipelago land/water boundary; white surf is treated as shoreline contact, not runtime reference artwork."
+    }
+  ]
+}

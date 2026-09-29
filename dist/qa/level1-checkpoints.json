@@ -1,0 +1,320 @@
+[
+  {
+    "id": "open-sea",
+    "sourceCenter": {
+      "u": 341,
+      "v": 1974
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 1882.0,
+      "right": 682,
+      "bottom": 2048
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 12.0,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "open-sea-lighthouse"
+    ]
+  },
+  {
+    "id": "outer-archipelago",
+    "sourceCenter": {
+      "u": 341,
+      "v": 1790
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 1650.0,
+      "right": 682,
+      "bottom": 1882.0
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 12.75,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "archipelago-gateway"
+    ]
+  },
+  {
+    "id": "dense-archipelago",
+    "sourceCenter": {
+      "u": 341,
+      "v": 1510
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 1392.5,
+      "right": 682,
+      "bottom": 1650.0
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 13.5,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "dense-island-fort"
+    ]
+  },
+  {
+    "id": "coastal-narrows",
+    "sourceCenter": {
+      "u": 341,
+      "v": 1275
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 1197.5,
+      "right": 682,
+      "bottom": 1392.5
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 14.25,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "narrows-cliffs"
+    ]
+  },
+  {
+    "id": "bridge-gateway",
+    "sourceCenter": {
+      "u": 341,
+      "v": 1120
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 1045.0,
+      "right": 682,
+      "bottom": 1197.5
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 15.0,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "main-bridge-landmark",
+      "narrows-bridge"
+    ]
+  },
+  {
+    "id": "civil-harbour",
+    "sourceCenter": {
+      "u": 341,
+      "v": 970
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 917.5,
+      "right": 682,
+      "bottom": 1045.0
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 15.75,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "civil-harbour-core",
+      "civil-house-west-a",
+      "civil-house-east-a"
+    ]
+  },
+  {
+    "id": "industrial-harbour",
+    "sourceCenter": {
+      "u": 341,
+      "v": 865
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 793.5,
+      "right": 682,
+      "bottom": 917.5
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 16.5,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "industrial-terminal-core",
+      "industrial-crane-west",
+      "industrial-crane-east"
+    ]
+  },
+  {
+    "id": "naval-yard",
+    "sourceCenter": {
+      "u": 341,
+      "v": 722
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 662.0,
+      "right": 682,
+      "bottom": 793.5
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 17.25,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "naval-yard-core",
+      "naval-crane-west",
+      "naval-crane-east"
+    ]
+  },
+  {
+    "id": "mountain-transition",
+    "sourceCenter": {
+      "u": 341,
+      "v": 602
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 542.0,
+      "right": 682,
+      "bottom": 662.0
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 18.0,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "mountain-gate",
+      "mountain-tunnel-west",
+      "mountain-tunnel-east"
+    ]
+  },
+  {
+    "id": "river-canyon",
+    "sourceCenter": {
+      "u": 341,
+      "v": 482
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 415.0,
+      "right": 682,
+      "bottom": 542.0
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 18.75,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "canyon-crossing",
+      "canyon-tunnel-west",
+      "canyon-tunnel-east"
+    ]
+  },
+  {
+    "id": "lower-dam",
+    "sourceCenter": {
+      "u": 341,
+      "v": 348
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 308.0,
+      "right": 682,
+      "bottom": 415.0
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 19.5,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "dam-landmark",
+      "dam-face-main"
+    ]
+  },
+  {
+    "id": "alpine-reservoir",
+    "sourceCenter": {
+      "u": 341,
+      "v": 268
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 236.5,
+      "right": 682,
+      "bottom": 308.0
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 20.25,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "reservoir-radar",
+      "reservoir-radar-main"
+    ]
+  },
+  {
+    "id": "frozen-valley",
+    "sourceCenter": {
+      "u": 341,
+      "v": 205
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 173.5,
+      "right": 682,
+      "bottom": 236.5
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 21.0,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "frozen-falls"
+    ]
+  },
+  {
+    "id": "fortress-approach",
+    "sourceCenter": {
+      "u": 341,
+      "v": 142
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 108.5,
+      "right": 682,
+      "bottom": 173.5
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 21.75,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "fortress-gate",
+      "fortress-terrace-west",
+      "fortress-terrace-east"
+    ]
+  },
+  {
+    "id": "citadel-basin",
+    "sourceCenter": {
+      "u": 341,
+      "v": 75
+    },
+    "sourceReviewBounds": {
+      "left": 0,
+      "top": 0,
+      "right": 682,
+      "bottom": 108.5
+    },
+    "screenFocusY": 640,
+    "cameraFocusU": 341,
+    "animationTime": 22.5,
+    "seed": 539363600,
+    "requiredFeatureIds": [
+      "citadel-core",
+      "citadel-gate-main",
+      "citadel-wing-west",
+      "citadel-wing-east"
+    ]
+  }
+]

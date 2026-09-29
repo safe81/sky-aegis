@@ -1,0 +1,536 @@
+
+> sky-aegis@1.6.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: all nine craft, ten enemy families and their referenced sprite files are packaged
+ok 1 - all nine craft, ten enemy families and their referenced sprite files are packaged
+  ---
+  duration_ms: 25.01013
+  type: 'test'
+  ...
+# Subtest: carrier enters as one multipart object and cannot fire before arriving
+ok 2 - carrier enters as one multipart object and cannot fire before arriving
+  ---
+  duration_ms: 3.050212
+  type: 'test'
+  ...
+# Subtest: destroyed carrier weapons cannot emit and reactor destruction clears hostile fire
+ok 3 - destroyed carrier weapons cannot emit and reactor destruction clears hostile fire
+  ---
+  duration_ms: 0.748626
+  type: 'test'
+  ...
+# Subtest: air breakup reaches water after the fall rather than leaving a floating ground wreck
+ok 4 - air breakup reaches water after the fall rather than leaving a floating ground wreck
+  ---
+  duration_ms: 4.063585
+  type: 'test'
+  ...
+# Subtest: ground wreck follows the scenery and smoke has an authored delayed start
+ok 5 - ground wreck follows the scenery and smoke has an authored delayed start
+  ---
+  duration_ms: 0.435814
+  type: 'test'
+  ...
+# Subtest: fighter telegraphs before firing and emits a spaced burst
+ok 6 - fighter telegraphs before firing and emits a spaced burst
+  ---
+  duration_ms: 6.911965
+  type: 'test'
+  ...
+# Subtest: fixed surface enemy follows exact scroll and holds when camera holds
+ok 7 - fixed surface enemy follows exact scroll and holds when camera holds
+  ---
+  duration_ms: 0.37271
+  type: 'test'
+  ...
+# Subtest: dead enemy cancels delayed attack emission
+ok 8 - dead enemy cancels delayed attack emission
+  ---
+  duration_ms: 2.12455
+  type: 'test'
+  ...
+# Subtest: water remains a time-driven animated surface rather than a static background
+ok 9 - water remains a time-driven animated surface rather than a static background
+  ---
+  duration_ms: 0.698002
+  type: 'test'
+  ...
+# Subtest: level 1 renders authored moving cloud layers and their shadows
+ok 10 - level 1 renders authored moving cloud layers and their shadows
+  ---
+  duration_ms: 0.18941
+  type: 'test'
+  ...
+# Subtest: terrain renderer respects per-polygon biome materials
+ok 11 - terrain renderer respects per-polygon biome materials
+  ---
+  duration_ms: 0.161769
+  type: 'test'
+  ...
+# Subtest: shorelines render authored cliff relief and the dam emits animated spillway spray
+ok 12 - shorelines render authored cliff relief and the dam emits animated spillway spray
+  ---
+  duration_ms: 0.16909
+  type: 'test'
+  ...
+# Subtest: every road deck is physically supported or explicitly bridged
+ok 13 - every road deck is physically supported or explicitly bridged
+  ---
+  duration_ms: 9.52066
+  type: 'test'
+  ...
+# Subtest: production geography no longer uses repeated coast/harbour mega-modules
+ok 14 - production geography no longer uses repeated coast/harbour mega-modules
+  ---
+  duration_ms: 0.235738
+  type: 'test'
+  ...
+# Subtest: roads form an explicit graph instead of an implicit Y-only path
+ok 15 - roads form an explicit graph instead of an implicit Y-only path
+  ---
+  duration_ms: 0.238563
+  type: 'test'
+  ...
+# Subtest: semantic sockets declare their district and explicit anchor identity
+ok 16 - semantic sockets declare their district and explicit anchor identity
+  ---
+  duration_ms: 0.254727
+  type: 'test'
+  ...
+# Subtest: compiled runtime exposes road graph and semantic socket metadata
+ok 17 - compiled runtime exposes road graph and semantic socket metadata
+  ---
+  duration_ms: 13.833564
+  type: 'test'
+  ...
+# Subtest: Tiled map is the authored source of truth for runtime geography
+ok 18 - Tiled map is the authored source of truth for runtime geography
+  ---
+  duration_ms: 1.139675
+  type: 'test'
+  ...
+# Subtest: runtime-to-Tiled export is migration-only and cannot overwrite the authored source
+ok 19 - runtime-to-Tiled export is migration-only and cannot overwrite the authored source
+  ---
+  duration_ms: 5.147486
+  type: 'test'
+  ...
+# Subtest: mission placement asks geography for role-specific sockets
+ok 20 - mission placement asks geography for role-specific sockets
+  ---
+  duration_ms: 0.760544
+  type: 'test'
+  ...
+# Subtest: role-specific socket lookup never substitutes a different surface family
+ok 21 - role-specific socket lookup never substitutes a different surface family
+  ---
+  duration_ms: 2.143708
+  type: 'test'
+  ...
+# Subtest: major harbour aprons are integrated with the landmass instead of floating concrete strips
+ok 22 - major harbour aprons are integrated with the landmass instead of floating concrete strips
+  ---
+  duration_ms: 7.865023
+  type: 'test'
+  ...
+# Subtest: narrows fortress is built on a real island under the concrete works
+ok 23 - narrows fortress is built on a real island under the concrete works
+  ---
+  duration_ms: 1.413308
+  type: 'test'
+  ...
+# Subtest: major port districts form real basins between opposing connected banks
+ok 24 - major port districts form real basins between opposing connected banks
+  ---
+  duration_ms: 0.341014
+  type: 'test'
+  ...
+# Subtest: coastal renderer consumes continuous master geography rather than SCENES modules
+ok 25 - coastal renderer consumes continuous master geography rather than SCENES modules
+  ---
+  duration_ms: 0.733614
+  type: 'test'
+  ...
+# Subtest: terrain uses authored polygon clips and textured road polylines
+ok 26 - terrain uses authored polygon clips and textured road polylines
+  ---
+  duration_ms: 0.20276
+  type: 'test'
+  ...
+# Subtest: chunks remain a cache only and cannot invent terrain
+ok 27 - chunks remain a cache only and cannot invent terrain
+  ---
+  duration_ms: 1.69816
+  type: 'test'
+  ...
+# Subtest: renderer supports carved harbour water and authored breakwaters
+ok 28 - renderer supports carved harbour water and authored breakwaters
+  ---
+  duration_ms: 0.157042
+  type: 'test'
+  ...
+# Subtest: road network can traverse a bridge and branch road by node ids
+ok 29 - road network can traverse a bridge and branch road by node ids
+  ---
+  duration_ms: 0.952247
+  type: 'test'
+  ...
+# Subtest: environment resolves stable anchors directly instead of nearest substitution
+ok 30 - environment resolves stable anchors directly instead of nearest substitution
+  ---
+  duration_ms: 1.815704
+  type: 'test'
+  ...
+# Subtest: surface mission content declares explicit authored anchors
+ok 31 - surface mission content declares explicit authored anchors
+  ---
+  duration_ms: 0.41266
+  type: 'test'
+  ...
+# Subtest: validator accepts the authored production map
+ok 32 - validator accepts the authored production map
+  ---
+  duration_ms: 15.00846
+  type: 'test'
+  ...
+# Subtest: validator rejects an unsupported road crossing water
+ok 33 - validator rejects an unsupported road crossing water
+  ---
+  duration_ms: 3.329711
+  type: 'test'
+  ...
+# Subtest: validator rejects invalid road graph references and socket districts
+ok 34 - validator rejects invalid road graph references and socket districts
+  ---
+  duration_ms: 10.556376
+  type: 'test'
+  ...
+# Subtest: coastal geography is one authored world, not encounter-owned scenery
+ok 35 - coastal geography is one authored world, not encounter-owned scenery
+  ---
+  duration_ms: 0.728787
+  type: 'test'
+  ...
+# Subtest: mainland shoreline and coastal road are continuous from south to north
+ok 36 - mainland shoreline and coastal road are continuous from south to north
+  ---
+  duration_ms: 1.197941
+  type: 'test'
+  ...
+# Subtest: districts form an ordered geographic journey
+ok 37 - districts form an ordered geographic journey
+  ---
+  duration_ms: 0.755226
+  type: 'test'
+  ...
+# Subtest: bridge placement connects actual road approaches on both banks
+ok 38 - bridge placement connects actual road approaches on both banks
+  ---
+  duration_ms: 0.458527
+  type: 'test'
+  ...
+# Subtest: semantic sockets have unique ids and physically valid surfaces
+ok 39 - semantic sockets have unique ids and physically valid surfaces
+  ---
+  duration_ms: 5.807432
+  type: 'test'
+  ...
+# Subtest: road lookup returns a real point on the continuous coastal road
+ok 40 - road lookup returns a real point on the continuous coastal road
+  ---
+  duration_ms: 0.455673
+  type: 'test'
+  ...
+# Subtest: coastline has authored coves/headlands instead of parallel corridor walls
+ok 41 - coastline has authored coves/headlands instead of parallel corridor walls
+  ---
+  duration_ms: 0.193325
+  type: 'test'
+  ...
+# Subtest: port geography uses attached breakwaters and reclaimed terminals rather than an east wall
+ok 42 - port geography uses attached breakwaters and reclaimed terminals rather than an east wall
+  ---
+  duration_ms: 0.360223
+  type: 'test'
+  ...
+# Subtest: settings controls never capture the movement pointer while combat actions remain actions
+ok 43 - settings controls never capture the movement pointer while combat actions remain actions
+  ---
+  duration_ms: 0.70394
+  type: 'test'
+  ...
+# Subtest: all authored surface events use stable anchors or an explicit road route
+ok 44 - all authored surface events use stable anchors or an explicit road route
+  ---
+  duration_ms: 1.033827
+  type: 'test'
+  ...
+# Subtest: every mission anchor resolves to the expected role and district
+ok 45 - every mission anchor resolves to the expected role and district
+  ---
+  duration_ms: 0.446019
+  type: 'test'
+  ...
+# Subtest: free-flight encounter coordinates span the authored wide world
+ok 46 - free-flight encounter coordinates span the authored wide world
+  ---
+  duration_ms: 0.312251
+  type: 'test'
+  ...
+# Subtest: level 1 compiles explicit authored art instances for major architecture
+ok 47 - level 1 compiles explicit authored art instances for major architecture
+  ---
+  duration_ms: 0.98806
+  type: 'test'
+  ...
+# Subtest: all authored art instance assets exist in the level 1 registry and package
+ok 48 - all authored art instance assets exist in the level 1 registry and package
+  ---
+  duration_ms: 8.49934
+  type: 'test'
+  ...
+# Subtest: dam face registry anchors the modular face at its downstream toe
+ok 49 - dam face registry anchors the modular face at its downstream toe
+  ---
+  duration_ms: 0.262118
+  type: 'test'
+  ...
+# Subtest: constructed scene uses authored structure, shore and atmosphere modules
+ok 50 - constructed scene uses authored structure, shore and atmosphere modules
+  ---
+  duration_ms: 6.627054
+  type: 'test'
+  ...
+# Subtest: level 1 follows the approved fifteen-district reference journey
+ok 51 - level 1 follows the approved fifteen-district reference journey
+  ---
+  duration_ms: 1.638942
+  type: 'test'
+  ...
+# Subtest: reference trace explicitly defines one continuous water spine and both banks
+ok 52 - reference trace explicitly defines one continuous water spine and both banks
+  ---
+  duration_ms: 0.183521
+  type: 'test'
+  ...
+# Subtest: map expands the approved reference instead of collapsing it to one background image
+ok 53 - map expands the approved reference instead of collapsing it to one background image
+  ---
+  duration_ms: 1.362794
+  type: 'test'
+  ...
+# Subtest: terrain declares tropical, alpine and snow material families
+ok 54 - terrain declares tropical, alpine and snow material families
+  ---
+  duration_ms: 0.211081
+  type: 'test'
+  ...
+# Subtest: atmosphere zones author cloud density and fog progression
+ok 55 - atmosphere zones author cloud density and fog progression
+  ---
+  duration_ms: 0.251772
+  type: 'test'
+  ...
+# Subtest: mission scroll traverses the compressed visual-reference map before final boss
+ok 56 - mission scroll traverses the compressed visual-reference map before final boss
+  ---
+  duration_ms: 6.693342
+  type: 'test'
+  ...
+# Subtest: main canyon and snow shorelines are authored at gameplay-detail density
+ok 57 - main canyon and snow shorelines are authored at gameplay-detail density
+  ---
+  duration_ms: 0.298491
+  type: 'test'
+  ...
+# Subtest: Level 1 QA exposes all fifteen registered review checkpoints
+ok 58 - Level 1 QA exposes all fifteen registered review checkpoints
+  ---
+  duration_ms: 1.203539
+  type: 'test'
+  ...
+# Subtest: QA harness exposes deterministic checkpoint selection and capture metadata
+ok 59 - QA harness exposes deterministic checkpoint selection and capture metadata
+  ---
+  duration_ms: 0.183111
+  type: 'test'
+  ...
+# Subtest: reference contract and trace inventory are packaged outside runtime dist
+ok 60 - reference contract and trace inventory are packaged outside runtime dist
+  ---
+  duration_ms: 4.074511
+  type: 'test'
+  ...
+# Subtest: archipelago silhouettes occupy the same broad source region as the blueprint rather than thin placeholder strips
+ok 61 - archipelago silhouettes occupy the same broad source region as the blueprint rather than thin placeholder strips
+  ---
+  duration_ms: 3.118198
+  type: 'test'
+  ...
+# Subtest: every traced archipelago island has a shoreline using the same silhouette
+ok 62 - every traced archipelago island has a shoreline using the same silhouette
+  ---
+  duration_ms: 0.672474
+  type: 'test'
+  ...
+# Subtest: major Level 1 landmarks are registered inside their blueprint review windows
+ok 63 - major Level 1 landmarks are registered inside their blueprint review windows
+  ---
+  duration_ms: 0.31859
+  type: 'test'
+  ...
+# Subtest: district bands follow traced blueprint transitions rather than equal world-length slices
+ok 64 - district bands follow traced blueprint transitions rather than equal world-length slices
+  ---
+  duration_ms: 0.389265
+  type: 'test'
+  ...
+# Subtest: dam and final fortress artwork occupy their blueprint silhouettes without extending beyond the source
+ok 65 - dam and final fortress artwork occupy their blueprint silhouettes without extending beyond the source
+  ---
+  duration_ms: 0.485367
+  type: 'test'
+  ...
+# Subtest: mainland banks and through-roads do not invade the open/outer archipelago
+ok 66 - mainland banks and through-roads do not invade the open/outer archipelago
+  ---
+  duration_ms: 0.338871
+  type: 'test'
+  ...
+# Subtest: level 1 exposes one uniform blueprint-to-world registration
+ok 67 - level 1 exposes one uniform blueprint-to-world registration
+  ---
+  duration_ms: 1.158812
+  type: 'test'
+  ...
+# Subtest: world bounds preserve source aspect ratio and allow a wider-than-viewport battlefield
+ok 68 - world bounds preserve source aspect ratio and allow a wider-than-viewport battlefield
+  ---
+  duration_ms: 0.12157
+  type: 'test'
+  ...
+# Subtest: scroll limits keep both map ends reachable without exposing outside geography
+ok 69 - scroll limits keep both map ends reachable without exposing outside geography
+  ---
+  duration_ms: 0.134318
+  type: 'test'
+  ...
+# Subtest: gameplay and horizontal camera use the compiled authored world width
+ok 70 - gameplay and horizontal camera use the compiled authored world width
+  ---
+  duration_ms: 7.480855
+  type: 'test'
+  ...
+# Subtest: water rendering consumes authored water regions and their depth/current/ice metadata
+ok 71 - water rendering consumes authored water regions and their depth/current/ice metadata
+  ---
+  duration_ms: 0.960018
+  type: 'test'
+  ...
+# Subtest: cliff styling derives from authored district biome rather than obsolete world-Y magic numbers
+ok 72 - cliff styling derives from authored district biome rather than obsolete world-Y magic numbers
+  ---
+  duration_ms: 0.282047
+  type: 'test'
+  ...
+# Subtest: shore and atmosphere live effects use dedicated authored modules
+ok 73 - shore and atmosphere live effects use dedicated authored modules
+  ---
+  duration_ms: 0.224692
+  type: 'test'
+  ...
+# Subtest: compiled geography exposes authored water regions and shoreline contact metadata
+ok 74 - compiled geography exposes authored water regions and shoreline contact metadata
+  ---
+  duration_ms: 0.904117
+  type: 'test'
+  ...
+# Subtest: bridge deck is ground support while clear span remains naval water
+ok 75 - bridge deck is ground support while clear span remains naval water
+  ---
+  duration_ms: 0.729167
+  type: 'test'
+  ...
+# Subtest: dam separates lower water from the alpine reservoir
+ok 76 - dam separates lower water from the alpine reservoir
+  ---
+  duration_ms: 0.577824
+  type: 'test'
+  ...
+# Subtest: scripted mission settles once after both bosses and all six rescues
+ok 77 - scripted mission settles once after both bosses and all six rescues
+  ---
+  duration_ms: 78.455064
+  type: 'test'
+  ...
+# Subtest: offline worker installs every packaged resource and retires only older Sky Aegis caches
+ok 78 - offline worker installs every packaged resource and retires only older Sky Aegis caches
+  ---
+  duration_ms: 40.325404
+  type: 'test'
+  ...
+# Subtest: collision kill on the event-pruning tick awards score exactly once
+ok 79 - collision kill on the event-pruning tick awards score exactly once
+  ---
+  duration_ms: 1.680264
+  type: 'test'
+  ...
+# Subtest: a new carrier weapon phase gives its own full warning interval
+ok 80 - a new carrier weapon phase gives its own full warning interval
+  ---
+  duration_ms: 2.9503
+  type: 'test'
+  ...
+# Subtest: convoy vehicles occupy distinct positions on the same road
+ok 81 - convoy vehicles occupy distinct positions on the same road
+  ---
+  duration_ms: 2.421629
+  type: 'test'
+  ...
+# Subtest: sweeper remains continuous across telegraph, attack and reposition
+ok 82 - sweeper remains continuous across telegraph, attack and reposition
+  ---
+  duration_ms: 25.507566
+  type: 'test'
+  ...
+# Subtest: serve.mjs falls back to the next free port when the requested port is occupied
+ok 83 - serve.mjs falls back to the next free port when the requested port is occupied
+  ---
+  duration_ms: 106.179366
+  type: 'test'
+  ...
+# Subtest: production neither packages nor requests the blueprint picture
+ok 84 - production neither packages nor requests the blueprint picture
+  ---
+  duration_ms: 42.268716
+  type: 'test'
+  ...
+# Subtest: constructed renderer keeps live water, shoreline motion and atmosphere
+ok 85 - constructed renderer keeps live water, shoreline motion and atmosphere
+  ---
+  duration_ms: 0.334114
+  type: 'test'
+  ...
+# Subtest: environment anchors remain fixed relative to the continuous master geography through travel and hold
+ok 86 - environment anchors remain fixed relative to the continuous master geography through travel and hold
+  ---
+  duration_ms: 1.418907
+  type: 'test'
+  ...
+# Subtest: mission geography does not loop at the old 5200-unit boundary
+ok 87 - mission geography does not loop at the old 5200-unit boundary
+  ---
+  duration_ms: 1.137401
+  type: 'test'
+  ...
+1..87
+# tests 87
+# suites 0
+# pass 87
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 757.395034

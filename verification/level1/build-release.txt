@@ -1,0 +1,2 @@
+Compiled Tiled geography v8: 15 districts, 25 road nodes, 68 sockets -> /mnt/data/sky_aegis_impl/Sky_Aegis_Level1_CODER_HANDOFF_2026-09-14/project/dist/src/game/content/coastalGeographyData.js
+Generated cache v1.6.0: 315 entries; hashed 267 art/map files.
