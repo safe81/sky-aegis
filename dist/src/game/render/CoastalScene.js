@@ -223,26 +223,27 @@ export class CoastalScene{
  scenicDistrictProfile(district){
   const id=district?.id??'';
   const profiles={
-   'coastal-narrows':{left:205,right:200,material:'land-tropical',settlement:'coastal'},
-   'bridge-gateway':{left:248,right:238,material:'land-tropical',settlement:'gateway'},
-   'civil-harbour':{left:218,right:205,material:'land-tropical',settlement:'civil'},
-   'industrial-harbour':{left:236,right:228,material:'land-tropical',settlement:'industrial'},
-   'naval-yard':{left:252,right:244,material:'land-tropical',settlement:'naval'},
-   'mountain-transition':{left:258,right:252,material:'land-alpine',settlement:'alpine'},
-   'river-canyon':{left:302,right:296,material:'land-alpine',settlement:'alpine'},
-   'lower-dam':{left:326,right:318,material:'land-alpine',settlement:'alpine'},
-   'alpine-reservoir':{left:292,right:286,material:'land-alpine',settlement:'alpine'},
-   'frozen-valley':{left:306,right:302,material:'land-snow',settlement:'snow'},
-   'fortress-approach':{left:330,right:324,material:'land-snow',settlement:'fortress'},
-   'citadel-basin':{left:346,right:340,material:'land-snow',settlement:'fortress'},
+   'coastal-narrows':{left:238,right:232,material:'land-tropical',settlement:'coastal'},
+   'bridge-gateway':{left:302,right:294,material:'land-tropical',settlement:'gateway'},
+   'civil-harbour':{left:276,right:264,material:'land-tropical',settlement:'civil'},
+   'industrial-harbour':{left:292,right:286,material:'land-tropical',settlement:'industrial'},
+   'naval-yard':{left:308,right:302,material:'land-tropical',settlement:'naval'},
+   'mountain-transition':{left:294,right:288,material:'land-alpine',settlement:'alpine'},
+   'river-canyon':{left:332,right:326,material:'land-alpine',settlement:'alpine'},
+   'lower-dam':{left:352,right:346,material:'land-alpine',settlement:'alpine'},
+   'alpine-reservoir':{left:326,right:320,material:'land-alpine',settlement:'alpine'},
+   'frozen-valley':{left:336,right:332,material:'land-snow',settlement:'snow'},
+   'fortress-approach':{left:356,right:350,material:'land-snow',settlement:'fortress'},
+   'citadel-basin':{left:372,right:366,material:'land-snow',settlement:'fortress'},
   };
   return profiles[id]??null;
  }
  scenicBankDepth(profile,side,y,district){
   const base=profile?.[side]??0;if(base<=0)return 0;
   const phase=side==='left'?1.73:4.17,band=(district?.elevationBand??0)*.31;
-  const wave=Math.sin(y*.0041+phase+band)*18+Math.sin(y*.0093+phase*.63)*9;
-  return Math.max(0,Math.min(355,base+wave));
+  const wave=Math.sin(y*.0041+phase+band)*28+Math.sin(y*.0093+phase*.63)*14+Math.sin(y*.0017+phase*1.9)*18;
+  // Wider, irregular render-only banks frame the combat lane without touching collision/navigation.
+  return Math.max(0,Math.min(405,base+wave));
  }
  drawScenicDistrictBanks(ctx,minY,maxY){
   const districts=this.map.districts??[],mapMin=this.map.bounds.minX,mapMax=this.map.bounds.maxX;
@@ -263,8 +264,9 @@ export class CoastalScene{
   const poly=[{x:mapEdge,y:inner[0].y},{x:mapEdge,y:inner[inner.length-1].y},...inner.slice().reverse()];
   // Paint the shallow shelf first so only the water-facing half remains visible after land fill.
   ctx.save();this.tracePolyline(ctx,inner);ctx.lineJoin='round';ctx.lineCap='round';
-  const shelf=material==='land-snow'?'rgba(126,205,211,.14)':'rgba(62,210,197,.18)';ctx.strokeStyle=shelf;ctx.lineWidth=92;ctx.stroke();
-  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(192,235,236,.12)':'rgba(135,238,217,.16)';ctx.lineWidth=44;ctx.stroke();ctx.restore();
+  const shelf=material==='land-snow'?'rgba(126,205,211,.18)':'rgba(48,214,198,.22)';ctx.strokeStyle=shelf;ctx.lineWidth=118;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(192,235,236,.16)':'rgba(129,238,217,.20)';ctx.lineWidth=64;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(236,249,250,.12)':'rgba(201,246,227,.12)';ctx.lineWidth=28;ctx.stroke();ctx.restore();
 
   const b=this.bounds(poly),pattern=this.pattern(ctx,material),base=LAND_BASE[material]??LAND_BASE.land;
   ctx.save();this.tracePolygon(ctx,poly);ctx.clip();ctx.fillStyle=base;ctx.globalAlpha=.99;ctx.fillRect(b.minX-32,b.minY-32,b.maxX-b.minX+64,b.maxY-b.minY+64);
@@ -272,8 +274,10 @@ export class CoastalScene{
   this.drawLandMacroVariation(ctx,{id:`scenic-${district.id}-${side}`},b,material);ctx.restore();
 
   // A dark cliff toe plus pale rock rim gives the bank actual vertical mass against the water.
-  ctx.save();this.tracePolyline(ctx,inner);ctx.lineJoin='round';ctx.lineCap='round';ctx.strokeStyle=material==='land-snow'?'rgba(56,67,69,.78)':'rgba(38,44,39,.78)';ctx.lineWidth=24;ctx.stroke();
-  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(226,235,232,.60)':'rgba(199,188,151,.46)';ctx.lineWidth=6;ctx.stroke();ctx.restore();
+  ctx.save();this.tracePolyline(ctx,inner);ctx.lineJoin='round';ctx.lineCap='round';
+  ctx.strokeStyle='rgba(8,20,22,.26)';ctx.lineWidth=42;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(56,67,69,.82)':'rgba(34,42,37,.84)';ctx.lineWidth=27;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(232,241,238,.68)':'rgba(213,198,157,.56)';ctx.lineWidth=7;ctx.stroke();ctx.restore();
   this.drawScenicBankRoad(ctx,inner,side,district,profile);
   this.drawScenicBankDressing(ctx,inner,side,district,profile);
  }
@@ -295,18 +299,31 @@ export class CoastalScene{
    }else{
     for(let k=0;k<2;k++){const r=8+this.detailHash(seed+i*71+k)*9;ctx.fillStyle=k?'rgba(24,72,39,.86)':'rgba(43,103,53,.78)';ctx.beginPath();ctx.arc(x+outward*k*17,y+k*10,r,0,Math.PI*2);ctx.fill();}
    }
-   if(i%2===0)this.drawScenicSettlementBlock(ctx,p,outward,district,profile,seed+i*83);
+   this.drawScenicSettlementBlock(ctx,p,outward,district,profile,seed+i*83);
+   if(!alpine&&i%2===1)this.drawScenicSettlementBlock(ctx,{x:p.x,y:p.y+34},outward,district,profile,seed+i*83+19,.72);
   }
   ctx.restore();
  }
- drawScenicSettlementBlock(ctx,p,outward,district,profile,seed){
+ drawScenicSettlementBlock(ctx,p,outward,district,profile,seed,scale=1){
   const kind=profile.settlement;if(!kind||kind==='alpine'||kind==='snow')return;
-  const h=this.detailHash(seed),x=p.x+outward*(100+h*42),y=p.y-18+this.detailHash(seed+7)*36;
-  ctx.save();ctx.translate(x,y);const w=kind==='industrial'||kind==='naval'?42+h*22:26+h*16,hh=kind==='gateway'?32:22+h*10;
-  ctx.fillStyle='rgba(9,18,18,.34)';ctx.fillRect(-w/2+7,-hh/2+9,w,hh);
-  if(kind==='civil'){ctx.fillStyle='#d9d0b6';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle=(seed%2)?'#b85a3d':'#c86a46';ctx.beginPath();ctx.moveTo(-w*.58,-hh/2);ctx.lineTo(0,-hh*.92);ctx.lineTo(w*.58,-hh/2);ctx.closePath();ctx.fill();}
-  else if(kind==='gateway'){ctx.fillStyle='#8f9187';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle='#c9c2a9';ctx.fillRect(-w*.56,-hh*.62,w*1.12,6);ctx.fillStyle='#2f3c3d';ctx.fillRect(-5,-hh*.22,10,hh*.42);}
-  else{ctx.fillStyle=kind==='naval'?'#69716e':'#777a72';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle='#3d4745';ctx.fillRect(-w*.38,-hh*.18,w*.76,hh*.28);ctx.fillStyle='rgba(238,183,94,.70)';ctx.fillRect(outward>0?w*.24:-w*.34,-hh*.58,5,5);}
+  const h=this.detailHash(seed),x=p.x+outward*(96+h*58),y=p.y-20+this.detailHash(seed+7)*42;
+  ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);
+  const w=kind==='industrial'||kind==='naval'?46+h*28:28+h*19,hh=kind==='gateway'?36:24+h*12;
+  ctx.fillStyle='rgba(5,14,16,.42)';ctx.fillRect(-w/2+9,-hh/2+11,w+2,hh+2);
+  if(kind==='civil'){
+   ctx.fillStyle=(seed%3===0)?'#eee5cf':'#d9d0b6';ctx.fillRect(-w/2,-hh/2,w,hh);
+   ctx.fillStyle=(seed%2)?'#b9563e':'#d07048';ctx.beginPath();ctx.moveTo(-w*.6,-hh/2);ctx.lineTo(0,-hh*.98);ctx.lineTo(w*.6,-hh/2);ctx.closePath();ctx.fill();
+   ctx.fillStyle='rgba(197,233,229,.72)';ctx.fillRect(-w*.26,-hh*.17,w*.18,hh*.18);ctx.fillRect(w*.08,-hh*.17,w*.18,hh*.18);
+   ctx.strokeStyle='rgba(255,239,205,.38)';ctx.lineWidth=1.4;ctx.strokeRect(-w/2,-hh/2,w,hh);
+  }else if(kind==='gateway'){
+   ctx.fillStyle='#8f9187';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle='#d2ccba';ctx.fillRect(-w*.56,-hh*.62,w*1.12,7);
+   ctx.fillStyle='#26383a';ctx.fillRect(-6,-hh*.24,12,hh*.46);ctx.fillStyle='rgba(255,185,91,.80)';ctx.fillRect(outward>0?w*.28:-w*.36,-hh*.52,5,5);
+  }else{
+   ctx.fillStyle=kind==='naval'?'#646d6c':'#777a72';ctx.fillRect(-w/2,-hh/2,w,hh);
+   const roof=ctx.createLinearGradient(-w/2,-hh/2,w/2,hh/2);roof.addColorStop(0,'#8b918c');roof.addColorStop(.5,'#4c5756');roof.addColorStop(1,'#303b3c');ctx.fillStyle=roof;ctx.fillRect(-w*.42,-hh*.26,w*.84,hh*.38);
+   ctx.strokeStyle='rgba(196,209,207,.35)';ctx.lineWidth=1.4;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.moveTo(-w*.34,k*hh*.10);ctx.lineTo(w*.34,k*hh*.10);ctx.stroke();}
+   ctx.fillStyle='rgba(238,183,94,.82)';ctx.fillRect(outward>0?w*.24:-w*.34,-hh*.58,6,6);
+  }
   ctx.restore();
  }
  drawLandMacroVariation(ctx,feature,b,material){
@@ -575,10 +592,12 @@ export class CoastalScene{
   ctx.restore();
  }
  drawFortifiedDeck(ctx,x,deckY,w){
-  ctx.fillStyle='#303636';ctx.fillRect(x,deckY-22,w,44);ctx.fillStyle='#777a74';ctx.fillRect(x,deckY-15,w,28);ctx.fillStyle='#4b514f';ctx.fillRect(x,deckY+12,w,10);
-  ctx.fillStyle='#b9b6a8';ctx.fillRect(x,deckY-22,w,5);ctx.fillRect(x,deckY+17,w,5);
-  ctx.strokeStyle='rgba(239,225,185,.72)';ctx.lineWidth=2;ctx.setLineDash([36,28]);ctx.beginPath();ctx.moveTo(x+28,deckY);ctx.lineTo(x+w-28,deckY);ctx.stroke();ctx.setLineDash([]);
-  for(let i=0;i<10;i++){const px=x+20+i*(w-40)/9;ctx.fillStyle='rgba(224,216,190,.72)';ctx.fillRect(px-2,deckY-27,4,9);ctx.fillRect(px-2,deckY+18,4,9);}
+  const deck=ctx.createLinearGradient(x,deckY-24,x,deckY+24);deck.addColorStop(0,'#8a8b83');deck.addColorStop(.46,'#686d69');deck.addColorStop(1,'#3b4544');
+  ctx.fillStyle='#232c2d';ctx.fillRect(x,deckY-26,w,52);ctx.fillStyle=deck;ctx.fillRect(x,deckY-17,w,34);ctx.fillStyle='#2e3a3b';ctx.fillRect(x,deckY+14,w,12);
+  ctx.fillStyle='rgba(224,220,201,.92)';ctx.fillRect(x,deckY-24,w,4);ctx.fillStyle='rgba(14,23,25,.54)';ctx.fillRect(x,deckY+18,w,6);
+  ctx.strokeStyle='rgba(244,225,164,.82)';ctx.lineWidth=2.2;ctx.setLineDash([38,27]);ctx.beginPath();ctx.moveTo(x+28,deckY);ctx.lineTo(x+w-28,deckY);ctx.stroke();ctx.setLineDash([]);
+  for(let i=0;i<13;i++){const px=x+18+i*(w-36)/12;ctx.fillStyle='rgba(222,216,196,.78)';ctx.fillRect(px-2,deckY-30,4,10);ctx.fillRect(px-2,deckY+20,4,10);
+   if(i%3===1){const g=ctx.createRadialGradient(px,deckY-28,0,px,deckY-28,14);g.addColorStop(0,'rgba(255,210,129,.64)');g.addColorStop(1,'rgba(255,142,54,0)');ctx.fillStyle=g;ctx.fillRect(px-14,deckY-42,28,28);}}
  }
  drawFortifiedGatewayTower(ctx,tx,deckY,scale=1,side=1){
   const w=82*scale,h=142*scale;
