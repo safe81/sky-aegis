@@ -178,14 +178,46 @@ export class CoastalScene{
   else if(touchesEdge&&mountainBand)width=72;
   else if(coastalBand&&/islet|island/i.test(id))width=48;
   if(width<=0)return;
-  const base=LAND_BASE[material]??LAND_BASE.land;
+  const base=LAND_BASE[material]??LAND_BASE.land,pattern=this.pattern(ctx,material);
   ctx.save();this.tracePolygon(ctx,pts);ctx.lineJoin='round';ctx.lineCap='round';
-  // Keep the broad shoulder cheap: solid material underpaint only. The authored polygon itself
-  // supplies texture/detail on top, so this does not create a second expensive pattern pass.
-  ctx.strokeStyle=base;ctx.globalAlpha=.96;ctx.lineWidth=width;ctx.stroke();
+  // Broad render-only shoulder restores the dense coast framing from the master reference.
+  ctx.strokeStyle=base;ctx.globalAlpha=.97;ctx.lineWidth=width;ctx.stroke();
+  // Texture the shoulder as well as the authored polygon. v11 fixed composition but left the
+  // added terrain mass visually flat; this keeps the extension materially continuous.
+  if(pattern){this.tracePolygon(ctx,pts);ctx.strokeStyle=pattern;ctx.globalAlpha=material==='land-snow'?.34:.44;ctx.lineWidth=Math.max(14,width-18);ctx.stroke();}
+  // Low-frequency light/shadow variation stops the wide shoulder reading like a uniform ribbon.
+  const g=ctx.createLinearGradient(b.minX,b.minY,b.maxX,b.maxY);g.addColorStop(0,material==='land-snow'?'rgba(250,253,252,.18)':'rgba(225,205,145,.10)');g.addColorStop(.48,'rgba(0,0,0,0)');g.addColorStop(1,material==='land-snow'?'rgba(46,62,65,.18)':'rgba(8,28,19,.20)');
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=g;ctx.globalAlpha=1;ctx.lineWidth=Math.max(12,width-30);ctx.stroke();
   // Cliff/wet-rock lip gives the new shoulder a readable edge against water without changing geometry.
-  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(87,103,105,.52)':'rgba(26,42,38,.52)';ctx.globalAlpha=1;ctx.lineWidth=Math.min(24,Math.max(10,width*.13));ctx.stroke();
-  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(244,250,249,.28)':'rgba(214,225,194,.16)';ctx.lineWidth=3.5;ctx.stroke();
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(87,103,105,.56)':'rgba(26,42,38,.56)';ctx.globalAlpha=1;ctx.lineWidth=Math.min(26,Math.max(11,width*.14));ctx.stroke();
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(244,250,249,.34)':'rgba(224,218,190,.22)';ctx.lineWidth=3.5;ctx.stroke();
+  this.drawScenicShoulderDressing(ctx,feature,width);
+  ctx.restore();
+ }
+ drawScenicShoulderDressing(ctx,feature,width){
+  const pts=feature?.points??[];if(pts.length<3||width<30)return;
+  const b=this.bounds(pts),midY=(b.minY+b.maxY)/2,district=this.environment.districtAtWorldY(midY),biome=district?.biome??'temperate-coast';
+  const snow=biome==='snow',alpine=biome==='alpine'||snow,mapMin=this.map.bounds.minX,mapMax=this.map.bounds.maxX;
+  const left=b.minX<=mapMin+4,right=b.maxX>=mapMax-4;if(!left&&!right)return;
+  const side=left?1:-1,seed=[...String(feature.id??'shoulder')].reduce((n,c)=>n+c.charCodeAt(0),53),spacing=alpine?72:62;
+  ctx.save();
+  for(let i=1;i<pts.length;i++){
+   const a=pts[i-1],q=pts[i],dx=q.x-a.x,dy=q.y-a.y,len=Math.hypot(dx,dy)||1;if(len<spacing*.65)continue;
+   const nx=-dy/len,ny=dx/len,count=Math.max(1,Math.floor(len/spacing));
+   for(let k=0;k<count;k++){
+    const h=this.detailHash(seed+i*97+k*31),t=(k+.25+h*.5)/count,x0=a.x+dx*t,y0=a.y+dy*t;
+    // Bias decorative mass toward the water-facing half of the render-only shoulder.
+    const ox=side*(width*.18+this.detailHash(seed+i*41+k*13)*width*.18),oy=ny*side*(8+this.detailHash(seed+i*23+k*17)*10),x=x0+ox+nx*side*3,y=y0+oy;
+    if(alpine){
+     if((k+i)%3!==0)this.drawPine(ctx,x,y,9+this.detailHash(seed+k*19)*12,snow);
+     else{ctx.fillStyle=snow?'rgba(93,105,104,.74)':'rgba(66,74,65,.76)';ctx.beginPath();ctx.ellipse(x,y,8+h*10,5+h*5,-.35+h*.7,0,Math.PI*2);ctx.fill();}
+    }else if((k+i)%4===0){
+     ctx.fillStyle='rgba(104,92,69,.72)';ctx.beginPath();ctx.ellipse(x,y,8+h*11,5+h*6,-.35+h*.7,0,Math.PI*2);ctx.fill();
+    }else{
+     const r=7+h*7;ctx.fillStyle=(k+i)%2?'rgba(27,81,45,.82)':'rgba(39,98,52,.72)';ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(13,45,29,.36)';ctx.beginPath();ctx.arc(x+r*.32,y+r*.34,r*.72,0,Math.PI*2);ctx.fill();
+    }
+   }
+  }
   ctx.restore();
  }
  drawLandMacroVariation(ctx,feature,b,material){
