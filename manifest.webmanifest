@@ -1,0 +1,9 @@
+{
+  "name":"Sky Aegis — Coastal Intercept",
+  "short_name":"Sky Aegis",
+  "display":"standalone",
+  "orientation":"portrait",
+  "background_color":"#06111b",
+  "theme_color":"#06111b",
+  "start_url":"./?demo=1"
+}
