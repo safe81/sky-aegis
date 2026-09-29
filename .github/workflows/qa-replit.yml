@@ -1,0 +1,18 @@
+name: Replit QA branch checks
+on:
+  push:
+    branches: [qa/replit-v13]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/qa-vector-fallbacks.test.mjs
+      - run: node --check dist/src/game/render/CoastalScene.js
+      - run: node --check dist/src/game/content/level1Art.js
