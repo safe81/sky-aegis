@@ -34,6 +34,10 @@ export class WaterSurface {
      water+=vec3(.04,.13,.13)*(fine-.4);
      float caustic=pow(max(0.,1.-abs(fine-.49)*19.),7.);
      water+=vec3(.04,.10,.09)*caustic*.24;
+     float sunBand=pow(max(0.,1.-abs((uv.x*.82+uv.y*.28)-.43)*4.8),7.);
+     water+=vec3(.20,.17,.10)*sunBand*(.10+.16*swell);
+     float edgeShade=smoothstep(.72,1.0,length((uv-vec2(.5,.48))*vec2(.72,.36)));
+     water=mix(water,water*vec3(.72,.82,.88),edgeShade*.22);
      gl_FragColor=vec4(water,1.);
     }`));
    gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
