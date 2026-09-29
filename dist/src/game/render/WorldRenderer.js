@@ -253,10 +253,18 @@ export class WorldRenderer {
         const p = (q) => a.length ? a[Math.min(a.length - 1, Math.floor((a.length - 1) * q))] : 0;
         return { p50: p(.5), p95: p(.95), p99: p(.99), samples: a.length };
     }
-    drawWorldGrade(ctx) {
-        const g=ctx.createLinearGradient(0,0,VIEWPORT_WIDTH,this.viewHeight);
-        g.addColorStop(0,'rgba(210,218,168,.025)');g.addColorStop(1,'rgba(5,29,36,.10)');
-        ctx.fillStyle=g;ctx.fillRect(0,0,VIEWPORT_WIDTH,this.viewHeight);
+    drawWorldGrade(ctx, elapsed = 0) {
+        ctx.save();
+        const key=ctx.createLinearGradient(0,0,VIEWPORT_WIDTH,this.viewHeight);
+        key.addColorStop(0,'rgba(255,232,179,.055)');key.addColorStop(.42,'rgba(104,183,175,.012)');key.addColorStop(1,'rgba(4,24,35,.13)');
+        ctx.fillStyle=key;ctx.fillRect(0,0,VIEWPORT_WIDTH,this.viewHeight);
+        const vig=ctx.createRadialGradient(VIEWPORT_WIDTH*.5,this.viewHeight*.46,VIEWPORT_WIDTH*.18,VIEWPORT_WIDTH*.5,this.viewHeight*.48,Math.max(VIEWPORT_WIDTH,this.viewHeight)*.72);
+        vig.addColorStop(0,'rgba(0,0,0,0)');vig.addColorStop(.72,'rgba(0,8,12,.025)');vig.addColorStop(1,'rgba(0,7,13,.18)');
+        ctx.fillStyle=vig;ctx.fillRect(0,0,VIEWPORT_WIDTH,this.viewHeight);
+        ctx.globalCompositeOperation='screen';ctx.globalAlpha=.16+.03*Math.sin(elapsed*.23);
+        const haze=ctx.createRadialGradient(VIEWPORT_WIDTH*.14,this.viewHeight*.12,0,VIEWPORT_WIDTH*.14,this.viewHeight*.12,VIEWPORT_WIDTH*.72);
+        haze.addColorStop(0,'rgba(255,220,154,.18)');haze.addColorStop(1,'rgba(255,220,154,0)');ctx.fillStyle=haze;ctx.fillRect(0,0,VIEWPORT_WIDTH,this.viewHeight);
+        ctx.restore();
     }
     wreckImage(assetId) {
         if(wreckVisualSource(assetId)==='component')return this.cache.get('wreck:component')?.image??null;
@@ -491,12 +499,12 @@ export class WorldRenderer {
             ctx.fill();
         }
         if (img) {
-            const box = this.imageBox(img, craft.width * 1.62, craft.width * 1.56);
-            ctx.save();
-            ctx.translate(p.x, p.y);
-            ctx.rotate(bank * .010);
-            ctx.drawImage(img, -box.width / 2, -box.height / 2, box.width, box.height);
-            ctx.restore();
+            const box = this.imageBox(img, craft.width * 1.68, craft.width * 1.62);
+            ctx.save();ctx.translate(p.x,p.y);ctx.rotate(bank*.010);
+            ctx.shadowBlur=9;ctx.shadowColor=exhaustColor;ctx.globalAlpha=.92;ctx.drawImage(img,-box.width/2,-box.height/2,box.width,box.height);
+            ctx.shadowBlur=0;ctx.globalAlpha=1;ctx.drawImage(img,-box.width/2,-box.height/2,box.width,box.height);
+            ctx.globalCompositeOperation='screen';ctx.globalAlpha=.12;ctx.filter='brightness(1.35) contrast(1.08)';ctx.drawImage(img,-box.width/2-1.5,-box.height/2-2.5,box.width,box.height);
+            ctx.filter='none';ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.restore();
         }
         else
             this.drawCraftFallback(ctx, p.x, p.y, craft.width, craft.weapon.family);
@@ -561,10 +569,15 @@ export class WorldRenderer {
         const img=this.getImage(`enemy:${id}`,()=>enemySpriteUrl(id));
         const bank=Number(e.data.bank)||0,rotation=def.domain==='air'&&id!=='gunship'?Math.PI+bank:0;
         if(img){
-            const box=this.imageBox(img,maxW,maxH);
+            const box=this.imageBox(img,maxW*1.03,maxH*1.03),accent=def.art?.accent??'#ff8254';
             if(def.domain==='air')this.combat.shadow(ctx,img,e.x,e.y,box.width,box.height,id==='gunship'?48:60,rotation);
             else this.drawEntitySurfaceFx(ctx,e,def.domain,maxW,maxH);
-            ctx.save();ctx.translate(e.x,e.y);ctx.rotate(rotation);ctx.drawImage(img,-box.width/2,-box.height/2,box.width,box.height);ctx.restore();
+            this.drawEnemyReadabilityHalo(ctx,e,accent,box.width,box.height);
+            ctx.save();ctx.translate(e.x,e.y);ctx.rotate(rotation);
+            ctx.shadowBlur=7;ctx.shadowColor=accent;ctx.globalAlpha=.92;ctx.drawImage(img,-box.width/2,-box.height/2,box.width,box.height);
+            ctx.shadowBlur=0;ctx.globalAlpha=1;ctx.drawImage(img,-box.width/2,-box.height/2,box.width,box.height);
+            ctx.globalCompositeOperation='screen';ctx.globalAlpha=.085;ctx.filter='brightness(1.28)';ctx.drawImage(img,-box.width/2-1,-box.height/2-1.5,box.width,box.height);
+            ctx.filter='none';ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.restore();
         }
         this.combat.articulatedWeapon(ctx,e,this.frame?.elapsed??0);
         if(e.hp<e.maxHp){ctx.fillStyle='#0b2628bb';ctx.fillRect(e.x-maxW*.3,e.y-maxH*.5,maxW*.6,4);ctx.fillStyle='#f17c67';ctx.fillRect(e.x-maxW*.3,e.y-maxH*.5,maxW*.6*e.hp/e.maxHp,4);}
@@ -710,28 +723,15 @@ export class WorldRenderer {
         ctx.restore();
     }
     drawPickup(ctx, e) {
-        const img = this.getImage('fx:pickup', () => effectSpriteUrl('pickup'));
-        ctx.save();
-        ctx.translate(e.x, e.y);
-        ctx.rotate(performance.now() * .00045);
-        if (img) {
-            const box = this.imageBox(img, 34, 42);
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#66ff9a';
-            ctx.drawImage(img, -box.width / 2, -box.height / 2, box.width, box.height);
-        }
-        else {
-            ctx.fillStyle = '#6cff96';
-            ctx.shadowBlur = 12;
-            ctx.shadowColor = '#6cff96';
-            ctx.beginPath();
-            ctx.moveTo(0, -11);
-            ctx.lineTo(9, 0);
-            ctx.lineTo(0, 11);
-            ctx.lineTo(-9, 0);
-            ctx.closePath();
-            ctx.fill();
-        }
+        const img=this.getImage('fx:pickup',()=>effectSpriteUrl('pickup')),t=performance.now()*.001,pulse=.5+.5*Math.sin(t*4.4);
+        ctx.save();ctx.translate(e.x,e.y);ctx.globalCompositeOperation='screen';
+        const halo=ctx.createRadialGradient(0,0,5,0,0,32+pulse*4);halo.addColorStop(0,'rgba(146,255,190,.28)');halo.addColorStop(.55,'rgba(72,255,147,.12)');halo.addColorStop(1,'rgba(72,255,147,0)');
+        ctx.fillStyle=halo;ctx.beginPath();ctx.arc(0,0,36,0,Math.PI*2);ctx.fill();
+        ctx.rotate(t*.55);ctx.strokeStyle='rgba(165,255,212,.58)';ctx.lineWidth=1.8;ctx.setLineDash([8,7]);ctx.beginPath();ctx.ellipse(0,0,24+pulse*2,13+pulse,0,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+        ctx.rotate(-t*.92);for(let i=0;i<3;i++){const aa=i*Math.PI*2/3+t*.7,rr=25;ctx.fillStyle='rgba(224,255,239,.72)';ctx.beginPath();ctx.arc(Math.cos(aa)*rr,Math.sin(aa)*rr,1.6+pulse*.8,0,Math.PI*2);ctx.fill();}
+        ctx.globalCompositeOperation='source-over';ctx.rotate(t*.37);
+        if(img){const box=this.imageBox(img,38,47);ctx.shadowBlur=18;ctx.shadowColor='#66ff9a';ctx.drawImage(img,-box.width/2,-box.height/2,box.width,box.height);ctx.shadowBlur=0;}
+        else{ctx.fillStyle='#6cff96';ctx.shadowBlur=12;ctx.shadowColor='#6cff96';ctx.beginPath();ctx.moveTo(0,-12);ctx.lineTo(10,0);ctx.lineTo(0,12);ctx.lineTo(-10,0);ctx.closePath();ctx.fill();}
         ctx.restore();
     }
     drawProjectiles(ctx, world, faction) {
@@ -998,77 +998,3 @@ export class WorldRenderer {
             ctx.lineTo(-Math.cos(p.rotation) * length * .72, -Math.sin(p.rotation) * length * .72);
             ctx.stroke();
         }
-        else if (style === 'metal-fragment') {
-            if(this.combat.fragment(ctx,p)){ctx.restore();return;}
-            const w = p.size * 1.5, h = Math.max(2, p.size * .68);
-            const g = ctx.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2);
-            g.addColorStop(0, '#c7d0d3');
-            g.addColorStop(.28, p.color);
-            g.addColorStop(1, '#252b30');
-            ctx.fillStyle = g;
-            ctx.beginPath();
-            ctx.moveTo(-w * .5, -h * .2);
-            ctx.lineTo(-w * .16, -h * .55);
-            ctx.lineTo(w * .5, -h * .15);
-            ctx.lineTo(w * .34, h * .52);
-            ctx.lineTo(-w * .44, h * .34);
-            ctx.closePath();
-            ctx.fill();
-            ctx.strokeStyle = 'rgba(230,242,244,.5)';
-            ctx.lineWidth = .8;
-            ctx.stroke();
-        }
-        else if (style === 'water-streak') {
-            const img = this.getImage('fx:splash', () => effectSpriteUrl('splash')), len = Math.max(10, p.size * 3.5);
-            ctx.shadowBlur = 5;
-            ctx.shadowColor = 'rgba(170,244,255,.7)';
-            if (img && p.size > 3.4) {
-                const box = this.imageBox(img, len * 1.7, len * 1.45);
-                ctx.drawImage(img, -box.width / 2, -box.height / 2, box.width, box.height);
-            }
-            else {
-                const g = ctx.createLinearGradient(0, -len, 0, len * .3);
-                g.addColorStop(0, 'rgba(255,255,255,0)');
-                g.addColorStop(.42, 'rgba(218,251,255,.9)');
-                g.addColorStop(1, 'rgba(111,211,229,.12)');
-                ctx.fillStyle = g;
-                ctx.beginPath();
-                ctx.moveTo(0, -len);
-                ctx.quadraticCurveTo(p.size * .72, -len * .2, p.size * .5, len * .18);
-                ctx.quadraticCurveTo(0, len * .42, -p.size * .5, len * .18);
-                ctx.quadraticCurveTo(-p.size * .72, -len * .2, 0, -len);
-                ctx.fill();
-            }
-        }
-        else {
-            const radius = p.size + (1 - p.alpha) * 20;
-            ctx.shadowBlur = 5;
-            ctx.shadowColor = p.color;
-            ctx.strokeStyle = p.color;
-            ctx.lineWidth = Math.max(1.5, 2.4 * p.alpha);
-            ctx.beginPath();
-            ctx.arc(0, 0, radius, 0, Math.PI * 2);
-            ctx.stroke();
-        }
-        ctx.restore();
-    }
-    drawThreatMarkers(ctx, world, cameraX) {
-        for (const e of world.entities.values()) {
-            if (!e.active || e.faction !== 'enemy' || e.y >= 0)
-                continue;
-            const screenX = worldToScreenX(e.x, cameraX);
-            const x = Math.max(28, Math.min(VIEWPORT_WIDTH - 28, screenX));
-            ctx.save();
-            ctx.translate(x, 24);
-            ctx.fillStyle = 'rgba(255,66,118,.8)';
-            ctx.beginPath();
-            ctx.moveTo(0, 0);
-            ctx.lineTo(-10, -13);
-            ctx.lineTo(10, -13);
-            ctx.closePath();
-            ctx.fill();
-            ctx.restore();
-        }
-    }
-    destroy() { this.scene.destroy(); this.cache.clear(); this.projectileSprites.clear(); this.combat.shadows.clear(); this.combat.bolts.clear(); this.canvas.width=1; this.canvas.remove(); }
-}
