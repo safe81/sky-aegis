@@ -282,3 +282,63 @@ test('dam and citadel mountain shoulders frame the portrait channel instead of s
   assert.ok(e.visualBounds.minX<=mid+width*.08,`${eastId} starts at ${e.visualBounds.minX}, leaving the portrait canyon unframed`);
  }
 });
+
+test('portrait map uses render-only scenic shoulders to keep coastal banks visually continuous',()=>{
+ assert.match(coastal,/drawScenicLandShoulder\(/,'missing visual shoulder pass');
+ assert.match(coastal,/touchesEdge&&coastalBand\)width=120/,'coastal shoulder width must stay tuned for a readable 720px flight lane');
+ assert.match(coastal,/touchesEdge&&mountainBand\)width=72/,'mountain shoulders should be lighter than harbour shoulders');
+ assert.match(coastal,/Collision and\s*\/\/ gameplay surfaces remain authored by the TMJ/,'visual shoulders must remain explicitly render-only');
+});
+
+
+test('v12 scenic shoulders carry material texture and deterministic dressing',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
+  assert.match(src,/drawScenicShoulderDressing/);
+  assert.match(src,/strokeStyle=pattern/);
+  assert.match(src,/width-18/);
+  assert.match(src,/Bias decorative mass toward the water-facing half/);
+});
+
+test('v12 shoreline shallows are visibly wider without changing map geometry',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/ShoreEffects.js',import.meta.url),'utf8');
+  assert.match(src,/beach\?88:64/);
+  assert.match(src,/beach\?46:34/);
+  assert.match(src,/beach\?21:16/);
+});
+
+test('v13 district banks restore dense portrait coast framing without changing authored surfaces',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
+  assert.match(src,/drawScenicDistrictBanks\(ctx,minY,maxY\)/);
+  assert.match(src,/'bridge-gateway':\{left:302,right:294/);
+  assert.match(src,/'civil-harbour':\{left:276,right:264/);
+  assert.match(src,/'citadel-basin':\{left:372,right:366/);
+  assert.match(src,/drawScenicBankRoad/);
+  assert.match(src,/drawScenicSettlementBlock/);
+});
+
+test('v13 bridge gateway is visually anchored by fortified towers',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
+  assert.match(src,/drawFortifiedGatewayTower\(ctx,x\+w\*\.16,deckY,\.72,-1\)/);
+  assert.match(src,/drawFortifiedGatewayTower\(ctx,x\+w\*\.84,deckY,\.72,1\)/);
+});
+
+
+test('v14 production-art cohesion strengthens environment framing and material depth',async()=>{
+  const coastal=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
+  const water=await readFile(new URL('../dist/src/game/render/WaterSurface.js',import.meta.url),'utf8');
+  assert.match(coastal,/lineWidth=118/);
+  assert.match(coastal,/Math\.min\(405,base\+wave\)/);
+  assert.match(coastal,/drawScenicSettlementBlock\(ctx,\{x:p\.x,y:p\.y\+34\}/);
+  assert.match(coastal,/for\(let i=0;i<13;i\+\+\)/);
+  assert.match(water,/sunBand/);
+});
+
+test('v14 aircraft enemies boats and pickups receive premium readability polish',async()=>{
+  const world=await readFile(new URL('../dist/src/game/render/WorldRenderer.js',import.meta.url),'utf8');
+  const authored=await readFile(new URL('../dist/src/game/render/AuthoredStructures.js',import.meta.url),'utf8');
+  assert.match(world,/drawEnemyReadabilityHalo\(ctx,e,accent/);
+  assert.match(world,/brightness\(1\.35\) contrast\(1\.08\)/);
+  assert.match(world,/ctx\.ellipse\(0,0,24\+pulse\*2,13\+pulse/);
+  assert.match(authored,/quadraticCurveTo\(side\*width\*\.28,height\*\.36/);
+  assert.match(authored,/instanceHash/);
+});

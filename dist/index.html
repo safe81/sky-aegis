@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#07131c">
+  <meta name="description" content="Original coastal arcade shooter with nine aircraft and authored 2.5D scenery.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Sky Aegis</title>
+</head>
+<body>
+  <div id="app" class="app-shell" aria-live="polite">
+    <div class="boot-card"><div class="brand-mark">SA</div><div><strong>SKY AEGIS</strong><span>INITIALISING FLIGHT SYSTEMS</span></div></div>
+  </div>
+  <script>
+    if(location.protocol==='file:')document.getElementById('app').innerHTML='<main style="max-width:520px;padding:32px;color:#d9eeea;font:17px/1.6 system-ui"><h1>Launch Sky Aegis</h1><p>Open <strong>START_GAME.bat</strong> in the extracted folder on Windows, or run <strong>START_GAME.sh</strong> on macOS/Linux.</p><p>The launcher opens the game in your browser. Keep its window open while playing.</p><p>Node.js 20 or newer is required for the included local launcher.</p></main>';
+    else {const script=document.createElement('script');script.type='module';script.src='./src/main.js';document.body.append(script);}
+  </script>
+</body>
+</html>

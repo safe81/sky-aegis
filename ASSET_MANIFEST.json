@@ -1,0 +1,1554 @@
+{
+  "build": "1.6.0",
+  "counts": {
+    "aircraft_bank_sprites": 135,
+    "aircraft_hangar": 9,
+    "aircraft_portraits": 9,
+    "aircraft_wrecks": 9,
+    "enemy_sprites": 10,
+    "boss_assets": 5,
+    "environment_modules": 1,
+    "environment_modular_props": 4,
+    "fireball_animation_frames": 4,
+    "new_effect_textures": 2,
+    "geography_master_maps": 1,
+    "geography_districts": 15,
+    "geography_land_polygons": 28,
+    "geography_water_cutouts": 6,
+    "geography_maritime_structures": 5,
+    "geography_semantic_sockets": 68,
+    "geography_road_nodes": 25,
+    "geography_road_segments": 25,
+    "geography_reference_trace": 3,
+    "geography_atmosphere_zones": 7,
+    "environment_biome_textures": 3
+  },
+  "precache_entries": 355,
+  "files": [
+    {
+      "path": "art/aircraft-banks/aurora-1/hard-left-clean.png",
+      "bytes": 175802,
+      "sha256": "7837d4d4d48b73b688443db0e57359f34d6c02fc893c5ac8ee9ce4c010172569"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/hard-left-critical.png",
+      "bytes": 166998,
+      "sha256": "674a698baac72035b875309fcfdea4819d80166d946e289fcd39abad9f3e345f"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/hard-left-damaged.png",
+      "bytes": 173798,
+      "sha256": "f10a273241ee354cb9416bcd5f2c1262a410284451ed744159b433ba629fff80"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/hard-right-clean.png",
+      "bytes": 176138,
+      "sha256": "bb4d27088cf4521add44e8a6c22bbbc849d73c1896c86576a0912f6c26419ec5"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/hard-right-critical.png",
+      "bytes": 167498,
+      "sha256": "4e5ca079810c2b17ebea3c656c00cecb318f0fca4be641e2b152f8e76b810341"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/hard-right-damaged.png",
+      "bytes": 174121,
+      "sha256": "cd97641081647b8b830051dbb342a15d8ef86a2937c41cb5b0b78c8ddba9861a"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/mild-left-clean.png",
+      "bytes": 185454,
+      "sha256": "184cc93138fa0fdad8653a2568457824545bdbfdcba77f991e266e453ad8b2f0"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/mild-left-critical.png",
+      "bytes": 176411,
+      "sha256": "9d8c1d4207b454d31c9882936f739459b3c484189a6331114b06406d78f29aad"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/mild-left-damaged.png",
+      "bytes": 183331,
+      "sha256": "1b595a22b17a179456cf45cc17e0d8d0e644e385eb3fa705ef4b2a97f4bd04d1"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/mild-right-clean.png",
+      "bytes": 185669,
+      "sha256": "c43652ae34bf96f7bfcfac1611341858a37f2853832b1179198221124a254d61"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/mild-right-critical.png",
+      "bytes": 176673,
+      "sha256": "44466ce9f65ea43f7818e75d0638a96add62951d3fc0d8f308f42783490cf0d0"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/mild-right-damaged.png",
+      "bytes": 183520,
+      "sha256": "103b96cf999433e8b911f68cfe565b5a14829195dd6deebe4dd0a5f33a64da6b"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/neutral-clean.png",
+      "bytes": 186330,
+      "sha256": "65dee6e530cffe60b52767d872e69eb2d8a064a47847de18596f8def2137006b"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/neutral-critical.png",
+      "bytes": 176189,
+      "sha256": "bff131eb65dea1fed4c1b05ee56bde91b1594d95b742f28637461f6ffbf3bbd6"
+    },
+    {
+      "path": "art/aircraft-banks/aurora-1/neutral-damaged.png",
+      "bytes": 184040,
+      "sha256": "f5fd70a06f69d763ce022ee9c609c016cd796d21baeb5d17c847d19bfe24c423"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/hard-left-clean.png",
+      "bytes": 169154,
+      "sha256": "b764b67d8b884338b1e745ddb6bea982f4eb97c836120bbede6bc47ec22c54fd"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/hard-left-critical.png",
+      "bytes": 159661,
+      "sha256": "03605f5c0f040b92123f2eaf0a126be73be33125f14b4d91cdd336153d27baea"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/hard-left-damaged.png",
+      "bytes": 167074,
+      "sha256": "c332f55dda8bb15aae32eb38dc629b493b9119f63bd0ec517d464ab7f24f8b72"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/hard-right-clean.png",
+      "bytes": 169459,
+      "sha256": "74be0395336c2461a219c9fa1dd3c0b896f9cb50dc7e715383a35d568b0cb388"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/hard-right-critical.png",
+      "bytes": 159790,
+      "sha256": "e9f129322778da5cca55a21d8922c7c5d3f4a64d47f9b31719647999d3b587ab"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/hard-right-damaged.png",
+      "bytes": 167612,
+      "sha256": "397606164b7faf70eaaa475a9557e08b17b59bdd5e93ae776705b1e4712354c1"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/mild-left-clean.png",
+      "bytes": 179331,
+      "sha256": "4ce40fca878b3c4e5f1881888e7b6f6161f5be78ec09a3711275f62df093071d"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/mild-left-critical.png",
+      "bytes": 169226,
+      "sha256": "2806995c26b29b0cb063c82cb0c2fcd1f1289cecaf6ea1fc1cb6227d72443f20"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/mild-left-damaged.png",
+      "bytes": 177215,
+      "sha256": "cda767f2760453f68c5dcb2c3cda59df8606875ed19da1ce4ab5ba77216fe4ae"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/mild-right-clean.png",
+      "bytes": 179604,
+      "sha256": "9dc92a62753842eb8ec88fa8feb3712789022b08927a0488e5e75d6a6698a795"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/mild-right-critical.png",
+      "bytes": 169673,
+      "sha256": "bacf6ce1ce83d9fd1a0c96a76fe9efaadefb005d85350f23cabab46f622989b7"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/mild-right-damaged.png",
+      "bytes": 177764,
+      "sha256": "269f1d42442b5d72d1fc3efea855c59c9bc4e2049c80a9465c83563422c78070"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/neutral-clean.png",
+      "bytes": 182589,
+      "sha256": "a6d981528fe01123fa480e437f47dd0c68e23601371f846924f6b775646b0985"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/neutral-critical.png",
+      "bytes": 171637,
+      "sha256": "5df4ba52cff3ab6d2e7dbd036aa68b7c7b48b2e852b76967693b7bded273fbe0"
+    },
+    {
+      "path": "art/aircraft-banks/bulldog-4/neutral-damaged.png",
+      "bytes": 180126,
+      "sha256": "da2939c17c990fb21f89d6756fe6d67e0e38a1b1bc235c0cd510668efecda5e0"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/hard-left-clean.png",
+      "bytes": 146531,
+      "sha256": "f0d9ae50477bca9256ca31df591ed449f178e0d480d58c9e04b9452e464d5b12"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/hard-left-critical.png",
+      "bytes": 141497,
+      "sha256": "55fc630283aca387cc60efe347ecc9d28a68ca928dc68187df3f294e7e8db0b0"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/hard-left-damaged.png",
+      "bytes": 145207,
+      "sha256": "dad9b92ab1ec513390a94dce067d969e6aa8a60ec341e5004a4b7d9ef7b5a0a2"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/hard-right-clean.png",
+      "bytes": 147560,
+      "sha256": "bbff9118d0c1059638532577a455595b1a120a5bfc26fe6153fce60cbe39cdf9"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/hard-right-critical.png",
+      "bytes": 142349,
+      "sha256": "0a58128b5481d0503f1205849f3d8b48233a4e96e92dba5eb7d5eca371af5f0c"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/hard-right-damaged.png",
+      "bytes": 146296,
+      "sha256": "9e9ec1d9504d8b2dc2e92ce9fc5266859d5f0756b9fdbaa0ecfe72231c6cc3cc"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/mild-left-clean.png",
+      "bytes": 154990,
+      "sha256": "12405fa0ff11acd27cc6372d4b55582329a10d07d35983a5cde5131ba464d593"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/mild-left-critical.png",
+      "bytes": 149374,
+      "sha256": "f56fb14ef5ca62d35c6eaee269e8dfcb8634962bf066605c6266d611d766e75e"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/mild-left-damaged.png",
+      "bytes": 153828,
+      "sha256": "ad31e2f38bda3696e6d81b572ddfe77a8d6d47e55d6c7b92b60c27b250901400"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/mild-right-clean.png",
+      "bytes": 155420,
+      "sha256": "3f7d282222cb38a02065a8396e821fa918f88d3dd8c2dcc8d51bf7166384b3cf"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/mild-right-critical.png",
+      "bytes": 150018,
+      "sha256": "0f48997c807a66a71b7d180e3cda2b5f4755cc17e90a639290b984caa143afde"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/mild-right-damaged.png",
+      "bytes": 154202,
+      "sha256": "a4e2e26dedf554df4ff750bbbb2f0989f018a1e0ddee02626508bdc0b42ff6f8"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/neutral-clean.png",
+      "bytes": 159055,
+      "sha256": "dfd84d3127ea034448bf157b53d494f803338f0ce9cb81d6ef2d680ed6393f14"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/neutral-critical.png",
+      "bytes": 150879,
+      "sha256": "86add089dda7367bbacd480ea2ae181d66aff21d30f884dff406cefe56f3bd05"
+    },
+    {
+      "path": "art/aircraft-banks/falcon-07/neutral-damaged.png",
+      "bytes": 157120,
+      "sha256": "6a17ded8ef2e0c0d7472fc8707a038fe0dee5f1535265f11caf597d87e36e601"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/hard-left-clean.png",
+      "bytes": 47775,
+      "sha256": "7f24deb2a6f48fe5cc8846d315aeedafdbd558d6dde7c6aed25bda1be76e542d"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/hard-left-critical.png",
+      "bytes": 48125,
+      "sha256": "8063ee52a3172ddff9858d7d82c3a044bdd340376a6ed5482cf05733f134769f"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/hard-left-damaged.png",
+      "bytes": 47830,
+      "sha256": "fe2894fa21673f811c18385fdb2525c6cb6155f650bc50ec2a4417acc1036f44"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/hard-right-clean.png",
+      "bytes": 47996,
+      "sha256": "666756a9fcd8bc7747bbdae15dc8635dd7c09eba6bac95a7c5a1f59d03967742"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/hard-right-critical.png",
+      "bytes": 48403,
+      "sha256": "710b6b86a3f0efcb676fd2409340d88f1d244b44e52a0810c7d5f4e2f34dd451"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/hard-right-damaged.png",
+      "bytes": 48099,
+      "sha256": "ccd2719fec4b09424d1a07d055511c9208f32be910a1440b23bb986031527af3"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/mild-left-clean.png",
+      "bytes": 50141,
+      "sha256": "a53b7eb6c963644b72d4716b830e4805e0ab6abd291cecfcbf9198b9cf888d73"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/mild-left-critical.png",
+      "bytes": 50644,
+      "sha256": "3cce1434f2c4177f66e7388355d04ef3718d29d4b70943e217bc968ea6005edc"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/mild-left-damaged.png",
+      "bytes": 50204,
+      "sha256": "b66430995f8e43457ac62915439c2c9fff911026159ddc0dfd82cb6b8a2eeae4"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/mild-right-clean.png",
+      "bytes": 50292,
+      "sha256": "facad7d384d362188eee78f93a98951180ce494f5b2f24abf0158cf69745495e"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/mild-right-critical.png",
+      "bytes": 50777,
+      "sha256": "58c02422418180d09be9c2261b5addfb0882414446af252381fd65d266640601"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/mild-right-damaged.png",
+      "bytes": 50455,
+      "sha256": "aa68027e7828be158b44845dbd8c4b0c466211b11bb1575f353c9a3305521c74"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/neutral-clean.png",
+      "bytes": 50885,
+      "sha256": "8837a57629936f292fdaf67d3bbcfe98708d01f27531423aa07f3d7bc894ec52"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/neutral-critical.png",
+      "bytes": 50505,
+      "sha256": "cb1800d45d0caf9df1367428e9443acb61e131bb08a0f0977067961e8bdeda1c"
+    },
+    {
+      "path": "art/aircraft-banks/raven-9/neutral-damaged.png",
+      "bytes": 50749,
+      "sha256": "1169a8ec88fd308c7a68f4e769f510b6a5f85625a56122faa068e642071874a8"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/hard-left-clean.png",
+      "bytes": 49624,
+      "sha256": "da01c1a19001bbe7aa4d0ffe84015b515327e41b880c8a298df5e5ded97b4018"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/hard-left-critical.png",
+      "bytes": 50734,
+      "sha256": "340dc257e28e0a496f33962426766c41aa5959c90373305f62af142157200687"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/hard-left-damaged.png",
+      "bytes": 49874,
+      "sha256": "1212924dbe5fdd3bb804a8fc3cc0d8a3187be2fa5f72f2d40723f173adcb5826"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/hard-right-clean.png",
+      "bytes": 49844,
+      "sha256": "f1954c6ccbefbd6b6e6762f465996150f5d47b2a9511d7897ddfc3839f3a7a4f"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/hard-right-critical.png",
+      "bytes": 50862,
+      "sha256": "4cfec54a31d774e3545f5e277f00181c888cb13f8999e594e2adb974ecc6a3fe"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/hard-right-damaged.png",
+      "bytes": 50089,
+      "sha256": "1ae38c87aaa643ef8fd072fb92aeb52c69368821e53ccd10c2dca8112a9ec387"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/mild-left-clean.png",
+      "bytes": 52402,
+      "sha256": "99a3156d3eefb0c081a50bd90c38cb67ab7c041dabaab8130ebb92e857c9090c"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/mild-left-critical.png",
+      "bytes": 53426,
+      "sha256": "fce3580fe8f6feab4007ed8d1100138f7f5dc612932f4df87b80c2de5b45756c"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/mild-left-damaged.png",
+      "bytes": 52697,
+      "sha256": "a06b5765cfe5385d6b49629662d010fc1f8374218e2ef3cc0e5636b58aae0718"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/mild-right-clean.png",
+      "bytes": 52440,
+      "sha256": "1bc89df9677252f7de539311fce2ee8db1ef5fce6d778cca283e0493af6b3892"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/mild-right-critical.png",
+      "bytes": 53537,
+      "sha256": "075c97ab0ebee25ec0ef46e50f2fa82ee8a267fd6a362c6cc4227dc4f182a2c5"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/mild-right-damaged.png",
+      "bytes": 52773,
+      "sha256": "ce0b403da4d69d91f145d047c8b7d749af5e96987f74af1e94ab47d5ee514df6"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/neutral-clean.png",
+      "bytes": 52652,
+      "sha256": "83ad96dd06d7a2b59a8a396c04d5dc70af5150e9d0c912a193e58149b669e689"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/neutral-critical.png",
+      "bytes": 52474,
+      "sha256": "9199ea76c09e558a377901e69a1b05e21759393728108e79fe4493e75408be74"
+    },
+    {
+      "path": "art/aircraft-banks/specter-x/neutral-damaged.png",
+      "bytes": 52607,
+      "sha256": "943c5f3c3b684fb33a0f5c0263d43582b54da0cddca009cb9d5f1806b28d69de"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/hard-left-clean.png",
+      "bytes": 162500,
+      "sha256": "08e0519f953ea0f618b5427a546aed49a67c2a97f9300357afeb8b6987bdedc8"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/hard-left-critical.png",
+      "bytes": 159025,
+      "sha256": "dc9205e04e29b1a703dbdd655cc05741c0dcdec462ad943b7dda86e4c80b4997"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/hard-left-damaged.png",
+      "bytes": 161860,
+      "sha256": "7994c48887ebeea3454a3bb07eed03400245c8682e78a7aae26240f73d42d992"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/hard-right-clean.png",
+      "bytes": 162631,
+      "sha256": "1284cf2e1f41580d1104b578064e44851edfbdc7fd87a57ca49ffc027bf42ce7"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/hard-right-critical.png",
+      "bytes": 159230,
+      "sha256": "e13d6fefcb6158190211e1bbd15886a0277579bebd1255c48a74d9edc63d7a36"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/hard-right-damaged.png",
+      "bytes": 162148,
+      "sha256": "4f26a57048c840fd7b57d9c1556537a6e0174645de5e5ee975c6a218f522ad8c"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/mild-left-clean.png",
+      "bytes": 172685,
+      "sha256": "30d2ebcf8210531044ff5b2d1cbc7eb1e8bde00654bc752f0fcffcdb97428a44"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/mild-left-critical.png",
+      "bytes": 168618,
+      "sha256": "6c530e3598f253d9330ca34d26ab081f9b41121916721de6c68143d13a10ed56"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/mild-left-damaged.png",
+      "bytes": 171978,
+      "sha256": "39d1053e27eca7dca2b5229e5b4f7e2f21e2e873da656bf007547ae290d46f59"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/mild-right-clean.png",
+      "bytes": 172615,
+      "sha256": "fa851976cc99dbbda274ab7caa8d7aeeccd07b37c97d0e31c578a56a4142476c"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/mild-right-critical.png",
+      "bytes": 168483,
+      "sha256": "e00bc7554c8bb783d5e5157fe9c01fac7beb04d6460ae7b1a76661502c729cbe"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/mild-right-damaged.png",
+      "bytes": 171869,
+      "sha256": "b57ac11731373ac3536f55ca653846b1b43dc1f364571d7eb9670ca0dd2d3531"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/neutral-clean.png",
+      "bytes": 171303,
+      "sha256": "35780552e03a0721d45269d88a3526510bdabaff8bf5f739228d6aa24494688c"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/neutral-critical.png",
+      "bytes": 164894,
+      "sha256": "072d4e617f7532c2e52da8cfb1fa8969ced6b0ea22e4eb9e990138a1b8622d21"
+    },
+    {
+      "path": "art/aircraft-banks/tempest-5/neutral-damaged.png",
+      "bytes": 169946,
+      "sha256": "9259e4291785d6577643942398ac327f705484d8baec2ec0a52a7d9c5d2dce56"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/hard-left-clean.png",
+      "bytes": 171505,
+      "sha256": "e80cc5ec0fb01bfe7dc1af7c4932306477acc52ea76907fe7b837d41c909a5e2"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/hard-left-critical.png",
+      "bytes": 165130,
+      "sha256": "40411aa5aca4c886758abf4f12e8be0a9d4704d625c6c424ca5cddce42bf004f"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/hard-left-damaged.png",
+      "bytes": 170538,
+      "sha256": "38e95feb2ba890cd2e6fa561950a84b2bb328995da978b578da4652ead5ca262"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/hard-right-clean.png",
+      "bytes": 172090,
+      "sha256": "2aef23e084239584deeca9ad69fa00e80130581ab0bf9e348aa999f335d0b3b3"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/hard-right-critical.png",
+      "bytes": 166178,
+      "sha256": "9db6d4d5dace43d14459c6d0280d40706b7262e512f334d9b2a23f0b776d767f"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/hard-right-damaged.png",
+      "bytes": 171186,
+      "sha256": "6979d762745e075dbcb2c2a2913eedc754bd4d01eeb42db75a919ae00471c758"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/mild-left-clean.png",
+      "bytes": 181417,
+      "sha256": "8e7011b627424515fb877a8670392f2ed65d8afdee9168173d65a393838dee89"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/mild-left-critical.png",
+      "bytes": 174706,
+      "sha256": "d72acc4e601a54f0cf849c2a14df702a3ca1133a1ee24ff8d8046b4ee6265468"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/mild-left-damaged.png",
+      "bytes": 180322,
+      "sha256": "130c9103cc2b53714d44489ef116e18248303a3c18897a2c19df7a21fd47537d"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/mild-right-clean.png",
+      "bytes": 181925,
+      "sha256": "ff44cf05e043d325959265516f681c1d0c7aaff296ec5da338ef8dc95de7621d"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/mild-right-critical.png",
+      "bytes": 175160,
+      "sha256": "6fa51ce3beb25b88c87f361193d7dfbafd6192ba4b75fe3f721c73f1d34a931d"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/mild-right-damaged.png",
+      "bytes": 181008,
+      "sha256": "d6c73a274146a5b29b35623fa3e8cedb72077f4b9f78beb0d580b984c64686cd"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/neutral-clean.png",
+      "bytes": 187555,
+      "sha256": "b01d9a6d962019f29e75ceae1ce5c5c7ba03398822bea74344daf813e6c7dc24"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/neutral-critical.png",
+      "bytes": 177794,
+      "sha256": "33389d3e201b5804c6a5947fca0be482b1101d3df22905a8f60c22df2e3c35f5"
+    },
+    {
+      "path": "art/aircraft-banks/titan-6/neutral-damaged.png",
+      "bytes": 185120,
+      "sha256": "75c26321a0a89db34316cbae5d35078e69871ab0714574964164c9f781511f6a"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/hard-left-clean.png",
+      "bytes": 144593,
+      "sha256": "316a054d25bb0121741aa1d3d7c49ada6d3cdb7c2a9b02a84e6a63f1a3c6efd4"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/hard-left-critical.png",
+      "bytes": 140721,
+      "sha256": "668e6077217d9bcec733026bd78dbb4f3a79e7d8a104805ae265260c2854d631"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/hard-left-damaged.png",
+      "bytes": 144413,
+      "sha256": "e546f0994cfb4f424a71eedd046f10e161eb9bdbfb74a4a0e8159acfef19e3e6"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/hard-right-clean.png",
+      "bytes": 145416,
+      "sha256": "88af2ac977cdbef8731d5732c3bc97294653fc31c002b996d1f0f0fa697e6a23"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/hard-right-critical.png",
+      "bytes": 141618,
+      "sha256": "89132e6f237402bb701bbd80980499b8e555f0e6033c2d750b2d4ed4332556f8"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/hard-right-damaged.png",
+      "bytes": 145118,
+      "sha256": "591d70b4d20c5db8f03e38507a5a76d41d1a0305e2331c35ad2a72c8fca09599"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/mild-left-clean.png",
+      "bytes": 154098,
+      "sha256": "ed738d45829a77ee6978e228635e8937b25e2e072a08141f4ced5d02c171a18d"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/mild-left-critical.png",
+      "bytes": 149679,
+      "sha256": "cc9cf990fc674c2a1e5d60798aa8b1aa63fd74a6519bf5dc36c749ccd4ecabb2"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/mild-left-damaged.png",
+      "bytes": 153720,
+      "sha256": "d39f565903c125aadabe20be693450bafa7ac213a13ee2f3b595989c76b75311"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/mild-right-clean.png",
+      "bytes": 154550,
+      "sha256": "ef83fffbd396f51d621e32de4c180db2edc7636a44f2e002dfd1c98f85979ef2"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/mild-right-critical.png",
+      "bytes": 150431,
+      "sha256": "638ff3a4f5ef6a12fce039c09e7f59a54b321bda23510bff19f86b7431e3a138"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/mild-right-damaged.png",
+      "bytes": 154274,
+      "sha256": "fe2ad385465d7a8ce3fae94b777fe94208bfcfc427380d1f32e5031ee1788882"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/neutral-clean.png",
+      "bytes": 155954,
+      "sha256": "84fa3639f65918e4c93bbcdee2f2fcdacb2b9d25282f5fbdfbd5bedc1f7af2a4"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/neutral-critical.png",
+      "bytes": 149818,
+      "sha256": "978c860a6df426815c04475b4c9a3932ab86534ef8a56357d4bbde14d02ea77e"
+    },
+    {
+      "path": "art/aircraft-banks/viper-11/neutral-damaged.png",
+      "bytes": 154737,
+      "sha256": "fb08a40bc9670416c4d7b173aa88503667279cda2b34a0890e8cdce89b33702d"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/hard-left-clean.png",
+      "bytes": 42652,
+      "sha256": "2d5eaac722fdfe3a97bfbf45017b3ff00483842b6e5ef16214784c44bcf05eec"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/hard-left-critical.png",
+      "bytes": 43757,
+      "sha256": "ac3c43fc655d9d94105535801bc4fce1da6755fd0efc171ea2cebf2475206868"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/hard-left-damaged.png",
+      "bytes": 42876,
+      "sha256": "90d93630705f6d787777c8a9f48335af5a79a27fa020452423a311dd35de09d3"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/hard-right-clean.png",
+      "bytes": 42864,
+      "sha256": "b67996233fa0aa9066957e6095eb9bed0c26a8867cd0c77657d59a8ab1076acf"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/hard-right-critical.png",
+      "bytes": 43860,
+      "sha256": "2d6638d58f4e8846ffbaa3443cc86efe48306b1423ddbc5e605ee5ba131de183"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/hard-right-damaged.png",
+      "bytes": 43116,
+      "sha256": "cee4d7c498e8ceef7630f841c8069104ba7b891a6d573834c87ad289d08ae01d"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/mild-left-clean.png",
+      "bytes": 44815,
+      "sha256": "add0491bd724f2a9390297ab8f325edefce17a6bdc38352fbda3bb05af8bc704"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/mild-left-critical.png",
+      "bytes": 45963,
+      "sha256": "871e7936e713b4fecbe61315ca1f568980e3588b7cb023c1993bf971bab8c690"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/mild-left-damaged.png",
+      "bytes": 45056,
+      "sha256": "3ac6e5d105bfa3e0707dd327edcea25976c41ca6dc0545af4679ebb5d1bdd1cc"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/mild-right-clean.png",
+      "bytes": 45072,
+      "sha256": "d4e4df9b6d27dac4ded2a233700ead4aec1e657408565caa3d7cdfa1eba43686"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/mild-right-critical.png",
+      "bytes": 46082,
+      "sha256": "6c0cb84c4c08f934367e9b656703b4b4a92e7fdfa11523d4314c0a85f4b2cd9e"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/mild-right-damaged.png",
+      "bytes": 45315,
+      "sha256": "64fcb2b8d53c18b3cf54f17bf6513d733750e2e676d4f844183a05ac45622062"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/neutral-clean.png",
+      "bytes": 45260,
+      "sha256": "7b074b765850ef8e7f472d1405e8233eee619db62d6ad510a42609f81b0af42b"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/neutral-critical.png",
+      "bytes": 45281,
+      "sha256": "ebfef24e40df7fd852e4cd7677dec3e7a15f9344093f25dd212b1be6250d6e80"
+    },
+    {
+      "path": "art/aircraft-banks/wraith-2/neutral-damaged.png",
+      "bytes": 45205,
+      "sha256": "b8549c2d29dd7a9a0be10546075e80e7bcce4eaf5f5188a996f64d458913d988"
+    },
+    {
+      "path": "art/aircraft-hangar/aurora-1.png",
+      "bytes": 726765,
+      "sha256": "b6342ae384c749e5f90e5f4c9356548fa105dbd9c5afc6ea6c0ae710d320aa7c"
+    },
+    {
+      "path": "art/aircraft-hangar/bulldog-4.png",
+      "bytes": 725493,
+      "sha256": "d1c427abd78b44a4ec3147c388273cd2a09121a8f127d44e29d1fb7acde3fa0a"
+    },
+    {
+      "path": "art/aircraft-hangar/falcon-07.png",
+      "bytes": 533635,
+      "sha256": "85383d858a530bc19dbb0421ca127617acdd4f42286af0f45850f46162a0d0a6"
+    },
+    {
+      "path": "art/aircraft-hangar/raven-9.png",
+      "bytes": 339683,
+      "sha256": "37075b6a3e8b1b61c6a8b717812f7cec69e1629f5f1581a1b34ca54a66db0c2c"
+    },
+    {
+      "path": "art/aircraft-hangar/specter-x.png",
+      "bytes": 379525,
+      "sha256": "2481821a8e9ce5d5a361bc3d76ef08e104a11f20bad0f767ed26aa5f4c2baacc"
+    },
+    {
+      "path": "art/aircraft-hangar/tempest-5.png",
+      "bytes": 708369,
+      "sha256": "7593685a03210993207c6e2b0470ba8f5d73a15e22a921e71414f1bb2a56e4f6"
+    },
+    {
+      "path": "art/aircraft-hangar/titan-6.png",
+      "bytes": 680809,
+      "sha256": "b3c892d24f0ba9e3d09f00198a26842f23817126694074ac05db19657b0ac3c9"
+    },
+    {
+      "path": "art/aircraft-hangar/viper-11.png",
+      "bytes": 613052,
+      "sha256": "a705ec635eabd4234de3d01eded3ae298e315861d05dbfc087a8a5c741ce1df1"
+    },
+    {
+      "path": "art/aircraft-hangar/wraith-2.png",
+      "bytes": 360333,
+      "sha256": "1789f6365dc7a24e27f12b7487d6ce33caa8c05870051e0e4d45713cb12773e9"
+    },
+    {
+      "path": "art/aircraft-portraits/aurora-1.png",
+      "bytes": 66009,
+      "sha256": "71174a1dc69effab5e63900214947bdeaf8bd65c71c02c88abc0492aa2b2f91d"
+    },
+    {
+      "path": "art/aircraft-portraits/bulldog-4.png",
+      "bytes": 66939,
+      "sha256": "9745f35ad7d9c887bf4cf6b1489248b80a8ae07431299515430b3bf5c02572e1"
+    },
+    {
+      "path": "art/aircraft-portraits/falcon-07.png",
+      "bytes": 47464,
+      "sha256": "5045cdd2171eacee38e152bd0ec870ed6792d9e599e77ed54a457a310f7e5f32"
+    },
+    {
+      "path": "art/aircraft-portraits/raven-9.png",
+      "bytes": 30860,
+      "sha256": "741eb920ffef62033feb3c99779d8909548a526c1fe5b96705b7c2a836895b83"
+    },
+    {
+      "path": "art/aircraft-portraits/specter-x.png",
+      "bytes": 34727,
+      "sha256": "1ff4e9abdcf661b757e98b1c9219ceeb107946c69e904988cc0927341542aea0"
+    },
+    {
+      "path": "art/aircraft-portraits/tempest-5.png",
+      "bytes": 64040,
+      "sha256": "f0483eecf48925cf6d43255b3ea48b6f00c4f9bee6ed1bf7fdd748b3f9051d67"
+    },
+    {
+      "path": "art/aircraft-portraits/titan-6.png",
+      "bytes": 61063,
+      "sha256": "65ec673a89d45d5300587d2c777d592e224cc12ad8c45a62532f72bb3da8be3d"
+    },
+    {
+      "path": "art/aircraft-portraits/viper-11.png",
+      "bytes": 56110,
+      "sha256": "272554404670774032f0913828652cdaaa61a8fa9015c4b19d26b4deb2156298"
+    },
+    {
+      "path": "art/aircraft-portraits/wraith-2.png",
+      "bytes": 33675,
+      "sha256": "2b625dc901866a6e4020eb9f485bd00a6cb9b5ef3551b013000308c682bdbd4e"
+    },
+    {
+      "path": "art/aircraft-shadows/aurora-1.png",
+      "bytes": 25068,
+      "sha256": "032d9f88c831b1b21b191d7f1e803af152410bd73777ec20db96f129abc3a092"
+    },
+    {
+      "path": "art/aircraft-shadows/bulldog-4.png",
+      "bytes": 24152,
+      "sha256": "d59d7a277af2d8dd8e495d630c2646d1062cb1b404ddaea6cbef1de0aee83527"
+    },
+    {
+      "path": "art/aircraft-shadows/falcon-07.png",
+      "bytes": 21957,
+      "sha256": "2d3226ba322c8793049dc55f089edfc43949d7a687bce899e096e876730c73f8"
+    },
+    {
+      "path": "art/aircraft-shadows/raven-9.png",
+      "bytes": 16669,
+      "sha256": "c512f8be56e44f50d522c3921af90583bbda1d74da7259ce92d2132462c469d9"
+    },
+    {
+      "path": "art/aircraft-shadows/specter-x.png",
+      "bytes": 16648,
+      "sha256": "c0de3e604a928c248d5fe32fddf3cfa38554d3ba13db2d24aaeac8b40ce5e2b8"
+    },
+    {
+      "path": "art/aircraft-shadows/tempest-5.png",
+      "bytes": 26998,
+      "sha256": "7aa34a5fda9fc8c135bdab4c3185c9e3110dd59448437d675b5b33b9a91f0580"
+    },
+    {
+      "path": "art/aircraft-shadows/titan-6.png",
+      "bytes": 24684,
+      "sha256": "19c7809c68030537d5ed9515e57e802f5e5457ad076d00c39ae31fd2c5e99ecf"
+    },
+    {
+      "path": "art/aircraft-shadows/viper-11.png",
+      "bytes": 25662,
+      "sha256": "53139ccdaa28a5ed798fb6844f0a7463d2af598d65ddcd9b3b404bba4efb7e6c"
+    },
+    {
+      "path": "art/aircraft-shadows/wraith-2.png",
+      "bytes": 16875,
+      "sha256": "ccb894909f407412b8a903c0319f4afe71800d9b1fa8fa27d9be46af60ea565e"
+    },
+    {
+      "path": "art/aircraft-wrecks/aurora-1.png",
+      "bytes": 264722,
+      "sha256": "8a8a3388750e2f8f2ef998ca76d136e5f3cd92456e20041ec5f5882e962c421e"
+    },
+    {
+      "path": "art/aircraft-wrecks/bulldog-4.png",
+      "bytes": 260259,
+      "sha256": "3b0cc324da9f286c11dbefedc8923dfc32a424795f0d313960ab4a8d5423a03f"
+    },
+    {
+      "path": "art/aircraft-wrecks/falcon-07.png",
+      "bytes": 191552,
+      "sha256": "10bb0922f0d820bba8360470f35c2e1af1a0d9253db3e11bdc13e6b84caf1505"
+    },
+    {
+      "path": "art/aircraft-wrecks/raven-9.png",
+      "bytes": 118188,
+      "sha256": "883626f8b64007d2c6789c2e80e7ba334a4dd9cdf1adc89d65f430fd18bceff2"
+    },
+    {
+      "path": "art/aircraft-wrecks/specter-x.png",
+      "bytes": 132467,
+      "sha256": "7fa4b4b2d8a37273aa8b7a803445dc169ced7858ef3b843b895b1b3e43808f81"
+    },
+    {
+      "path": "art/aircraft-wrecks/tempest-5.png",
+      "bytes": 267630,
+      "sha256": "fbae98c873990c38c6a9b7a488a36b36a653f3f258561d5fba66d547b0aefd37"
+    },
+    {
+      "path": "art/aircraft-wrecks/titan-6.png",
+      "bytes": 243428,
+      "sha256": "fe7da5293ca2028480632ec3ea735a88595c329e8fa1fb3f8d99e6ac16c13446"
+    },
+    {
+      "path": "art/aircraft-wrecks/viper-11.png",
+      "bytes": 226900,
+      "sha256": "b762ac42b2ca30f8901af03546eb38e788e0c0edd0d90641025fcf820a562893"
+    },
+    {
+      "path": "art/aircraft-wrecks/wraith-2.png",
+      "bytes": 127083,
+      "sha256": "c201db359847524fbb8e544947fa22d0a23cf0ef1325ba140972e71f2090641d"
+    },
+    {
+      "path": "art/aircraft/aurora-1-critical.png",
+      "bytes": 174619,
+      "sha256": "b6b8a5ce84edb61020ce976d43aec062a2a8f62421d68fc8d2ca1a7adb4da447"
+    },
+    {
+      "path": "art/aircraft/aurora-1-damaged.png",
+      "bytes": 182443,
+      "sha256": "d8ff1b13d3150234235d4c302c766805ce2bc035c8bb9cefb321e9a0a6f398f0"
+    },
+    {
+      "path": "art/aircraft/aurora-1.png",
+      "bytes": 184735,
+      "sha256": "53578c257511438da39664185cdfe644b09c1f492cff4a306653cb66acc69780"
+    },
+    {
+      "path": "art/aircraft/bulldog-4-critical.png",
+      "bytes": 170152,
+      "sha256": "6ebe68cc27393479ac091f4c5ebb4b1cc37cc22537e2dd31f23178a5e6040ee4"
+    },
+    {
+      "path": "art/aircraft/bulldog-4-damaged.png",
+      "bytes": 178657,
+      "sha256": "60ed0f04a01a8b529424e1c970ebd78673081ec1534aa010888dc72f67a79751"
+    },
+    {
+      "path": "art/aircraft/bulldog-4.png",
+      "bytes": 181098,
+      "sha256": "b40b1510736adc6834a0a89b3a4dcad50482fcb0a502c608b67817b98907910d"
+    },
+    {
+      "path": "art/aircraft/falcon-07-critical.png",
+      "bytes": 149359,
+      "sha256": "6076080baf5f7382f2b8c948511323b3cffd3a69ee98a2aa7fdf57423675f0cc"
+    },
+    {
+      "path": "art/aircraft/falcon-07-damaged.png",
+      "bytes": 155662,
+      "sha256": "e8fdb8ff42ce4020a3e3ed3de957ec0667f432d964074f2b901f5202f5415119"
+    },
+    {
+      "path": "art/aircraft/falcon-07.png",
+      "bytes": 157651,
+      "sha256": "52f1410ca13f591c909ae9ac64b2ff9fe98f6e28b6a8284d0d7ab5d399335b96"
+    },
+    {
+      "path": "art/aircraft/raven-9-critical.png",
+      "bytes": 50086,
+      "sha256": "0db96933d05b04a44be2d69326d5f34b6f62a419be07cb4217e2c4d265e87a32"
+    },
+    {
+      "path": "art/aircraft/raven-9-damaged.png",
+      "bytes": 50345,
+      "sha256": "bbebe9c027d349c212427c868f3db3187220cab32fb2fa824c3fa9ae92749257"
+    },
+    {
+      "path": "art/aircraft/raven-9.png",
+      "bytes": 50504,
+      "sha256": "46b46a9473a12c62c99d77be6c79bfb2d4166c3736326320f368b094866def9c"
+    },
+    {
+      "path": "art/aircraft/specter-x-critical.png",
+      "bytes": 52126,
+      "sha256": "cfefa4fe53e32254bfedfb5b7c9b4ec6f2f5f7b02ec76269fa14f5f6f3fd2685"
+    },
+    {
+      "path": "art/aircraft/specter-x-damaged.png",
+      "bytes": 52239,
+      "sha256": "56fbf3eece4a9aac7a41bcd36c5d2e6feaa8e2db52179b8fb615f575bba1f47e"
+    },
+    {
+      "path": "art/aircraft/specter-x.png",
+      "bytes": 52286,
+      "sha256": "712fd766498603053d8fa2e442b1241ba69e18481ca72d4880926fdfe67f604a"
+    },
+    {
+      "path": "art/aircraft/tempest-5-critical.png",
+      "bytes": 163711,
+      "sha256": "88a3a9e9c8975549393e37b1a350f4989070223fc32f0e6dcd0fa043f2a02fc6"
+    },
+    {
+      "path": "art/aircraft/tempest-5-damaged.png",
+      "bytes": 168592,
+      "sha256": "00a380e49cf2162c136d97300a75aa6ea01b0dbee079cbaa620d1475db11ef76"
+    },
+    {
+      "path": "art/aircraft/tempest-5.png",
+      "bytes": 170001,
+      "sha256": "a3aa9901584e1d5af87c02b7252e702825293fafd729b8b523a677d1816ccdff"
+    },
+    {
+      "path": "art/aircraft/titan-6-critical.png",
+      "bytes": 176242,
+      "sha256": "7fa75b01ad62061ce2574898eca319b852fb26e270422b0e287003237638873c"
+    },
+    {
+      "path": "art/aircraft/titan-6-damaged.png",
+      "bytes": 183599,
+      "sha256": "f1c147fcfabbcb3085c391f6067c236d45a81e35bbd000de4d3f26ae1d5bf702"
+    },
+    {
+      "path": "art/aircraft/titan-6.png",
+      "bytes": 186038,
+      "sha256": "d1825d47fc436698f7ef151cc5b2b209e848dc4e4c022ac9416290f468c6b1d7"
+    },
+    {
+      "path": "art/aircraft/viper-11-critical.png",
+      "bytes": 148611,
+      "sha256": "45150cf457d552f868073527571adb11423fd5034fec02e3265c5af9c9333f20"
+    },
+    {
+      "path": "art/aircraft/viper-11-damaged.png",
+      "bytes": 153493,
+      "sha256": "3a55838016209e6299ba111d8f14a0fd7b1959e81a63043b9528b96ae549179b"
+    },
+    {
+      "path": "art/aircraft/viper-11.png",
+      "bytes": 154728,
+      "sha256": "5e1bedc6693939ad9f8e37e6bec6613c6f0f61ce5039a199954ab50ee4aa7830"
+    },
+    {
+      "path": "art/aircraft/wraith-2-critical.png",
+      "bytes": 44871,
+      "sha256": "6eeea4c5335e22741be8548ad31e7c999f4183c8654d4c37526422dd5efdd80e"
+    },
+    {
+      "path": "art/aircraft/wraith-2-damaged.png",
+      "bytes": 44804,
+      "sha256": "cbd0944ea8dadd2401d8b292fa0b71f597e15fb77a9781f8fa0f454a85107237"
+    },
+    {
+      "path": "art/aircraft/wraith-2.png",
+      "bytes": 44877,
+      "sha256": "a0e0530259b6eac2183d49e3f018428c7b698a2d44ebae418776cc1fa901840a"
+    },
+    {
+      "path": "art/bosses/breakwater.png",
+      "bytes": 252758,
+      "sha256": "7296945435ee9eec2f8280940006b5e4f48307ec046119851d8899160422285d"
+    },
+    {
+      "path": "art/bosses/components/cannon-pod.png",
+      "bytes": 77841,
+      "sha256": "a8fb7f83656366f58078af9953513553d8fb00a31b7b20fc2cf03d91e90d7b3a"
+    },
+    {
+      "path": "art/bosses/components/missile-deck.png",
+      "bytes": 48653,
+      "sha256": "b1b358b6383875a1a79995babb9109e59fa1965d9502a98dc2341a3e5ba6ffe4"
+    },
+    {
+      "path": "art/bosses/components/reactor.png",
+      "bytes": 69038,
+      "sha256": "a3935c81bea9368b4c2f4d7bbf0c38ca4827f12fb80a95da0c4bab93ef894616"
+    },
+    {
+      "path": "art/bosses/leviathan.png",
+      "bytes": 510455,
+      "sha256": "2b9009c35b3d8f2260048965244a3232c4bf5c57abd394864b39b2b9af423505"
+    },
+    {
+      "path": "art/effects/explosion-heavy.png",
+      "bytes": 62722,
+      "sha256": "5fc9dcffadce4317250cbb217568c5a96f314a86a8d92f3b8f7de5f522fcf8b4"
+    },
+    {
+      "path": "art/effects/explosion.png",
+      "bytes": 72550,
+      "sha256": "6fd4c417d39c32ef861721fb9619252e0dd23019a16e2e054754f4dc83c74be2"
+    },
+    {
+      "path": "art/effects/fireball-sequence-v2.png",
+      "bytes": 1621746,
+      "sha256": "d31633ae96a1456bcd3390cb69ae63d313e469286b21b1af4c2a8fa31e16b514"
+    },
+    {
+      "path": "art/effects/missile.png",
+      "bytes": 12773,
+      "sha256": "6d0946f3055e16f089e0f9631ce5d5064058e270df225e1144a7d2eb21a5f7b2"
+    },
+    {
+      "path": "art/effects/pickup.png",
+      "bytes": 34928,
+      "sha256": "2b01f052dc2aa052676db6069df6cb272512d9d8a15729481e07194cffe543f2"
+    },
+    {
+      "path": "art/effects/smoke-volume-v2.png",
+      "bytes": 1485252,
+      "sha256": "22cedae6b0f650bb9bbf426ee51215ae5dcdf8c88516d5a4102e1d1b481ef2ba"
+    },
+    {
+      "path": "art/effects/smoke.png",
+      "bytes": 31611,
+      "sha256": "03719769ee9e4bafe8c5746ce72d8267d46afb5fb083fded9d999cd2a533060b"
+    },
+    {
+      "path": "art/effects/splash.png",
+      "bytes": 13088,
+      "sha256": "f7f4c25a987ff3d0738cc6219f5061a1215658d753b8b0341649a39a88788a13"
+    },
+    {
+      "path": "art/enemies/aa-turret.png",
+      "bytes": 77934,
+      "sha256": "f00c2ef52744cdc3b8157e3edf1d16b4c8a8bc22ff62642ea91096d44a9c6ba2"
+    },
+    {
+      "path": "art/enemies/armoured-bomber.png",
+      "bytes": 133675,
+      "sha256": "99a32bd8b49c38f4329d714084b09d6d7577788d480244bc20e126f59047d2f2"
+    },
+    {
+      "path": "art/enemies/armoured-vehicle.png",
+      "bytes": 96739,
+      "sha256": "c0e8b100b2274088a84da0723c6326e273a3c319a40b0fd7549840039862321d"
+    },
+    {
+      "path": "art/enemies/gunboat.png",
+      "bytes": 96954,
+      "sha256": "1c676ee97b33b29010d368c69fb5d0fa31e59670624b5bf8da9b28bc8a444783"
+    },
+    {
+      "path": "art/enemies/gunship.png",
+      "bytes": 120513,
+      "sha256": "caa10a499cac06344da90ab1df78c054ae91dda740d11fd04e29749575553d10"
+    },
+    {
+      "path": "art/enemies/interceptor.png",
+      "bytes": 66987,
+      "sha256": "40467993925f04ec6c8b067a93fc1912613599811e0e8b0caec5a38c52059e8f"
+    },
+    {
+      "path": "art/enemies/light-fighter.png",
+      "bytes": 71152,
+      "sha256": "5366b285ff536f5b253a4783900bb1bb153c3f5df9406af4b5554335f582065b"
+    },
+    {
+      "path": "art/enemies/missile-aircraft.png",
+      "bytes": 98368,
+      "sha256": "05feb2839ac2ea73c045bd1aba5659384bbd2979064b7099e05a32a0f6b76e24"
+    },
+    {
+      "path": "art/enemies/missile-battery.png",
+      "bytes": 83445,
+      "sha256": "68b3b710605c0093f759949a7a9cb701aad714d33fcd6b7e867bd5d0cf813140"
+    },
+    {
+      "path": "art/enemies/side-sweeper.png",
+      "bytes": 74398,
+      "sha256": "7bc7a8ce38b670790130dc38ef628c5ec5bb1d52464ba6e7643dd08bb832eb1d"
+    },
+    {
+      "path": "art/environment/asphalt-tile.png",
+      "bytes": 57650,
+      "sha256": "62519b4160a01ba690dd766119d5e66e79a5d9c5b3fec7a71882983cc3294750"
+    },
+    {
+      "path": "art/environment/concrete-tile.png",
+      "bytes": 122323,
+      "sha256": "b38b18c85c46ada66b6230e6e158702854d70fb9005c488e0537c0946f317455"
+    },
+    {
+      "path": "art/environment/container-stack.png",
+      "bytes": 3588,
+      "sha256": "811e997329d6a554a946f0009483a28a8c0a3f524963bc34fe8783ff1ebebc65"
+    },
+    {
+      "path": "art/environment/crate-pile.png",
+      "bytes": 3300,
+      "sha256": "edaee29ccdabec4b60f0dec05a01b29ba135d071839ea037abeb4484d7ecf6b2"
+    },
+    {
+      "path": "art/environment/dock-metal-tile.png",
+      "bytes": 130763,
+      "sha256": "fdf605051d717e1141d95c4ce139cd5631dbb4a154d1f6208d83838f7b35a0fe"
+    },
+    {
+      "path": "art/environment/foam-strip.png",
+      "bytes": 13331,
+      "sha256": "5d2928a107deeca62a6acac46aad6f7294e0b0f01b3c05d30abf0d4955c620f9"
+    },
+    {
+      "path": "art/environment/helipad-mark.png",
+      "bytes": 1884,
+      "sha256": "8e64a22ab0dfb0a5db5f41a9b973e4d88d451abe14ffdd54b959250d95fee7a7"
+    },
+    {
+      "path": "art/environment/land-alpine.png",
+      "bytes": 2246196,
+      "sha256": "a00aa8c8e8dcf58e9a4c7d406e25c82d2cf880fea57f3e993ed8ddb0c3b2ea25"
+    },
+    {
+      "path": "art/environment/land-snow.png",
+      "bytes": 1310989,
+      "sha256": "e9b37b5c82633940cc64913c7a396260f5f2ef82d47447372215bab6c7314bcf"
+    },
+    {
+      "path": "art/environment/land-tile.png",
+      "bytes": 80621,
+      "sha256": "60bdc42935c9ea0ee6f53133c07e9c3b01ed013bac4d41528fafa7f22293a5f3"
+    },
+    {
+      "path": "art/environment/land-tropical.png",
+      "bytes": 2034244,
+      "sha256": "7462f5f2f51527de84abf62135665406f70c7c9b12af9f0516c84a4720b60e88"
+    },
+    {
+      "path": "art/environment/palm.png",
+      "bytes": 4842,
+      "sha256": "9d0a2cd006793899cc3260fa158b7d7a0e7628e324f9e209b40f741d9a15fee7"
+    },
+    {
+      "path": "art/environment/rock-cluster.png",
+      "bytes": 4393,
+      "sha256": "a3555c0b59cbf60ff19e08d30bc313ec907139f1f5342b98243bdf7eb3bc6b3a"
+    },
+    {
+      "path": "art/environment/rocky-island.png",
+      "bytes": 19000,
+      "sha256": "99185232407ca4747f927cbd8ac5718ee0b3302a2ffa747b3224b3a1e3b31c8e"
+    },
+    {
+      "path": "art/environment/scenic-wreck.png",
+      "bytes": 7593,
+      "sha256": "9375ff7a25176bf1764009fae77d30e4638d7d9bafb6c89a76ef678a16c6f2a2"
+    },
+    {
+      "path": "art/environment/service-building.png",
+      "bytes": 60373,
+      "sha256": "e92de4d19912e0c5c93e04d7fe878a248b3a1a9be725e9334ad631c626f85c26"
+    },
+    {
+      "path": "art/environment/street-lamp.png",
+      "bytes": 14856,
+      "sha256": "a51af3285bb4e544392bd1c9516e748ce69e4342777c557a8879ef31f558250b"
+    },
+    {
+      "path": "art/environment/tank-small.png",
+      "bytes": 38380,
+      "sha256": "bbdb5aa44b0a28975f2d1bed3213d55797f1d7d90f7c25517c96706f46c16662"
+    },
+    {
+      "path": "art/environment/utility-block.png",
+      "bytes": 125503,
+      "sha256": "8d5b24baca075fca8e082052122e93f8f554583c278610e26fd7cffce043853e"
+    },
+    {
+      "path": "art/environment/warehouse-a.png",
+      "bytes": 73620,
+      "sha256": "f28ea2a1696a353ee797260b0c7a04af902cd54747454bcc5ff052c5bfad0803"
+    },
+    {
+      "path": "art/environment/water-tile.png",
+      "bytes": 388936,
+      "sha256": "541eda61c5ce5fcb74bef4f11b86094b16e0ae0d9dfd471139867be80b15b1c5"
+    },
+    {
+      "path": "art/level1/citadel-bunker.svg",
+      "bytes": 816,
+      "sha256": "1ea2c16932d3148242b421d254372b8cb139a252fe7c75651390ad39c31bbf2c"
+    },
+    {
+      "path": "art/level1/citadel-gate.svg",
+      "bytes": 918,
+      "sha256": "c60f4a1ccb52c5ba698e96dc88af65b7dfaa1f4bceb55139fa03b40421df9561"
+    },
+    {
+      "path": "art/level1/citadel-tower.svg",
+      "bytes": 677,
+      "sha256": "11c7f2a0065e580da87bfb46da903bd9172fd128d8eb248251e88f703c89d8ff"
+    },
+    {
+      "path": "art/level1/citadel-wing.svg",
+      "bytes": 775,
+      "sha256": "fbab456d7039ba038aa03715d667b5a09effb8703ca87cdb85031e53bcc2ec2e"
+    },
+    {
+      "path": "art/level1/civil-house.svg",
+      "bytes": 586,
+      "sha256": "6a3ebc28fb85eea5e6c50f3134fcad633db460a35c4614da650aa3fc6c8e9a31"
+    },
+    {
+      "path": "art/level1/crane.svg",
+      "bytes": 876,
+      "sha256": "61b9970cadfac9ed3284bf673b607d65234aac87f58f353ed0be1cccbe126a2d"
+    },
+    {
+      "path": "art/level1/dam-face.svg",
+      "bytes": 763,
+      "sha256": "8a60265f694e4959834bafbf4c9c7f805c361e0fb4daee4a595e778124d25ecc"
+    },
+    {
+      "path": "art/level1/fortress-terrace.svg",
+      "bytes": 664,
+      "sha256": "539e17ca392096242300b371724bca296b8c7baace211dac2cccd567a7feeaed"
+    },
+    {
+      "path": "art/level1/fortress-wall.svg",
+      "bytes": 832,
+      "sha256": "36c28c0c276e7bf287a81d369f05831d831725478d5a170b373863add96b5bcc"
+    },
+    {
+      "path": "art/level1/fuel-tank.svg",
+      "bytes": 873,
+      "sha256": "176af2898a2134a28172ba4cbdb8d82c47cceb9ff7347f41eb62083a09bf2e77"
+    },
+    {
+      "path": "art/level1/harbour-office.svg",
+      "bytes": 1039,
+      "sha256": "a8471fc5e0b3405bf18c913867c235cabfaaf2a2ea44f7b23ddd876933afb2ef"
+    },
+    {
+      "path": "art/level1/industrial-hall.svg",
+      "bytes": 639,
+      "sha256": "2bd0760a2380b8144ff933827f2d241a7fef1c7ec972fc7cda9beeadaf2907d0"
+    },
+    {
+      "path": "art/level1/naval-bunker.svg",
+      "bytes": 995,
+      "sha256": "72f2408c4c7dba3471db400ee24a62f71d32fcba44150d11ed016a1d6458cc49"
+    },
+    {
+      "path": "art/level1/radar.svg",
+      "bytes": 785,
+      "sha256": "8006e55e0f7b1ea4819a9d8298d6cffec1e8ff916a6ae2c39f0e69776ab47884"
+    },
+    {
+      "path": "art/level1/raster/canyon-retaining-wall.png",
+      "bytes": 18312,
+      "sha256": "1a97d94fe4d5ee794c391b3c77dfbd122ea64e969d7a2c60508573b3a4d8937e"
+    },
+    {
+      "path": "art/level1/raster/citadel-bunker.png",
+      "bytes": 53157,
+      "sha256": "8172d36dcdd25bea82a48514721371d2c0a6ec9351ffb7f6cbb85c06a694c85f"
+    },
+    {
+      "path": "art/level1/raster/citadel-gate.png",
+      "bytes": 52721,
+      "sha256": "e56f27c9d12519f3136ce48e3452d0cccc245d84217f0d7c32391be6bf340471"
+    },
+    {
+      "path": "art/level1/raster/citadel-mountain-shoulder.png",
+      "bytes": 1124011,
+      "sha256": "1a4daaa4ece5256f369b864bacd81c12460dd23bd239f2ce8577356e361d293f"
+    },
+    {
+      "path": "art/level1/raster/citadel-tower.png",
+      "bytes": 20023,
+      "sha256": "787c98877416d5068e8906e00cc8bfdf291152614ae80878e6d23fbda6e73dc6"
+    },
+    {
+      "path": "art/level1/raster/citadel-wing.png",
+      "bytes": 27536,
+      "sha256": "086954b7f1cff76384a32cea9fe3d51aca9dbf1785cb003577fa64f0bdd87a23"
+    },
+    {
+      "path": "art/level1/raster/civil-boat.png",
+      "bytes": 31059,
+      "sha256": "396ece7a8e35ff44cd5391cf5f823136a2aecfddc9f27346f5be6d8eb96231c9"
+    },
+    {
+      "path": "art/level1/raster/civil-house.png",
+      "bytes": 21541,
+      "sha256": "80a8488a272dd615a23eda72ac683fcb2fda9b0a550ad6e90596b43b9eff49b8"
+    },
+    {
+      "path": "art/level1/raster/coastal-watchtower.png",
+      "bytes": 80690,
+      "sha256": "42076b391ab2b63c8e6bc0b396d42bb45f74770e411bae59e9c70813499aea56"
+    },
+    {
+      "path": "art/level1/raster/crane.png",
+      "bytes": 30337,
+      "sha256": "22c97ed09a78223936276c178aba6d71b910d4d1b8e50554582f03d662a2aa34"
+    },
+    {
+      "path": "art/level1/raster/dam-abutment.png",
+      "bytes": 36988,
+      "sha256": "9c8524de5230e0001e6e8bec2bc8879b97067b9e1ebe57a14566550dff876723"
+    },
+    {
+      "path": "art/level1/raster/dam-canyon-shoulder.png",
+      "bytes": 1143913,
+      "sha256": "5757f22d8cf9fb4a3e8cbaf303f36ca1378abab1361fca04b04ca95d777b7440"
+    },
+    {
+      "path": "art/level1/raster/dam-face.png",
+      "bytes": 74192,
+      "sha256": "882768c98b52ff72923929730984a4633416644f78228ffbbf4e1301cc7ba566"
+    },
+    {
+      "path": "art/level1/raster/dam-service-gallery.png",
+      "bytes": 24308,
+      "sha256": "5bdced57214d1b454ebd7c946ee7094e267bfb0b6d64f354d0069fa9e087c553"
+    },
+    {
+      "path": "art/level1/raster/fortress-buttress.png",
+      "bytes": 23045,
+      "sha256": "f2ba813289dc9cf783e4bb634263f01b1c612c1955e382b6f1c9d00983eb6f12"
+    },
+    {
+      "path": "art/level1/raster/fortress-snow-terrace.png",
+      "bytes": 35791,
+      "sha256": "271e2eb4b46f3a4ce0b9d561ad4c9a2e7dd9bbfd583dd86bc6128b3bd90a73fe"
+    },
+    {
+      "path": "art/level1/raster/fortress-terrace.png",
+      "bytes": 17695,
+      "sha256": "c11dbd612a2c704356f878b5c9c0c8c2ed7aea152b6b8c0caf900345231c9d36"
+    },
+    {
+      "path": "art/level1/raster/fortress-wall.png",
+      "bytes": 5101,
+      "sha256": "2f564204f3da3a6f349b438b5f507556be1fb54b246f3d3fcfd3ff55396e5889"
+    },
+    {
+      "path": "art/level1/raster/fuel-tank.png",
+      "bytes": 65793,
+      "sha256": "ea5febd61082dd52e9da8cc234aef9b6070b9eeb9bb1916f42b19ba2e8245745"
+    },
+    {
+      "path": "art/level1/raster/gateway-arch-support.png",
+      "bytes": 79500,
+      "sha256": "7b852fe081f373e7f6002bef9490df10106e25b181ff1143374145dadb7ae6f1"
+    },
+    {
+      "path": "art/level1/raster/gateway-cliff-bank.png",
+      "bytes": 890962,
+      "sha256": "12e884f9636bcd50d100722e789fd4116cbcb1f25aec4ea03193696349e2a28e"
+    },
+    {
+      "path": "art/level1/raster/gateway-keep.png",
+      "bytes": 113128,
+      "sha256": "af864df5d038e825f3ac008c83d3721f881eead5c0d1756d110176a87957c990"
+    },
+    {
+      "path": "art/level1/raster/gateway-terrace.png",
+      "bytes": 70441,
+      "sha256": "06704ff63c7d5467311b91ec543dc0ba960ce1355e10420283fc17d620ac239c"
+    },
+    {
+      "path": "art/level1/raster/harbour-office.png",
+      "bytes": 42035,
+      "sha256": "3fed162ae9636c74835e9b4e0260e64eebca3e17ec727793de00367bcd63872a"
+    },
+    {
+      "path": "art/level1/raster/harbour-ramp.png",
+      "bytes": 13144,
+      "sha256": "aa837480aecef9722733a9d555293603c23624dd3b198a7792e10a759eb916ef"
+    },
+    {
+      "path": "art/level1/raster/industrial-hall.png",
+      "bytes": 19809,
+      "sha256": "33febac70388cb77fb41fe0659435b2095772c35e01ea0ae0682156b89a2c414"
+    },
+    {
+      "path": "art/level1/raster/marina-pier.png",
+      "bytes": 11739,
+      "sha256": "da511669cddb11f2adf8381f9c5e40c8d13b63b2dfdd06c2fbee147cd77b9dfa"
+    },
+    {
+      "path": "art/level1/raster/naval-bunker.png",
+      "bytes": 42397,
+      "sha256": "6e5ad15491d79169df3a29d715785942376727c81ba5587f1ddebddbc85411a8"
+    },
+    {
+      "path": "art/level1/raster/quay-edge.png",
+      "bytes": 17748,
+      "sha256": "3e00e45f6c916011d69cde9a32f44a8346198e0d8155504f5886bae6d8fad4ef"
+    },
+    {
+      "path": "art/level1/raster/radar.png",
+      "bytes": 31176,
+      "sha256": "8b88d4795abc005d314972bcab447765527fcc9c3e10d09b59f0263ac3890c90"
+    },
+    {
+      "path": "art/level1/raster/service-yard.png",
+      "bytes": 97276,
+      "sha256": "c6ba7872a9fee521ffa21143eccb3800c3a3f25215c4a7dae6607dc408d1c471"
+    },
+    {
+      "path": "art/level1/raster/tunnel-mouth.png",
+      "bytes": 34994,
+      "sha256": "3d7091fd70d941fd8d15cceddb2faded3513328e8b5d8febcb55594657301ccc"
+    },
+    {
+      "path": "art/level1/raster/warship.png",
+      "bytes": 28155,
+      "sha256": "521b523d42f52f0146345e652d36da0879a9b943857e821c8f46b282b4880903"
+    },
+    {
+      "path": "art/level1/tunnel-mouth.svg",
+      "bytes": 636,
+      "sha256": "7f6ac8571d2ee95d31ddc5b32448e20ad1ff256cdfb615e62b8359f9f599c6e1"
+    },
+    {
+      "path": "art/level1/warship.svg",
+      "bytes": 910,
+      "sha256": "c24ea48142e23e063f46d07252d29746be79d521e661849d7fc52aa54887ac92"
+    },
+    {
+      "path": "art/modules/bridge-module.png",
+      "bytes": 1908066,
+      "sha256": "1d9b351c1e37c467f5cc2cb5412cd0b743f0432a52a0c4076622fe60f0bd2ead"
+    },
+    {
+      "path": "art/props/fuel-tank.png",
+      "bytes": 13293,
+      "sha256": "24cec44ad448a7cebf7c2298d6e4b952583642461dc26714d86193610ffa3cdd"
+    },
+    {
+      "path": "art/props/rescue-marker.png",
+      "bytes": 32543,
+      "sha256": "1d15ee29267804d9805f22c74d8d67d3ad21fbcfb3de81646a5ea289c044e520"
+    },
+    {
+      "path": "art/wrecks/aa-turret.png",
+      "bytes": 122458,
+      "sha256": "6efecf08c9b433c6c3522466163c5ce94ccbe69ff9c2eb2b00849804f93fc3f0"
+    },
+    {
+      "path": "art/wrecks/armoured-vehicle.png",
+      "bytes": 174794,
+      "sha256": "72758115c465ac95e977a901daa651b67df2019736baa677e7d4cb275f993c47"
+    },
+    {
+      "path": "art/wrecks/boss-component.png",
+      "bytes": 144850,
+      "sha256": "8d2103690498fe97ce0a9a2a48e53377f13afe896c14db2785e5cb1e66559411"
+    },
+    {
+      "path": "art/wrecks/boss-final.png",
+      "bytes": 247666,
+      "sha256": "1df2cc5fe642d2e738b3f48e68720666f6f0a271bb83f0571197973125fb1eb5"
+    },
+    {
+      "path": "art/wrecks/fuel.png",
+      "bytes": 139598,
+      "sha256": "48964cab92c3d5438e8090cdb5547b1f2c13c421fd3c4b23b5dc08fd18b05ae1"
+    },
+    {
+      "path": "art/wrecks/ground-generic.png",
+      "bytes": 138190,
+      "sha256": "bc68b0c7d15c29da1d483463a9418a28106bf749e52d35cb5a0755269d77b676"
+    },
+    {
+      "path": "art/wrecks/missile-battery.png",
+      "bytes": 161376,
+      "sha256": "c2199a0eae26aa691f77986002dbc9a2670f0363e5349b9bb5ed8a6127b67bd3"
+    },
+    {
+      "path": "maps/coastal-intercept.tmj",
+      "bytes": 624647,
+      "sha256": "833bb6ff03930d2622336fb171a6ca6b65f1c8b5b4becd4975b125263b4723f1"
+    },
+    {
+      "path": "ui/coastal-briefing.jpg",
+      "bytes": 171082,
+      "sha256": "93e9d0ab500253bb2b1ee0ff5a28468b754d22cb4857ad2f5542f0b37302d840"
+    },
+    {
+      "path": "ui/coastal-title.jpg",
+      "bytes": 445583,
+      "sha256": "cb2076dc8c1443b6c93b1fdeb5b176f4af0a08b0ebe713e8148533bf63e48251"
+    },
+    {
+      "path": "ui/hangar-bay.jpg",
+      "bytes": 81941,
+      "sha256": "3e558b7bc77a57abaad9e101b572d8f9cf42c55a7e3d0ea91a0f6a46b082b7cf"
+    }
+  ]
+}

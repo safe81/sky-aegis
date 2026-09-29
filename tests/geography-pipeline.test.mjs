@@ -11,7 +11,7 @@ test('Tiled map is the authored source of truth for runtime geography',()=>{
  assert.match(build,/compile-geography\.mjs/);
  assert.ok(tmj.layers.some(l=>l.name==='Water Cutouts'));
  assert.ok(tmj.layers.some(l=>l.name==='Maritime Structures'));
- assert.equal(tmj.properties.find(p=>p.name==='geography_version')?.value,9);
+ assert.equal(tmj.properties.find(p=>p.name==='geography_version')?.value,10);
  assert.ok(tmj.layers.some(l=>l.name==='Reference Trace'));
  assert.ok(tmj.layers.some(l=>l.name==='Atmosphere Zones'));
  assert.ok(tmj.layers.some(l=>l.name==='Water Regions'));

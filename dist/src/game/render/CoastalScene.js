@@ -163,6 +163,169 @@ export class CoastalScene{
   if(land){ctx.globalAlpha=alpha;ctx.fillStyle=LAND_BASE[material]??LAND_BASE.land;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=alpha*LAND_PATTERN_ALPHA;ctx.fillStyle=pattern;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=1;this.drawLandMacroVariation(ctx,feature,b,material);}else if(concreteLike){ctx.globalAlpha=alpha;ctx.fillStyle=material==='dock'?'#616b69':CONCRETE_BASE;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=alpha*CONCRETE_PATTERN_ALPHA;ctx.fillStyle=pattern;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);ctx.globalAlpha=1;}else{ctx.globalAlpha=alpha;ctx.fillStyle=pattern;ctx.fillRect(b.minX-64,b.minY-64,b.maxX-b.minX+128,b.maxY-b.minY+128);}
   ctx.restore();
  }
+ drawScenicLandShoulder(ctx,feature){
+  const pts=feature?.points??[];if(pts.length<3)return;
+  const b=this.bounds(pts),id=String(feature.id??''),material=feature.material??'land';
+  // Visual-only terrain mass: widen authored coastlines so portrait framing reads as a continuous
+  // coast/harbour rather than isolated quays floating in an oversized water channel. Collision and
+  // gameplay surfaces remain authored by the TMJ; this is deliberately a render-only shoulder.
+  const mapMin=this.map.bounds.minX,mapMax=this.map.bounds.maxX;
+  const touchesEdge=pts.some(p=>p.x<=mapMin+3)||pts.some(p=>p.x>=mapMax-3);
+  const coastalBand=b.maxY>-4300&&b.minY<-1200;
+  const mountainBand=b.maxY>-6600&&b.minY<-4000;
+  let width=0;
+  if(touchesEdge&&coastalBand)width=120;
+  else if(touchesEdge&&mountainBand)width=72;
+  else if(coastalBand&&/islet|island/i.test(id))width=48;
+  if(width<=0)return;
+  const base=LAND_BASE[material]??LAND_BASE.land,pattern=this.pattern(ctx,material);
+  ctx.save();this.tracePolygon(ctx,pts);ctx.lineJoin='round';ctx.lineCap='round';
+  // Broad render-only shoulder restores the dense coast framing from the master reference.
+  ctx.strokeStyle=base;ctx.globalAlpha=.97;ctx.lineWidth=width;ctx.stroke();
+  // Texture the shoulder as well as the authored polygon. v11 fixed composition but left the
+  // added terrain mass visually flat; this keeps the extension materially continuous.
+  if(pattern){this.tracePolygon(ctx,pts);ctx.strokeStyle=pattern;ctx.globalAlpha=material==='land-snow'?.34:.44;ctx.lineWidth=Math.max(14,width-18);ctx.stroke();}
+  // Low-frequency light/shadow variation stops the wide shoulder reading like a uniform ribbon.
+  const g=ctx.createLinearGradient(b.minX,b.minY,b.maxX,b.maxY);g.addColorStop(0,material==='land-snow'?'rgba(250,253,252,.18)':'rgba(225,205,145,.10)');g.addColorStop(.48,'rgba(0,0,0,0)');g.addColorStop(1,material==='land-snow'?'rgba(46,62,65,.18)':'rgba(8,28,19,.20)');
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=g;ctx.globalAlpha=1;ctx.lineWidth=Math.max(12,width-30);ctx.stroke();
+  // Cliff/wet-rock lip gives the new shoulder a readable edge against water without changing geometry.
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(87,103,105,.56)':'rgba(26,42,38,.56)';ctx.globalAlpha=1;ctx.lineWidth=Math.min(26,Math.max(11,width*.14));ctx.stroke();
+  this.tracePolygon(ctx,pts);ctx.strokeStyle=material==='land-snow'?'rgba(244,250,249,.34)':'rgba(224,218,190,.22)';ctx.lineWidth=3.5;ctx.stroke();
+  this.drawScenicShoulderDressing(ctx,feature,width);
+  ctx.restore();
+ }
+ drawScenicShoulderDressing(ctx,feature,width){
+  const pts=feature?.points??[];if(pts.length<3||width<30)return;
+  const b=this.bounds(pts),midY=(b.minY+b.maxY)/2,district=this.environment.districtAtWorldY(midY),biome=district?.biome??'temperate-coast';
+  const snow=biome==='snow',alpine=biome==='alpine'||snow,mapMin=this.map.bounds.minX,mapMax=this.map.bounds.maxX;
+  const left=b.minX<=mapMin+4,right=b.maxX>=mapMax-4;if(!left&&!right)return;
+  const side=left?1:-1,seed=[...String(feature.id??'shoulder')].reduce((n,c)=>n+c.charCodeAt(0),53),spacing=alpine?72:62;
+  ctx.save();
+  for(let i=1;i<pts.length;i++){
+   const a=pts[i-1],q=pts[i],dx=q.x-a.x,dy=q.y-a.y,len=Math.hypot(dx,dy)||1;if(len<spacing*.65)continue;
+   const nx=-dy/len,ny=dx/len,count=Math.max(1,Math.floor(len/spacing));
+   for(let k=0;k<count;k++){
+    const h=this.detailHash(seed+i*97+k*31),t=(k+.25+h*.5)/count,x0=a.x+dx*t,y0=a.y+dy*t;
+    // Bias decorative mass toward the water-facing half of the render-only shoulder.
+    const ox=side*(width*.18+this.detailHash(seed+i*41+k*13)*width*.18),oy=ny*side*(8+this.detailHash(seed+i*23+k*17)*10),x=x0+ox+nx*side*3,y=y0+oy;
+    if(alpine){
+     if((k+i)%3!==0)this.drawPine(ctx,x,y,9+this.detailHash(seed+k*19)*12,snow);
+     else{ctx.fillStyle=snow?'rgba(93,105,104,.74)':'rgba(66,74,65,.76)';ctx.beginPath();ctx.ellipse(x,y,8+h*10,5+h*5,-.35+h*.7,0,Math.PI*2);ctx.fill();}
+    }else if((k+i)%4===0){
+     ctx.fillStyle='rgba(104,92,69,.72)';ctx.beginPath();ctx.ellipse(x,y,8+h*11,5+h*6,-.35+h*.7,0,Math.PI*2);ctx.fill();
+    }else{
+     const r=7+h*7;ctx.fillStyle=(k+i)%2?'rgba(27,81,45,.82)':'rgba(39,98,52,.72)';ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(13,45,29,.36)';ctx.beginPath();ctx.arc(x+r*.32,y+r*.34,r*.72,0,Math.PI*2);ctx.fill();
+    }
+   }
+  }
+  ctx.restore();
+ }
+ scenicDistrictProfile(district){
+  const id=district?.id??'';
+  const profiles={
+   'coastal-narrows':{left:238,right:232,material:'land-tropical',settlement:'coastal'},
+   'bridge-gateway':{left:302,right:294,material:'land-tropical',settlement:'gateway'},
+   'civil-harbour':{left:276,right:264,material:'land-tropical',settlement:'civil'},
+   'industrial-harbour':{left:292,right:286,material:'land-tropical',settlement:'industrial'},
+   'naval-yard':{left:308,right:302,material:'land-tropical',settlement:'naval'},
+   'mountain-transition':{left:294,right:288,material:'land-alpine',settlement:'alpine'},
+   'river-canyon':{left:332,right:326,material:'land-alpine',settlement:'alpine'},
+   'lower-dam':{left:352,right:346,material:'land-alpine',settlement:'alpine'},
+   'alpine-reservoir':{left:326,right:320,material:'land-alpine',settlement:'alpine'},
+   'frozen-valley':{left:336,right:332,material:'land-snow',settlement:'snow'},
+   'fortress-approach':{left:356,right:350,material:'land-snow',settlement:'fortress'},
+   'citadel-basin':{left:372,right:366,material:'land-snow',settlement:'fortress'},
+  };
+  return profiles[id]??null;
+ }
+ scenicBankDepth(profile,side,y,district){
+  const base=profile?.[side]??0;if(base<=0)return 0;
+  const phase=side==='left'?1.73:4.17,band=(district?.elevationBand??0)*.31;
+  const wave=Math.sin(y*.0041+phase+band)*28+Math.sin(y*.0093+phase*.63)*14+Math.sin(y*.0017+phase*1.9)*18;
+  // Wider, irregular render-only banks frame the combat lane without touching collision/navigation.
+  return Math.max(0,Math.min(405,base+wave));
+ }
+ drawScenicDistrictBanks(ctx,minY,maxY){
+  const districts=this.map.districts??[],mapMin=this.map.bounds.minX,mapMax=this.map.bounds.maxX;
+  for(const district of districts){
+   const profile=this.scenicDistrictProfile(district);if(!profile)continue;
+   const y0=Math.max(minY-120,district.minY),y1=Math.min(maxY+120,district.maxY);if(y1<=y0)continue;
+   for(const side of ['left','right']){
+    const inner=[];const step=72;
+    for(let y=y0;y<y1;y+=step){const depth=this.scenicBankDepth(profile,side,y,district);inner.push({x:side==='left'?mapMin+depth:mapMax-depth,y});}
+    const depth=this.scenicBankDepth(profile,side,y1,district);inner.push({x:side==='left'?mapMin+depth:mapMax-depth,y:y1});
+    if(inner.length<2)continue;
+    this.drawScenicDistrictBank(ctx,inner,side,profile,district);
+   }
+  }
+ }
+ drawScenicDistrictBank(ctx,inner,side,profile,district){
+  const mapEdge=side==='left'?this.map.bounds.minX:this.map.bounds.maxX,material=profile.material??'land';
+  const poly=[{x:mapEdge,y:inner[0].y},{x:mapEdge,y:inner[inner.length-1].y},...inner.slice().reverse()];
+  // Paint the shallow shelf first so only the water-facing half remains visible after land fill.
+  ctx.save();this.tracePolyline(ctx,inner);ctx.lineJoin='round';ctx.lineCap='round';
+  const shelf=material==='land-snow'?'rgba(126,205,211,.18)':'rgba(48,214,198,.22)';ctx.strokeStyle=shelf;ctx.lineWidth=118;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(192,235,236,.16)':'rgba(129,238,217,.20)';ctx.lineWidth=64;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(236,249,250,.12)':'rgba(201,246,227,.12)';ctx.lineWidth=28;ctx.stroke();ctx.restore();
+
+  const b=this.bounds(poly),pattern=this.pattern(ctx,material),base=LAND_BASE[material]??LAND_BASE.land;
+  ctx.save();this.tracePolygon(ctx,poly);ctx.clip();ctx.fillStyle=base;ctx.globalAlpha=.99;ctx.fillRect(b.minX-32,b.minY-32,b.maxX-b.minX+64,b.maxY-b.minY+64);
+  if(pattern){ctx.globalAlpha=material==='land-snow'?.42:.52;ctx.fillStyle=pattern;ctx.fillRect(b.minX-32,b.minY-32,b.maxX-b.minX+64,b.maxY-b.minY+64);}ctx.globalAlpha=1;
+  this.drawLandMacroVariation(ctx,{id:`scenic-${district.id}-${side}`},b,material);ctx.restore();
+
+  // A dark cliff toe plus pale rock rim gives the bank actual vertical mass against the water.
+  ctx.save();this.tracePolyline(ctx,inner);ctx.lineJoin='round';ctx.lineCap='round';
+  ctx.strokeStyle='rgba(8,20,22,.26)';ctx.lineWidth=42;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(56,67,69,.82)':'rgba(34,42,37,.84)';ctx.lineWidth=27;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(232,241,238,.68)':'rgba(213,198,157,.56)';ctx.lineWidth=7;ctx.stroke();ctx.restore();
+  this.drawScenicBankRoad(ctx,inner,side,district,profile);
+  this.drawScenicBankDressing(ctx,inner,side,district,profile);
+ }
+ drawScenicBankRoad(ctx,inner,side,district,profile){
+  if(inner.length<2)return;const outward=side==='left'?-1:1,offset=profile.settlement==='fortress'?82:62;
+  const road=inner.map((p,i)=>({x:p.x+outward*(offset+Math.sin((p.y+i*17)*.006)*9),y:p.y}));
+  ctx.save();ctx.lineJoin='round';ctx.lineCap='round';this.tracePolyline(ctx,road);ctx.strokeStyle='rgba(24,30,30,.72)';ctx.lineWidth=19;ctx.stroke();
+  this.tracePolyline(ctx,road);ctx.strokeStyle=district.biome==='snow'?'rgba(108,113,109,.92)':'rgba(81,84,78,.94)';ctx.lineWidth=12;ctx.stroke();
+  this.tracePolyline(ctx,road);ctx.strokeStyle='rgba(232,214,158,.46)';ctx.lineWidth=1.8;ctx.setLineDash([22,20]);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+ }
+ drawScenicBankDressing(ctx,inner,side,district,profile){
+  const outward=side==='left'?-1:1,snow=district.biome==='snow',alpine=district.biome==='alpine'||snow;
+  const seed=[...`${district.id}:${side}`].reduce((n,c)=>n+c.charCodeAt(0),97);ctx.save();
+  for(let i=1;i<inner.length-1;i++){
+   const p=inner[i],h=this.detailHash(seed+i*41),x=p.x+outward*(34+h*86),y=p.y-24+this.detailHash(seed+i*59)*48;
+   if(alpine){
+    const count=1+(i%3===0?1:0);for(let k=0;k<count;k++)this.drawPine(ctx,x+outward*k*18,y+k*13,10+this.detailHash(seed+i*67+k)*14,snow);
+    if(i%4===0){ctx.fillStyle=snow?'rgba(93,101,99,.86)':'rgba(84,82,70,.86)';ctx.beginPath();ctx.ellipse(x+outward*24,y+18,14+h*12,7+h*6,-.35+h*.7,0,Math.PI*2);ctx.fill();}
+   }else{
+    for(let k=0;k<2;k++){const r=8+this.detailHash(seed+i*71+k)*9;ctx.fillStyle=k?'rgba(24,72,39,.86)':'rgba(43,103,53,.78)';ctx.beginPath();ctx.arc(x+outward*k*17,y+k*10,r,0,Math.PI*2);ctx.fill();}
+   }
+   this.drawScenicSettlementBlock(ctx,p,outward,district,profile,seed+i*83);
+   if(!alpine&&i%2===1)this.drawScenicSettlementBlock(ctx,{x:p.x,y:p.y+34},outward,district,profile,seed+i*83+19,.72);
+  }
+  ctx.restore();
+ }
+ drawScenicSettlementBlock(ctx,p,outward,district,profile,seed,scale=1){
+  const kind=profile.settlement;if(!kind||kind==='alpine'||kind==='snow')return;
+  const h=this.detailHash(seed),x=p.x+outward*(96+h*58),y=p.y-20+this.detailHash(seed+7)*42;
+  ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);
+  const w=kind==='industrial'||kind==='naval'?46+h*28:28+h*19,hh=kind==='gateway'?36:24+h*12;
+  ctx.fillStyle='rgba(5,14,16,.42)';ctx.fillRect(-w/2+9,-hh/2+11,w+2,hh+2);
+  if(kind==='civil'){
+   ctx.fillStyle=(seed%3===0)?'#eee5cf':'#d9d0b6';ctx.fillRect(-w/2,-hh/2,w,hh);
+   ctx.fillStyle=(seed%2)?'#b9563e':'#d07048';ctx.beginPath();ctx.moveTo(-w*.6,-hh/2);ctx.lineTo(0,-hh*.98);ctx.lineTo(w*.6,-hh/2);ctx.closePath();ctx.fill();
+   ctx.fillStyle='rgba(197,233,229,.72)';ctx.fillRect(-w*.26,-hh*.17,w*.18,hh*.18);ctx.fillRect(w*.08,-hh*.17,w*.18,hh*.18);
+   ctx.strokeStyle='rgba(255,239,205,.38)';ctx.lineWidth=1.4;ctx.strokeRect(-w/2,-hh/2,w,hh);
+  }else if(kind==='gateway'){
+   ctx.fillStyle='#8f9187';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle='#d2ccba';ctx.fillRect(-w*.56,-hh*.62,w*1.12,7);
+   ctx.fillStyle='#26383a';ctx.fillRect(-6,-hh*.24,12,hh*.46);ctx.fillStyle='rgba(255,185,91,.80)';ctx.fillRect(outward>0?w*.28:-w*.36,-hh*.52,5,5);
+  }else{
+   ctx.fillStyle=kind==='naval'?'#646d6c':'#777a72';ctx.fillRect(-w/2,-hh/2,w,hh);
+   const roof=ctx.createLinearGradient(-w/2,-hh/2,w/2,hh/2);roof.addColorStop(0,'#8b918c');roof.addColorStop(.5,'#4c5756');roof.addColorStop(1,'#303b3c');ctx.fillStyle=roof;ctx.fillRect(-w*.42,-hh*.26,w*.84,hh*.38);
+   ctx.strokeStyle='rgba(196,209,207,.35)';ctx.lineWidth=1.4;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.moveTo(-w*.34,k*hh*.10);ctx.lineTo(w*.34,k*hh*.10);ctx.stroke();}
+   ctx.fillStyle='rgba(238,183,94,.82)';ctx.fillRect(outward>0?w*.24:-w*.34,-hh*.58,6,6);
+  }
+  ctx.restore();
+ }
  drawLandMacroVariation(ctx,feature,b,material){
   const seed=[...String(feature.id??material)].reduce((n,c)=>n+c.charCodeAt(0),37),snow=material==='land-snow',alpine=material==='land-alpine'||snow;
   const broad=ctx.createLinearGradient(b.minX,b.minY,b.maxX,b.maxY);broad.addColorStop(0,snow?'rgba(247,250,248,.16)':alpine?'rgba(202,197,176,.10)':'rgba(194,177,118,.10)');broad.addColorStop(.48,'rgba(0,0,0,0)');broad.addColorStop(1,snow?'rgba(55,68,70,.18)':'rgba(14,35,23,.18)');ctx.fillStyle=broad;ctx.fillRect(b.minX-16,b.minY-16,b.maxX-b.minX+32,b.maxY-b.minY+32);
@@ -189,6 +352,12 @@ export class CoastalScene{
   const decorations=this.environment.visibleDecorations(0,minY-160,maxY+160);
 
   // A single continuous master map is drawn into cache strips. Chunks are only a render cache.
+  // v13 adds continuous render-only district banks before authored land. This keeps the gameplay
+  // geometry untouched while restoring the dense coast/canyon framing visible in the master reference.
+  this.drawScenicDistrictBanks(ctx,minY,maxY);
+  // First lay down visual-only shoulders. They restore the dense edge composition of the master
+  // reference while keeping the authored collision/navigation geometry unchanged.
+  for(const land of lands)this.drawScenicLandShoulder(ctx,land);
   for(const land of lands){ctx.save();ctx.translate(15,21);ctx.globalAlpha=.34;this.tracePolygon(ctx,land.points);ctx.fillStyle='#071313';ctx.fill();ctx.restore();this.drawPolygon(ctx,land,land.material??'land',1);}
   const terrainShadows=this.environment.visibleShadowCasters(0,minY-260,maxY+260);
   drawTerrainShadows(ctx,terrainShadows,0);
@@ -238,7 +407,7 @@ export class CoastalScene{
     const gatewayCliffDepth=Math.max(180,170+Math.min(120,Math.max(0,Number(shoreline.height??45))*1.65));
     const depth=gatewayCliffDepth;
     const ax=a.x+nx*landSign*depth,ay=a.y+ny*landSign*depth,bx=b.x+nx*landSign*depth,by=b.y+ny*landSign*depth;
-    const g=ctx.createLinearGradient(a.x,a.y,ax,ay);g.addColorStop(0,'rgba(181,169,139,.98)');g.addColorStop(.42,'rgba(132,122,98,.97)');g.addColorStop(1,'rgba(74,77,65,.92)');ctx.fillStyle=g;
+    const g=ctx.createLinearGradient(a.x,a.y,ax,ay);g.addColorStop(0,'rgba(203,190,151,.99)');g.addColorStop(.42,'rgba(126,116,91,.985)');g.addColorStop(1,'rgba(52,60,55,.96)');ctx.fillStyle=g;
     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineTo(bx,by);ctx.lineTo(ax,ay);ctx.closePath();ctx.fill();
     // Fractured limestone ledges and vertical seams reproduce the gateway's tall rock shelves.
     ctx.strokeStyle='rgba(225,214,181,.35)';ctx.lineWidth=2.2;for(const t of [.22,.48,.72]){ctx.beginPath();ctx.moveTo(a.x+(ax-a.x)*t,a.y+(ay-a.y)*t);ctx.lineTo(b.x+(bx-b.x)*t,b.y+(by-b.y)*t);ctx.stroke();}
@@ -253,7 +422,7 @@ export class CoastalScene{
      ctx.fillStyle=k%3===0?'rgba(211,198,158,.18)':k%3===1?'rgba(56,65,59,.16)':'rgba(151,140,110,.16)';
      ctx.beginPath();ctx.moveTo(sx0,sy0);ctx.lineTo(sx1,sy1);ctx.lineTo(lx1,ly1);ctx.lineTo(lx0,ly0);ctx.closePath();ctx.fill();
     }
-    ctx.strokeStyle='rgba(24,35,34,.46)';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+    ctx.strokeStyle='rgba(20,31,31,.58)';ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     // Broken upper rim with shrubs/pines keeps rock and foliage interlocked rather than forming a clean stripe.
     const rimX=(ax+bx)/2,rimY=(ay+by)/2;if(len>55){for(let k=0;k<Math.min(4,Math.floor(len/75));k++){const t=(k+1)/(Math.min(4,Math.floor(len/75))+1),x=ax+(bx-ax)*t,y=ay+(by-ay)*t,size=9+this.detailHash(my+k*23)*12;this.drawPine(ctx,x,y,size,false);}}
    }
@@ -322,7 +491,7 @@ export class CoastalScene{
    const centerY=(b.minY+b.maxY)/2,district=this.environment.districtAtWorldY(centerY),biome=district?.biome??'temperate-coast';
    const snow=biome==='snow',alpine=biome==='alpine'||snow,tropical=!alpine;
    const seed=[...String(land.id??'land')].reduce((v,c)=>v+c.charCodeAt(0),17);
-   const attempts=Math.min(84,Math.max(10,Math.round((w*h)/21000)));
+   const attempts=Math.min(118,Math.max(14,Math.round((w*h)/15500)));
    ctx.save();this.tracePolygon(ctx,pts);ctx.clip();
    for(let i=0;i<attempts;i++){
     const x=b.minX+this.detailHash(seed+i*17)*w,y=b.minY+this.detailHash(seed+i*29+7)*h;
@@ -423,10 +592,12 @@ export class CoastalScene{
   ctx.restore();
  }
  drawFortifiedDeck(ctx,x,deckY,w){
-  ctx.fillStyle='#303636';ctx.fillRect(x,deckY-22,w,44);ctx.fillStyle='#777a74';ctx.fillRect(x,deckY-15,w,28);ctx.fillStyle='#4b514f';ctx.fillRect(x,deckY+12,w,10);
-  ctx.fillStyle='#b9b6a8';ctx.fillRect(x,deckY-22,w,5);ctx.fillRect(x,deckY+17,w,5);
-  ctx.strokeStyle='rgba(239,225,185,.72)';ctx.lineWidth=2;ctx.setLineDash([36,28]);ctx.beginPath();ctx.moveTo(x+28,deckY);ctx.lineTo(x+w-28,deckY);ctx.stroke();ctx.setLineDash([]);
-  for(let i=0;i<10;i++){const px=x+20+i*(w-40)/9;ctx.fillStyle='rgba(224,216,190,.72)';ctx.fillRect(px-2,deckY-27,4,9);ctx.fillRect(px-2,deckY+18,4,9);}
+  const deck=ctx.createLinearGradient(x,deckY-24,x,deckY+24);deck.addColorStop(0,'#8a8b83');deck.addColorStop(.46,'#686d69');deck.addColorStop(1,'#3b4544');
+  ctx.fillStyle='#232c2d';ctx.fillRect(x,deckY-26,w,52);ctx.fillStyle=deck;ctx.fillRect(x,deckY-17,w,34);ctx.fillStyle='#2e3a3b';ctx.fillRect(x,deckY+14,w,12);
+  ctx.fillStyle='rgba(224,220,201,.92)';ctx.fillRect(x,deckY-24,w,4);ctx.fillStyle='rgba(14,23,25,.54)';ctx.fillRect(x,deckY+18,w,6);
+  ctx.strokeStyle='rgba(244,225,164,.82)';ctx.lineWidth=2.2;ctx.setLineDash([38,27]);ctx.beginPath();ctx.moveTo(x+28,deckY);ctx.lineTo(x+w-28,deckY);ctx.stroke();ctx.setLineDash([]);
+  for(let i=0;i<13;i++){const px=x+18+i*(w-36)/12;ctx.fillStyle='rgba(222,216,196,.78)';ctx.fillRect(px-2,deckY-30,4,10);ctx.fillRect(px-2,deckY+20,4,10);
+   if(i%3===1){const g=ctx.createRadialGradient(px,deckY-28,0,px,deckY-28,14);g.addColorStop(0,'rgba(255,210,129,.64)');g.addColorStop(1,'rgba(255,142,54,0)');ctx.fillStyle=g;ctx.fillRect(px-14,deckY-42,28,28);}}
  }
  drawFortifiedGatewayTower(ctx,tx,deckY,scale=1,side=1){
   const w=82*scale,h=142*scale;
@@ -449,9 +620,10 @@ export class CoastalScene{
   this.drawBridgeUnderstructure(ctx,x,deckY,w,fortified);
   this.drawFortifiedDeck(ctx,x,deckY,w);
   if(fortified){
-   // The monumental gateway towers/terraces are authored instances registered to the banks.
-   // Keep only compact deck gateposts here so the bridge structure does not duplicate the hero art.
-   for(const tx of [x+w*.16,x+w*.84]){ctx.fillStyle='#696d64';ctx.fillRect(tx-18,deckY-39,36,62);ctx.fillStyle='#d1c9ae';ctx.fillRect(tx-20,deckY-45,40,10);}
+   // v13 makes the bridge read as a true gateway rather than a generic road span. The towers are
+   // compact enough to avoid blocking the flight lane, but visually anchor the deck into both banks.
+   this.drawFortifiedGatewayTower(ctx,x+w*.16,deckY,.72,-1);
+   this.drawFortifiedGatewayTower(ctx,x+w*.84,deckY,.72,1);
   }else{
    this.drawFortifiedGatewayTower(ctx,x+w*.25,deckY,.55,-1);this.drawFortifiedGatewayTower(ctx,x+w*.75,deckY,.55,1);
   }
