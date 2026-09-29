@@ -305,3 +305,19 @@ test('v12 shoreline shallows are visibly wider without changing map geometry',as
   assert.match(src,/beach\?46:34/);
   assert.match(src,/beach\?21:16/);
 });
+
+test('v13 district banks restore dense portrait coast framing without changing authored surfaces',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
+  assert.match(src,/drawScenicDistrictBanks\(ctx,minY,maxY\)/);
+  assert.match(src,/'bridge-gateway':\{left:248,right:238/);
+  assert.match(src,/'civil-harbour':\{left:218,right:205/);
+  assert.match(src,/'citadel-basin':\{left:346,right:340/);
+  assert.match(src,/drawScenicBankRoad/);
+  assert.match(src,/drawScenicSettlementBlock/);
+});
+
+test('v13 bridge gateway is visually anchored by fortified towers',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
+  assert.match(src,/drawFortifiedGatewayTower\(ctx,x\+w\*\.16,deckY,\.72,-1\)/);
+  assert.match(src,/drawFortifiedGatewayTower\(ctx,x\+w\*\.84,deckY,\.72,1\)/);
+});

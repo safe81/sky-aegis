@@ -220,6 +220,95 @@ export class CoastalScene{
   }
   ctx.restore();
  }
+ scenicDistrictProfile(district){
+  const id=district?.id??'';
+  const profiles={
+   'coastal-narrows':{left:205,right:200,material:'land-tropical',settlement:'coastal'},
+   'bridge-gateway':{left:248,right:238,material:'land-tropical',settlement:'gateway'},
+   'civil-harbour':{left:218,right:205,material:'land-tropical',settlement:'civil'},
+   'industrial-harbour':{left:236,right:228,material:'land-tropical',settlement:'industrial'},
+   'naval-yard':{left:252,right:244,material:'land-tropical',settlement:'naval'},
+   'mountain-transition':{left:258,right:252,material:'land-alpine',settlement:'alpine'},
+   'river-canyon':{left:302,right:296,material:'land-alpine',settlement:'alpine'},
+   'lower-dam':{left:326,right:318,material:'land-alpine',settlement:'alpine'},
+   'alpine-reservoir':{left:292,right:286,material:'land-alpine',settlement:'alpine'},
+   'frozen-valley':{left:306,right:302,material:'land-snow',settlement:'snow'},
+   'fortress-approach':{left:330,right:324,material:'land-snow',settlement:'fortress'},
+   'citadel-basin':{left:346,right:340,material:'land-snow',settlement:'fortress'},
+  };
+  return profiles[id]??null;
+ }
+ scenicBankDepth(profile,side,y,district){
+  const base=profile?.[side]??0;if(base<=0)return 0;
+  const phase=side==='left'?1.73:4.17,band=(district?.elevationBand??0)*.31;
+  const wave=Math.sin(y*.0041+phase+band)*18+Math.sin(y*.0093+phase*.63)*9;
+  return Math.max(0,Math.min(355,base+wave));
+ }
+ drawScenicDistrictBanks(ctx,minY,maxY){
+  const districts=this.map.districts??[],mapMin=this.map.bounds.minX,mapMax=this.map.bounds.maxX;
+  for(const district of districts){
+   const profile=this.scenicDistrictProfile(district);if(!profile)continue;
+   const y0=Math.max(minY-120,district.minY),y1=Math.min(maxY+120,district.maxY);if(y1<=y0)continue;
+   for(const side of ['left','right']){
+    const inner=[];const step=72;
+    for(let y=y0;y<y1;y+=step){const depth=this.scenicBankDepth(profile,side,y,district);inner.push({x:side==='left'?mapMin+depth:mapMax-depth,y});}
+    const depth=this.scenicBankDepth(profile,side,y1,district);inner.push({x:side==='left'?mapMin+depth:mapMax-depth,y:y1});
+    if(inner.length<2)continue;
+    this.drawScenicDistrictBank(ctx,inner,side,profile,district);
+   }
+  }
+ }
+ drawScenicDistrictBank(ctx,inner,side,profile,district){
+  const mapEdge=side==='left'?this.map.bounds.minX:this.map.bounds.maxX,material=profile.material??'land';
+  const poly=[{x:mapEdge,y:inner[0].y},{x:mapEdge,y:inner[inner.length-1].y},...inner.slice().reverse()];
+  // Paint the shallow shelf first so only the water-facing half remains visible after land fill.
+  ctx.save();this.tracePolyline(ctx,inner);ctx.lineJoin='round';ctx.lineCap='round';
+  const shelf=material==='land-snow'?'rgba(126,205,211,.14)':'rgba(62,210,197,.18)';ctx.strokeStyle=shelf;ctx.lineWidth=92;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(192,235,236,.12)':'rgba(135,238,217,.16)';ctx.lineWidth=44;ctx.stroke();ctx.restore();
+
+  const b=this.bounds(poly),pattern=this.pattern(ctx,material),base=LAND_BASE[material]??LAND_BASE.land;
+  ctx.save();this.tracePolygon(ctx,poly);ctx.clip();ctx.fillStyle=base;ctx.globalAlpha=.99;ctx.fillRect(b.minX-32,b.minY-32,b.maxX-b.minX+64,b.maxY-b.minY+64);
+  if(pattern){ctx.globalAlpha=material==='land-snow'?.42:.52;ctx.fillStyle=pattern;ctx.fillRect(b.minX-32,b.minY-32,b.maxX-b.minX+64,b.maxY-b.minY+64);}ctx.globalAlpha=1;
+  this.drawLandMacroVariation(ctx,{id:`scenic-${district.id}-${side}`},b,material);ctx.restore();
+
+  // A dark cliff toe plus pale rock rim gives the bank actual vertical mass against the water.
+  ctx.save();this.tracePolyline(ctx,inner);ctx.lineJoin='round';ctx.lineCap='round';ctx.strokeStyle=material==='land-snow'?'rgba(56,67,69,.78)':'rgba(38,44,39,.78)';ctx.lineWidth=24;ctx.stroke();
+  this.tracePolyline(ctx,inner);ctx.strokeStyle=material==='land-snow'?'rgba(226,235,232,.60)':'rgba(199,188,151,.46)';ctx.lineWidth=6;ctx.stroke();ctx.restore();
+  this.drawScenicBankRoad(ctx,inner,side,district,profile);
+  this.drawScenicBankDressing(ctx,inner,side,district,profile);
+ }
+ drawScenicBankRoad(ctx,inner,side,district,profile){
+  if(inner.length<2)return;const outward=side==='left'?-1:1,offset=profile.settlement==='fortress'?82:62;
+  const road=inner.map((p,i)=>({x:p.x+outward*(offset+Math.sin((p.y+i*17)*.006)*9),y:p.y}));
+  ctx.save();ctx.lineJoin='round';ctx.lineCap='round';this.tracePolyline(ctx,road);ctx.strokeStyle='rgba(24,30,30,.72)';ctx.lineWidth=19;ctx.stroke();
+  this.tracePolyline(ctx,road);ctx.strokeStyle=district.biome==='snow'?'rgba(108,113,109,.92)':'rgba(81,84,78,.94)';ctx.lineWidth=12;ctx.stroke();
+  this.tracePolyline(ctx,road);ctx.strokeStyle='rgba(232,214,158,.46)';ctx.lineWidth=1.8;ctx.setLineDash([22,20]);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+ }
+ drawScenicBankDressing(ctx,inner,side,district,profile){
+  const outward=side==='left'?-1:1,snow=district.biome==='snow',alpine=district.biome==='alpine'||snow;
+  const seed=[...`${district.id}:${side}`].reduce((n,c)=>n+c.charCodeAt(0),97);ctx.save();
+  for(let i=1;i<inner.length-1;i++){
+   const p=inner[i],h=this.detailHash(seed+i*41),x=p.x+outward*(34+h*86),y=p.y-24+this.detailHash(seed+i*59)*48;
+   if(alpine){
+    const count=1+(i%3===0?1:0);for(let k=0;k<count;k++)this.drawPine(ctx,x+outward*k*18,y+k*13,10+this.detailHash(seed+i*67+k)*14,snow);
+    if(i%4===0){ctx.fillStyle=snow?'rgba(93,101,99,.86)':'rgba(84,82,70,.86)';ctx.beginPath();ctx.ellipse(x+outward*24,y+18,14+h*12,7+h*6,-.35+h*.7,0,Math.PI*2);ctx.fill();}
+   }else{
+    for(let k=0;k<2;k++){const r=8+this.detailHash(seed+i*71+k)*9;ctx.fillStyle=k?'rgba(24,72,39,.86)':'rgba(43,103,53,.78)';ctx.beginPath();ctx.arc(x+outward*k*17,y+k*10,r,0,Math.PI*2);ctx.fill();}
+   }
+   if(i%2===0)this.drawScenicSettlementBlock(ctx,p,outward,district,profile,seed+i*83);
+  }
+  ctx.restore();
+ }
+ drawScenicSettlementBlock(ctx,p,outward,district,profile,seed){
+  const kind=profile.settlement;if(!kind||kind==='alpine'||kind==='snow')return;
+  const h=this.detailHash(seed),x=p.x+outward*(100+h*42),y=p.y-18+this.detailHash(seed+7)*36;
+  ctx.save();ctx.translate(x,y);const w=kind==='industrial'||kind==='naval'?42+h*22:26+h*16,hh=kind==='gateway'?32:22+h*10;
+  ctx.fillStyle='rgba(9,18,18,.34)';ctx.fillRect(-w/2+7,-hh/2+9,w,hh);
+  if(kind==='civil'){ctx.fillStyle='#d9d0b6';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle=(seed%2)?'#b85a3d':'#c86a46';ctx.beginPath();ctx.moveTo(-w*.58,-hh/2);ctx.lineTo(0,-hh*.92);ctx.lineTo(w*.58,-hh/2);ctx.closePath();ctx.fill();}
+  else if(kind==='gateway'){ctx.fillStyle='#8f9187';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle='#c9c2a9';ctx.fillRect(-w*.56,-hh*.62,w*1.12,6);ctx.fillStyle='#2f3c3d';ctx.fillRect(-5,-hh*.22,10,hh*.42);}
+  else{ctx.fillStyle=kind==='naval'?'#69716e':'#777a72';ctx.fillRect(-w/2,-hh/2,w,hh);ctx.fillStyle='#3d4745';ctx.fillRect(-w*.38,-hh*.18,w*.76,hh*.28);ctx.fillStyle='rgba(238,183,94,.70)';ctx.fillRect(outward>0?w*.24:-w*.34,-hh*.58,5,5);}
+  ctx.restore();
+ }
  drawLandMacroVariation(ctx,feature,b,material){
   const seed=[...String(feature.id??material)].reduce((n,c)=>n+c.charCodeAt(0),37),snow=material==='land-snow',alpine=material==='land-alpine'||snow;
   const broad=ctx.createLinearGradient(b.minX,b.minY,b.maxX,b.maxY);broad.addColorStop(0,snow?'rgba(247,250,248,.16)':alpine?'rgba(202,197,176,.10)':'rgba(194,177,118,.10)');broad.addColorStop(.48,'rgba(0,0,0,0)');broad.addColorStop(1,snow?'rgba(55,68,70,.18)':'rgba(14,35,23,.18)');ctx.fillStyle=broad;ctx.fillRect(b.minX-16,b.minY-16,b.maxX-b.minX+32,b.maxY-b.minY+32);
@@ -246,6 +335,9 @@ export class CoastalScene{
   const decorations=this.environment.visibleDecorations(0,minY-160,maxY+160);
 
   // A single continuous master map is drawn into cache strips. Chunks are only a render cache.
+  // v13 adds continuous render-only district banks before authored land. This keeps the gameplay
+  // geometry untouched while restoring the dense coast/canyon framing visible in the master reference.
+  this.drawScenicDistrictBanks(ctx,minY,maxY);
   // First lay down visual-only shoulders. They restore the dense edge composition of the master
   // reference while keeping the authored collision/navigation geometry unchanged.
   for(const land of lands)this.drawScenicLandShoulder(ctx,land);
@@ -509,9 +601,10 @@ export class CoastalScene{
   this.drawBridgeUnderstructure(ctx,x,deckY,w,fortified);
   this.drawFortifiedDeck(ctx,x,deckY,w);
   if(fortified){
-   // The monumental gateway towers/terraces are authored instances registered to the banks.
-   // Keep only compact deck gateposts here so the bridge structure does not duplicate the hero art.
-   for(const tx of [x+w*.16,x+w*.84]){ctx.fillStyle='#696d64';ctx.fillRect(tx-18,deckY-39,36,62);ctx.fillStyle='#d1c9ae';ctx.fillRect(tx-20,deckY-45,40,10);}
+   // v13 makes the bridge read as a true gateway rather than a generic road span. The towers are
+   // compact enough to avoid blocking the flight lane, but visually anchor the deck into both banks.
+   this.drawFortifiedGatewayTower(ctx,x+w*.16,deckY,.72,-1);
+   this.drawFortifiedGatewayTower(ctx,x+w*.84,deckY,.72,1);
   }else{
    this.drawFortifiedGatewayTower(ctx,x+w*.25,deckY,.55,-1);this.drawFortifiedGatewayTower(ctx,x+w*.75,deckY,.55,1);
   }
