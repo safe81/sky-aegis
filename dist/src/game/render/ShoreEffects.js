@@ -23,8 +23,9 @@ function brokenCrests(ctx,line,scroll,time,{spacing=25,offset=5,length=12},index
 function drawShallowShelf(ctx,line,scroll,kind){
  const pts=line.points??[];if(pts.length<2||kind==='quay'||kind==='ice')return;
  const beach=kind==='beach';
- drawPolyline(ctx,pts,scroll,beach?38:28,line.waterSide);ctx.strokeStyle=beach?'rgba(55,208,198,.16)':'rgba(45,181,184,.10)';ctx.lineWidth=beach?72:54;ctx.stroke();
- drawPolyline(ctx,pts,scroll,beach?20:15,line.waterSide);ctx.strokeStyle=beach?'rgba(130,229,212,.18)':'rgba(96,197,196,.11)';ctx.lineWidth=beach?38:29;ctx.stroke();
+ drawPolyline(ctx,pts,scroll,beach?46:32,line.waterSide);ctx.strokeStyle=beach?'rgba(46,211,200,.18)':'rgba(38,178,184,.12)';ctx.lineWidth=beach?88:64;ctx.stroke();
+ drawPolyline(ctx,pts,scroll,beach?25:17,line.waterSide);ctx.strokeStyle=beach?'rgba(128,232,216,.21)':'rgba(93,202,199,.14)';ctx.lineWidth=beach?46:34;ctx.stroke();
+ drawPolyline(ctx,pts,scroll,beach?10:8,line.waterSide);ctx.strokeStyle=beach?'rgba(202,246,231,.13)':'rgba(151,226,218,.09)';ctx.lineWidth=beach?21:16;ctx.stroke();
 }
 
 function drawBeachWash(ctx,line,scroll,time,index,quality){
