@@ -289,3 +289,18 @@ test('portrait map uses render-only scenic shoulders to keep coastal banks visua
  assert.match(coastal,/touchesEdge&&mountainBand\)width=72/,'mountain shoulders should be lighter than harbour shoulders');
  assert.match(coastal,/Collision and\s*\/\/ gameplay surfaces remain authored by the TMJ/,'visual shoulders must remain explicitly render-only');
 });
+
+test('v12 scenic shoulders carry material texture and deterministic dressing',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/CoastalScene.js',import.meta.url),'utf8');
+  assert.match(src,/drawScenicShoulderDressing/);
+  assert.match(src,/strokeStyle=pattern/);
+  assert.match(src,/width-18/);
+  assert.match(src,/Bias decorative mass toward the water-facing half/);
+});
+
+test('v12 shoreline shallows are visibly wider without changing map geometry',async()=>{
+  const src=await readFile(new URL('../dist/src/game/render/ShoreEffects.js',import.meta.url),'utf8');
+  assert.match(src,/beach\?88:64/);
+  assert.match(src,/beach\?46:34/);
+  assert.match(src,/beach\?21:16/);
+});
