@@ -8,7 +8,7 @@ import {
 } from '../content/coastalGeography.js';
 
 export const MODULE_ART={
- bridge:{url:'art/modules/bridge-module.png',width:1536,height:1024,elevation:92},
+ bridge:{url:'art/modules/bridge-module.svg',width:1536,height:1024,elevation:92},
 };
 
 export class Environment{

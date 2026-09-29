@@ -1,5 +1,5 @@
 const sprite=(name,w,h,{pivotX=w/2,pivotY=h,layer='ground',shadow=true,ppu=1}={})=>Object.freeze({
- url:`art/level1/raster/${name}.png`,sourcePixelWidth:w,sourcePixelHeight:h,pivotX,pivotY,
+ url:`art/level1/${name}.svg`,sourcePixelWidth:w,sourcePixelHeight:h,pivotX,pivotY,
  pixelsPerWorldUnit:ppu,renderLayer:layer,castsShadow:shadow,
 });
 
